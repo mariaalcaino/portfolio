@@ -1,0 +1,66 @@
+.about-page {
+  padding-top: 48px;
+  max-width: 620px;
+}
+
+.about-lede {
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  margin: 0 0 40px;
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #3a3936;
+  margin-bottom: 72px;
+}
+
+.about-cta {
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+  margin-bottom: 72px;
+}
+
+.about-cta-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 6px;
+}
+
+.about-cta-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--fg);
+}
+
+.about-cta-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.about-studio {
+  font-size: 14px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 64px;
+}
+
+.about-studio a:hover {
+  color: var(--fg);
+}
+
+@media (max-width: 640px) {
+  .about-lede {
+    font-size: 21px;
+  }
+}
