@@ -5,26 +5,13 @@
 }
 
 .page-header {
-  padding: 40px 40px 0;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 64px;
 }
 
 .page-content {
   flex: 1;
-  padding: 0 40px;
-  max-width: 780px;
-}
-
-@media (max-width: 480px) {
-  .page-header {
-    padding: 32px 24px 0;
-    margin-bottom: 40px;
-  }
-
-  .page-content {
-    padding: 0 24px;
-  }
+  padding: 10px 24px 0;
 }
