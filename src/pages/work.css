@@ -1,4 +1,6 @@
-@import "../styles/page.css";
+.work-content {
+  max-width: 700px;
+}
 
 .work-name {
   font-size: 15px;
