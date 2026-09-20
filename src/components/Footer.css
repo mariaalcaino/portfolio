@@ -3,6 +3,12 @@
   color: var(--fg);
 }
 
+@media (max-width: 960px) {
+  .site-footer {
+    font-size: 13px;
+  }
+}
+
 .site-footer a:hover {
   opacity: 0.7;
 }
@@ -23,15 +29,14 @@
   gap: 16px;
 }
 
-.footer-spread .footer-links {
-  flex-direction: column;
-  gap: 0;
-  align-items: flex-start;
+.footer-flower {
+  display: block;
+  opacity: 0.85;
+  flex-shrink: 0;
 }
 
-/* Spread: used on Home (desktop) */
+/* Spread: used on Home, desktop only (see home.css breakpoint) */
 .footer-spread {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,44 +44,18 @@
   padding: 40px 40px 20px;
 }
 
+.footer-spread .footer-links {
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+}
+
 .footer-spread .footer-studio {
   align-items: flex-end;
   text-align: right;
 }
 
-.footer-asterisk-corner {
-  position: absolute;
-  right: 40px;
-  bottom: -28px;
-  opacity: 0.8;
-}
-
-@media (max-width: 960px) {
-  .footer-spread {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 32px 24px 64px;
-  }
-
-  .footer-spread .footer-studio {
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-spread .footer-links {
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .footer-asterisk-corner {
-    position: static;
-    margin-top: 8px;
-  }
-}
-
-/* Stack: used on About / Work */
+/* Stack: used on About / Work always, and on Home below the sidebar breakpoint */
 .footer-stack {
   display: flex;
   flex-direction: column;
@@ -86,11 +65,11 @@
   padding: 96px 40px 64px;
 }
 
+.footer-stack .footer-links {
+  flex-direction: row;
+}
+
 .footer-stack .footer-copyright,
 .footer-stack .footer-studio {
   align-items: center;
-}
-
-.footer-asterisk {
-  display: block;
 }

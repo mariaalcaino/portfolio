@@ -38,7 +38,8 @@ export default function Home() {
           </ol>
         </div>
 
-        <Footer variant="spread" />
+        <Footer variant="spread" className="footer-wide" />
+        <Footer variant="stack" className="footer-narrow" />
       </div>
     </div>
   );

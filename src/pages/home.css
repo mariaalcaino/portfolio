@@ -47,7 +47,7 @@
 
 .hero {
   font-size: 16px;
-  line-height: 1.4;
+  line-height: 1.2;
   margin-bottom: 40px;
 }
 
@@ -94,6 +94,10 @@
   align-self: center;
 }
 
+.footer-narrow {
+  display: none;
+}
+
 @media (max-width: 960px) {
   .home-shell {
     flex-direction: column;
@@ -113,6 +117,18 @@
 
   .home-main {
     padding: 40px;
+  }
+
+  .footer-wide {
+    display: none;
+  }
+
+  .footer-narrow {
+    display: flex;
+  }
+
+  .hero {
+    font-size: 15px;
   }
 }
 

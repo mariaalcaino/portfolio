@@ -28,24 +28,34 @@ const Studio = () => (
   </div>
 );
 
-export default function Footer({ variant }: { variant: "spread" | "stack" }) {
+const Flower = ({ className }: { className?: string }) => (
+  <img src="/works/flower.png" alt="" className={className} width={25} height={38} />
+);
+
+export default function Footer({
+  variant,
+  className,
+}: {
+  variant: "spread" | "stack";
+  className?: string;
+}) {
   if (variant === "stack") {
     return (
-      <footer className="site-footer footer-stack">
+      <footer className={`site-footer footer-stack ${className ?? ""}`}>
         <Links />
         <Studio />
         <Copyright />
-        <img src="/works/asterisk.png" alt="" className="footer-asterisk" width={14} height={14} />
+        <Flower className="footer-flower" />
       </footer>
     );
   }
 
   return (
-    <footer className="site-footer footer-spread">
+    <footer className={`site-footer footer-spread ${className ?? ""}`}>
       <Copyright />
       <Links />
       <Studio />
-      <img src="/works/asterisk.png" alt="" className="footer-asterisk footer-asterisk-corner" width={14} height={14} />
+      <Flower className="footer-flower" />
     </footer>
   );
 }

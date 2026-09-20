@@ -33,7 +33,7 @@ export default function About() {
         <p className="about-dog-line">
           When I'm not in my studio, you can find me training, reading or walking through the countryside
           with my dog Linguini.
-          <img src="/works/dog.png" alt="" className="about-dog" width={28} height={28} />
+          <img src="/works/dog.png" alt="" className="about-dog" width={35} height={24} />
         </p>
 
         <div className="about-cta">
