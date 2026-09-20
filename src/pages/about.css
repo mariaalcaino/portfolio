@@ -1,7 +1,7 @@
 @import "../styles/page.css";
 
 .about-bg {
-  background: linear-gradient(135deg, #c3d2e7, #9eb4d3, #7c97be, #9eb4d3);
+  background: linear-gradient(135deg, #e7eaed, #d7dee3, #c6ccd3, #d7dee3);
   background-size: 300% 300%;
   background-position: 60% 40%;
   animation: about-bg-intro 1.8s ease-out forwards;
