@@ -1,36 +1,45 @@
 import { Link } from "react-router-dom";
+import Brand from "../components/Brand";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 import { projects } from "../data/projects";
 import "./home.css";
 
 export default function Home() {
   return (
-    <section className="wrap home">
-      <div className="hero">
-        <p className="hero-role">Product Designer / Design Engineer.</p>
-        <p className="hero-status">
-          <span className="dot" /> Currently building @Nuptio.
-        </p>
+    <div className="home-shell">
+      <aside className="sidebar">
+        <Brand />
+        <Nav />
+        <div className="sidebar-contact">
+          <p className="contact-label">Contact</p>
+          <a href="mailto:hello@mariaalcaino.com">hello@mariaalcaino.com</a>
+        </div>
+      </aside>
+
+      <div className="home-content">
+        <div className="home-main">
+          <div className="hero">
+            <p>Designer / Engineer.</p>
+            <p>Currently building @Nuptio.</p>
+          </div>
+
+          <ol className="work-list">
+            {projects.map((project) => (
+              <li key={project.slug}>
+                <Link to={`/${project.slug}`} className="work-row">
+                  <span className="work-name">{project.name}</span>
+                  <span className="work-category">{project.listCategory}</span>
+                  <span className="work-dash" aria-hidden="true" />
+                  <span className="work-years">{project.listYears}</span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <Footer variant="spread" />
       </div>
-
-      <ol className="work-list">
-        {projects.map((project, i) => (
-          <li key={project.slug} className="work-row">
-            <Link to={`/work/${project.slug}`} className="work-link">
-              <span className="work-index mono">{String(i + 1).padStart(2, "0")}</span>
-              <span className="work-name">{project.name}</span>
-              <span className="work-category muted">{project.category}</span>
-              <span className="work-years mono muted">{project.years}</span>
-              <span className="work-arrow" aria-hidden="true">
-                →
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ol>
-
-      <p className="hero-note muted">
-        Open to selected projects — product design, design systems, creative strategy and research.
-      </p>
-    </section>
+    </div>
   );
 }

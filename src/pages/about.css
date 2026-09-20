@@ -1,66 +1,45 @@
-.about-page {
-  padding-top: 48px;
-  max-width: 620px;
-}
+@import "../styles/page.css";
 
-.about-lede {
-  font-size: 26px;
-  font-style: italic;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.4;
-  margin: 0 0 40px;
-}
-
-.about-body {
+.about-content {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #3a3936;
-  margin-bottom: 72px;
-}
-
-.about-cta {
-  border-top: 1px solid var(--line);
-  padding-top: 32px;
-  margin-bottom: 72px;
-}
-
-.about-cta-title {
-  font-size: 20px;
-  font-weight: 500;
-  margin: 0 0 6px;
-}
-
-.about-cta-link {
-  display: inline-block;
-  margin-top: 14px;
-  font-size: 15px;
-  border-bottom: 1px solid var(--fg);
-}
-
-.about-cta-link:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-.about-studio {
+  gap: 20px;
   font-size: 14px;
-  color: var(--muted);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-bottom: 64px;
+  line-height: 1.55;
+  padding-bottom: 40px;
 }
 
-.about-studio a:hover {
-  color: var(--fg);
+.about-content p {
+  margin: 0;
 }
 
-@media (max-width: 640px) {
-  .about-lede {
-    font-size: 21px;
-  }
+.about-dog-line {
+  position: relative;
+}
+
+.about-dog {
+  display: inline-block;
+  vertical-align: -8px;
+  margin-left: 6px;
+  opacity: 0.9;
+}
+
+.about-cta,
+.about-studio {
+  margin-top: 24px;
+  font-size: 13px;
+}
+
+.about-cta p:first-child,
+.about-studio p:first-child {
+  margin: 0 0 2px;
+}
+
+.about-cta-sub {
+  opacity: 0.8;
+  margin: 0;
+}
+
+.about-studio a {
+  text-decoration: underline;
 }

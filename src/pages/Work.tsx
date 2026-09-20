@@ -1,54 +1,51 @@
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
+import Brand from "../components/Brand";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 import { projects } from "../data/projects";
 import "./work.css";
 
 export default function Work() {
   const { slug } = useParams();
-  const index = projects.findIndex((p) => p.slug === slug);
-  const project = projects[index];
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) return <Navigate to="/" replace />;
 
-  const prev = projects[(index - 1 + projects.length) % projects.length];
-  const next = projects[(index + 1) % projects.length];
-
   return (
-    <article className="wrap work-page">
-      <Link to="/" className="back-link">
-        ← Works
-      </Link>
-
-      <header className="work-header">
-        <h1>{project.name}</h1>
-        <p className="work-meta muted mono">
-          {project.category} · {project.years}
-        </p>
+    <div className="page">
+      <header className="page-header">
+        <Brand />
+        <Nav />
       </header>
 
-      <p className="work-tagline">{project.tagline}</p>
+      <main className="page-content work-content">
+        <h1 className="work-name">{project.name}</h1>
+        <p className="work-meta">{project.detailMeta}</p>
 
-      <div className="work-body">
-        {project.paragraphs.map((p, i) => (
-          <p key={i}>{p}</p>
-        ))}
-      </div>
+        <p className="work-tagline">{project.tagline}</p>
 
-      {project.link && (
-        <a className="work-external" href={project.link} target="_blank" rel="noreferrer">
-          {project.linkLabel ?? project.link} ↗
-        </a>
-      )}
+        <div className="work-body">
+          {project.paragraphs.map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+        </div>
 
-      <nav className="work-nav" aria-label="More work">
-        <Link to={`/work/${prev.slug}`} className="work-nav-link">
-          <span className="muted mono">← Prev</span>
-          <span>{prev.name}</span>
-        </Link>
-        <Link to={`/work/${next.slug}`} className="work-nav-link align-end">
-          <span className="muted mono">Next →</span>
-          <span>{next.name}</span>
-        </Link>
-      </nav>
-    </article>
+        {project.link && (
+          <a className="work-link" href={project.link.href} target="_blank" rel="noreferrer">
+            {project.link.label}
+          </a>
+        )}
+
+        {project.images.length > 0 && (
+          <div className="work-gallery">
+            {project.images.map((src) => (
+              <img key={src} src={src} alt="" loading="lazy" />
+            ))}
+          </div>
+        )}
+      </main>
+
+      <Footer variant="stack" />
+    </div>
   );
 }

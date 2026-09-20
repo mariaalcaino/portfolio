@@ -1,0 +1,21 @@
+.site-nav {
+  display: flex;
+  gap: 16px;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+}
+
+.site-nav a {
+  color: var(--nav-inactive);
+}
+
+.site-nav a.active {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.sidebar .site-nav {
+  flex-direction: column;
+  gap: 8px;
+}
