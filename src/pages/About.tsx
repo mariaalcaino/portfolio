@@ -5,7 +5,7 @@ import "./about.css";
 
 export default function About() {
   return (
-    <div className="page">
+    <div className="page about-bg">
       <header className="page-header">
         <Brand />
         <Nav />

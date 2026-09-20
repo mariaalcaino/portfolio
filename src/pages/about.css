@@ -1,5 +1,29 @@
 @import "../styles/page.css";
 
+.about-bg {
+  background: linear-gradient(135deg, #c3d2e7, #9eb4d3, #7c97be, #9eb4d3);
+  background-size: 300% 300%;
+  animation: about-bg-drift 18s ease-in-out infinite;
+}
+
+@keyframes about-bg-drift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-bg {
+    animation: none;
+  }
+}
+
 .about-content {
   display: flex;
   flex-direction: column;
