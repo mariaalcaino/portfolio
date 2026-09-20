@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Brand from "../components/Brand";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import { projects } from "../data/projects";
+import { getPreviewMedia, projects } from "../data/projects";
 import "./home.css";
 
 export default function Home() {
@@ -45,18 +45,25 @@ export default function Home() {
               ))}
             </ol>
 
-            <div className="work-preview" aria-hidden="true">
-              {projects.map(
-                (project) =>
-                  project.images[0] && (
-                    <img
-                      key={project.slug}
-                      src={project.images[0]}
-                      alt=""
-                      className={`work-preview-img${hovered === project.slug ? " is-visible" : ""}`}
-                    />
-                  ),
-              )}
+            <div className={`work-preview${hovered ? " is-active" : ""}`} aria-hidden="true">
+              {projects.map((project) => {
+                const media = getPreviewMedia(project);
+                if (!media) return null;
+                const className = `work-preview-img${hovered === project.slug ? " is-visible" : ""}`;
+                return media.type === "video" ? (
+                  <video
+                    key={project.slug}
+                    src={media.src}
+                    className={className}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                ) : (
+                  <img key={project.slug} src={media.src} alt="" className={className} />
+                );
+              })}
             </div>
           </div>
         </div>

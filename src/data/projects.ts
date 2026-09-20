@@ -1,3 +1,5 @@
+export type PreviewMedia = { type: "image" | "video"; src: string };
+
 export type Project = {
   slug: string;
   name: string;
@@ -8,7 +10,15 @@ export type Project = {
   paragraphs: string[];
   link?: { label: string; href: string };
   images: string[];
+  /** Hover preview on the Home list. Defaults to the first gallery image when omitted. */
+  preview?: PreviewMedia;
 };
+
+export function getPreviewMedia(project: Project): PreviewMedia | null {
+  if (project.preview) return project.preview;
+  if (project.images[0]) return { type: "image", src: project.images[0] };
+  return null;
+}
 
 export const projects: Project[] = [
   {
