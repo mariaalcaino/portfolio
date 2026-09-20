@@ -33,9 +33,29 @@
   margin: 0;
 }
 
+.about-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.about-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.about-col {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
 .about-dog-line {
   position: relative;
-  padding-right: 56px;
+  padding-right: 48px;
 }
 
 .about-dog {
@@ -43,6 +63,34 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+}
+
+@media (min-width: 1200px) {
+  .about-content {
+    max-width: none;
+  }
+
+  .about-title {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0 0 62px;
+  }
+
+  .about-columns {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .about-col {
+    width: 217px;
+    flex-shrink: 0;
+  }
 }
 
 .about-cta,
