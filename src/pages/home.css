@@ -1,6 +1,6 @@
 .hero {
-  font-size: 16px;
-  line-height: 1.2;
+  font-size: 18px;
+  line-height: 1.4;
   margin-bottom: 44px;
 }
 
@@ -20,7 +20,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   flex: 1;
   min-width: 0;
 }
@@ -79,17 +79,17 @@
 }
 
 .work-name {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--fg);
 }
 
 .work-category {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--muted-60);
 }
 
 .work-years {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--muted-60);
 }
 
@@ -103,6 +103,6 @@
 
 @media (max-width: 960px) {
   .hero {
-    font-size: 15px;
+    font-size: 17px;
   }
 }

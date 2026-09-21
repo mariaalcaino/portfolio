@@ -5,20 +5,22 @@
 }
 
 .brand-name {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 500;
   letter-spacing: -0.68px;
-  line-height: 19px;
+  line-height: 23px;
   color: var(--fg);
 }
 
 .brand-asterisk {
   display: block;
-  margin-top: 1px;
+  margin-top: 3px;
+  width: 12px;
+  height: 12px;
 }
 
 @media (max-width: 960px) {
   .brand-name {
-    font-size: 16px;
+    font-size: 19px;
   }
 }

@@ -1,11 +1,11 @@
 .site-footer {
-  font-size: 13.8px;
+  font-size: 15px;
   color: var(--fg);
 }
 
 @media (max-width: 960px) {
   .site-footer {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 

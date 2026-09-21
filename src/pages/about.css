@@ -23,10 +23,10 @@
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 17px;
-  font-size: 14px;
-  line-height: 1.2;
-  max-width: 640px;
+  gap: 20px;
+  font-size: 16px;
+  line-height: 1.4;
+  max-width: 680px;
 }
 
 .about-content p {
@@ -44,13 +44,13 @@
 .about-columns {
   display: flex;
   flex-direction: column;
-  gap: 17px;
+  gap: 20px;
 }
 
 .about-col {
   display: flex;
   flex-direction: column;
-  gap: 17px;
+  gap: 20px;
 }
 
 .about-dog {
@@ -70,7 +70,7 @@
     height: auto;
     overflow: visible;
     clip: auto;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 400;
     margin: 0 0 62px;
   }
@@ -78,11 +78,11 @@
   .about-columns {
     flex-direction: row;
     align-items: flex-start;
-    gap: 24px;
+    gap: 28px;
   }
 
   .about-col {
-    width: 217px;
+    width: 260px;
     flex-shrink: 0;
   }
 }
@@ -90,7 +90,7 @@
 .about-cta,
 .about-studio {
   margin-top: 24px;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .about-cta p:first-child,

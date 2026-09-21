@@ -1,33 +1,34 @@
 .work-content {
-  max-width: 700px;
+  max-width: 720px;
 }
 
 .work-name {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   margin: 0;
 }
 
 .work-meta {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--meta);
   margin: 4px 0 24px;
 }
 
 .work-tagline {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
   font-style: italic;
   margin: 0 0 24px;
-  max-width: 560px;
+  max-width: 600px;
+  line-height: 1.4;
 }
 
 .work-body {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  font-size: 13px;
-  line-height: 1.2;
+  gap: 18px;
+  font-size: 16px;
+  line-height: 1.4;
   letter-spacing: -0.26px;
 }
 
@@ -38,7 +39,7 @@
 .work-link {
   display: inline-block;
   margin-top: 24px;
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: underline;
 }
 
