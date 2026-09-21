@@ -40,7 +40,7 @@ export default function About() {
         I care as much about how a product works as how it looks and feels. Outside digital products, I
         practice silversmithing and have a weakness for artists’ studios — I’ll always walk in. You’ll also
         find me training, reading or walking through the countryside with my dog Linguini.
-        <img src="/works/dog.png" alt="" className="about-dog" width={32} height={22} />
+        <img src="/works/dog.png" alt="" className="about-dog" width={46} height={31} />
       </p>
 
       <div className="about-groups">

@@ -48,7 +48,6 @@
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   font-size: 16px;
   line-height: 1.4;
   max-width: 680px;
@@ -86,7 +85,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  margin-top: 20px;
+  margin-top: 56px;
   max-width: 680px;
 }
 
@@ -138,7 +137,8 @@
   }
 }
 
-.about-studio-line {
+.about-content > .about-studio-line {
+  margin-top: 56px;
   opacity: 0.8;
 }
 
