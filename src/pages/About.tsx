@@ -26,7 +26,7 @@ const recognition = [
 
 export default function About() {
   return (
-    <Shell wrapperClassName="about-bg" mainClassName="about-content">
+    <Shell mainClassName="about-content">
       <h1 className="about-title">About</h1>
 
       <p>
