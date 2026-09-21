@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Shell from "../components/Shell";
 import { getPreviewMedia, projects } from "../data/projects";
 import "./home.css";
 
 export default function Home() {
-  const [hovered, setHovered] = useState<string | null>(null);
-
   return (
     <Shell>
       <div className="hero">
@@ -14,37 +11,29 @@ export default function Home() {
         <p>Currently building @Nuptio.</p>
       </div>
 
-      <div className="work-list-wrap" onMouseLeave={() => setHovered(null)}>
-        <ol className="work-list">
-          {projects.map((project) => (
-            <li key={project.slug}>
-              <Link
-                to={`/${project.slug}`}
-                className={`work-row${hovered && hovered !== project.slug ? " is-dimmed" : ""}`}
-                onMouseEnter={() => setHovered(project.slug)}
-              >
-                <span className="work-name">{project.name}</span>
-                <span className="work-category">{project.listCategory}</span>
-                <span className="work-dash" aria-hidden="true" />
-                <span className="work-years">{project.listYears}</span>
+      <ol className="work-grid">
+        {projects.map((project) => {
+          const media = getPreviewMedia(project);
+          return (
+            <li key={project.slug} className="work-card">
+              <Link to={`/${project.slug}`}>
+                <div className="work-card-thumb">
+                  {media &&
+                    (media.type === "video" ? (
+                      <video src={media.src} autoPlay muted loop playsInline />
+                    ) : (
+                      <img src={media.src} alt="" loading="lazy" />
+                    ))}
+                </div>
+                <p className="work-card-name">{project.name}</p>
+                <p className="work-card-meta">
+                  {project.listCategory} · {project.listYears}
+                </p>
               </Link>
             </li>
-          ))}
-        </ol>
-
-        <div className={`work-preview${hovered ? " is-active" : ""}`} aria-hidden="true">
-          {projects.map((project) => {
-            const media = getPreviewMedia(project);
-            if (!media) return null;
-            const className = `work-preview-img${hovered === project.slug ? " is-visible" : ""}`;
-            return media.type === "video" ? (
-              <video key={project.slug} src={media.src} className={className} autoPlay muted loop playsInline />
-            ) : (
-              <img key={project.slug} src={media.src} alt="" className={className} />
-            );
-          })}
-        </div>
-      </div>
+          );
+        })}
+      </ol>
     </Shell>
   );
 }

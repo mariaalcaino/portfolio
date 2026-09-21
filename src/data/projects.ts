@@ -22,23 +22,6 @@ export function getPreviewMedia(project: Project): PreviewMedia | null {
 
 export const projects: Project[] = [
   {
-    slug: "zoon",
-    name: "Zoön",
-    listCategory: "Loyalty & engagement SaaS",
-    listYears: "2023 · 2025",
-    detailMeta: "SaaS / 2023 - 2025",
-    tagline: "Making engagement easier to join, repeat and remember.",
-    paragraphs: [
-      "Many engagement programs rely on familiar mechanics: points, stamps, coupons and rewards. But the real design challenge is behavioral. People need to understand the value quickly, join without friction and remember to come back.",
-      "I joined Zoön as the first in-house Product Designer, helping the company transition from an external development model to an internal product team. My work covered UX/UI, product flows, prototyping, design systems and collaboration with product, development and business teams.",
-      "One of the flagship products was a low-friction digital wallet pass for Google and Apple Wallet. No app download, no account creation: just a quick scan and a pass saved directly to the user's phone.",
-      "My work focused on making loyalty and engagement mechanics feel simple, accessible and repeatable for both end users and partner businesses.",
-      "By the time I left, the product had reached 12,000+ enrolled consumers, 2.7 average repeat purchases per client and a 27% sales increase across partner locations.",
-    ],
-    link: { label: "www.zoonloyalty.io", href: "https://www.zoonloyalty.io" },
-    images: ["/works/zoon-1.png", "/works/zoon-2.png"],
-  },
-  {
     slug: "bagoost",
     name: "Bagoost",
     listCategory: "B2B marketplace",
@@ -54,6 +37,23 @@ export const projects: Project[] = [
     ],
     link: { label: "www.bagoost.com", href: "https://www.bagoost.com" },
     images: ["/works/bagoost-1.png", "/works/bagoost-2.png", "/works/bagoost-3.png", "/works/bagoost-4.png"],
+  },
+  {
+    slug: "zoon",
+    name: "Zoön",
+    listCategory: "Loyalty & engagement SaaS",
+    listYears: "2023 · 2025",
+    detailMeta: "SaaS / 2023 - 2025",
+    tagline: "Making engagement easier to join, repeat and remember.",
+    paragraphs: [
+      "Many engagement programs rely on familiar mechanics: points, stamps, coupons and rewards. But the real design challenge is behavioral. People need to understand the value quickly, join without friction and remember to come back.",
+      "I joined Zoön as the first in-house Product Designer, helping the company transition from an external development model to an internal product team. My work covered UX/UI, product flows, prototyping, design systems and collaboration with product, development and business teams.",
+      "One of the flagship products was a low-friction digital wallet pass for Google and Apple Wallet. No app download, no account creation: just a quick scan and a pass saved directly to the user's phone.",
+      "My work focused on making loyalty and engagement mechanics feel simple, accessible and repeatable for both end users and partner businesses.",
+      "By the time I left, the product had reached 12,000+ enrolled consumers, 2.7 average repeat purchases per client and a 27% sales increase across partner locations.",
+    ],
+    link: { label: "www.zoonloyalty.io", href: "https://www.zoonloyalty.io" },
+    images: ["/works/zoon-1.png", "/works/zoon-2.png"],
   },
   {
     slug: "lifeindots",
