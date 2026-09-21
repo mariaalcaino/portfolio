@@ -14,9 +14,11 @@ export default function Home() {
       <ol className="work-grid">
         {projects.map((project) => {
           const media = getPreviewMedia(project);
+          const meta = [project.listCategory, project.listYears].filter(Boolean).join(" · ");
           return (
             <li key={project.slug} className="work-card">
               <Link to={`/${project.slug}`}>
+                <p className="work-card-name">{project.name}</p>
                 <div className="work-card-thumb">
                   {media &&
                     (media.type === "video" ? (
@@ -25,10 +27,7 @@ export default function Home() {
                       <img src={media.src} alt="" loading="lazy" />
                     ))}
                 </div>
-                <p className="work-card-name">{project.name}</p>
-                <p className="work-card-meta">
-                  {project.listCategory} · {project.listYears}
-                </p>
+                {meta && <p className="work-card-meta">{meta}</p>}
               </Link>
             </li>
           );

@@ -14,7 +14,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px 24px;
+  gap: 32px 20px;
 }
 
 @media (min-width: 640px) {
@@ -23,9 +23,15 @@
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 900px) {
   .work-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1300px) {
+  .work-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -36,7 +42,7 @@
 .work-card-thumb {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: var(--line);
   border: 1px solid rgba(27, 27, 27, 0.1);
@@ -59,11 +65,11 @@
 .work-card-name {
   font-size: 16px;
   color: var(--fg);
-  margin: 16px 0 2px;
+  margin: 0 0 10px;
 }
 
 .work-card-meta {
   font-size: 15px;
   color: var(--muted);
-  margin: 0;
+  margin: 10px 0 0;
 }

@@ -3,11 +3,12 @@ export type PreviewMedia = { type: "image" | "video"; src: string };
 export type Project = {
   slug: string;
   name: string;
-  listCategory: string;
-  listYears: string;
-  detailMeta: string;
-  tagline: string;
-  paragraphs: string[];
+  /** Omit while the case study isn't written yet — the grid card and detail page degrade gracefully. */
+  listCategory?: string;
+  listYears?: string;
+  detailMeta?: string;
+  tagline?: string;
+  paragraphs?: string[];
   link?: { label: string; href: string };
   images: string[];
   /** Hover preview on the Home list. Defaults to the first gallery image when omitted. */
@@ -21,6 +22,11 @@ export function getPreviewMedia(project: Project): PreviewMedia | null {
 }
 
 export const projects: Project[] = [
+  {
+    slug: "nuptio",
+    name: "Nuptio",
+    images: [],
+  },
   {
     slug: "bagoost",
     name: "Bagoost",
@@ -56,6 +62,11 @@ export const projects: Project[] = [
     images: ["/works/zoon-1.png", "/works/zoon-2.png"],
   },
   {
+    slug: "cocacolapassport",
+    name: "Coca-Cola Passport",
+    images: [],
+  },
+  {
     slug: "lifeindots",
     name: "Life in dots",
     listCategory: "App",
@@ -88,6 +99,16 @@ export const projects: Project[] = [
     images: ["/works/sunset-1.png", "/works/sunset-2.png", "/works/sunset-3.png"],
   },
   {
+    slug: "zhagra",
+    name: "Zhagra",
+    images: [],
+  },
+  {
+    slug: "josefinaconlledo",
+    name: "Josefina Conlledo",
+    images: [],
+  },
+  {
     slug: "fingerpaint",
     name: "fingerpaint.p5js",
     listCategory: "Creative coding",
@@ -100,6 +121,11 @@ export const projects: Project[] = [
       "I built it as a small study of childhood memory, creative coding and embodied interaction — a way to return to the first marks we make before design becomes too controlled.",
     ],
     link: { label: "Try the experiment →", href: "https://editor.p5js.org/ignaciaalcaino97/full/WdH2oXdwq" },
+    images: [],
+  },
+  {
+    slug: "collegeusa",
+    name: "College USA",
     images: [],
   },
 ];

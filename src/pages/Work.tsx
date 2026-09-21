@@ -9,18 +9,24 @@ export default function Work() {
 
   if (!project) return <Navigate to="/" replace />;
 
+  const hasCaseStudy = Boolean(project.tagline || project.paragraphs?.length);
+
   return (
     <Shell mainClassName="work-content">
       <h1 className="work-name">{project.name}</h1>
-      <p className="work-meta">{project.detailMeta}</p>
+      {project.detailMeta && <p className="work-meta">{project.detailMeta}</p>}
 
-      <p className="work-tagline">{project.tagline}</p>
+      {project.tagline && <p className="work-tagline">{project.tagline}</p>}
 
-      <div className="work-body">
-        {project.paragraphs.map((paragraph, i) => (
-          <p key={i}>{paragraph}</p>
-        ))}
-      </div>
+      {project.paragraphs && project.paragraphs.length > 0 && (
+        <div className="work-body">
+          {project.paragraphs.map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+        </div>
+      )}
+
+      {!hasCaseStudy && <p className="work-soon">Case study coming soon.</p>}
 
       {project.link && (
         <a className="work-link" href={project.link.href} target="_blank" rel="noreferrer">
