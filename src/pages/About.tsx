@@ -72,8 +72,6 @@ export default function About() {
         </section>
       </div>
 
-      <p className="about-availability">Available for selected projects and opportunities worldwide.</p>
-
       <p className="about-studio-line">
         Visit the Studio (by appointment): Arquitecto Teodoro Bendjerodt 1978, Vitacura.{" "}
         <a href="mailto:hello@mariaalcaino.com">[ Book a visit ]</a>

@@ -1,22 +1,47 @@
 .about-bg {
+  position: relative;
+  background: var(--bg);
+}
+
+.about-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background: linear-gradient(135deg, #e7eaed, #d7dee3, #c6ccd3, #d7dee3);
   background-size: 300% 300%;
-  background-position: 60% 40%;
-  animation: about-bg-intro 1.8s ease-out forwards;
+  opacity: 0;
+  animation: about-bg-intro 2s ease-out forwards;
+}
+
+.about-bg .shell-content {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 960px) {
+  .about-bg .sidebar {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 @keyframes about-bg-intro {
   from {
-    background-position: 10% 90%;
+    opacity: 0;
+    background-position: 20% 80%;
   }
   to {
+    opacity: 1;
     background-position: 60% 40%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .about-bg {
+  .about-bg::before {
     animation: none;
+    opacity: 1;
+    background-position: 60% 40%;
   }
 }
 
@@ -38,6 +63,17 @@
   font-weight: 400;
   color: var(--fg);
   margin: 0 0 8px;
+}
+
+@media (max-width: 960px) {
+  .about-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: 0;
+  }
 }
 
 .about-dog {
@@ -100,10 +136,6 @@
     flex: 1;
     max-width: 340px;
   }
-}
-
-.about-availability {
-  margin-top: 12px;
 }
 
 .about-studio-line {
