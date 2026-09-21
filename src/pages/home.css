@@ -1,7 +1,7 @@
 .hero {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4;
-  margin-bottom: 44px;
+  margin-bottom: 56px;
 }
 
 .hero p {
@@ -20,7 +20,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   flex: 1;
   min-width: 0;
 }
@@ -79,30 +79,24 @@
 }
 
 .work-name {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--fg);
 }
 
 .work-category {
-  font-size: 17px;
-  color: var(--muted-60);
+  font-size: 15px;
+  color: var(--muted);
 }
 
 .work-years {
-  font-size: 17px;
-  color: var(--muted-60);
+  font-size: 15px;
+  color: var(--muted);
 }
 
 .work-dash {
   width: 21px;
   height: 1px;
-  background: var(--fg);
-  opacity: 0.6;
+  background: var(--muted);
   align-self: center;
 }
 
-@media (max-width: 960px) {
-  .hero {
-    font-size: 17px;
-  }
-}
