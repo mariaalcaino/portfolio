@@ -106,3 +106,60 @@
 .about-studio a {
   text-decoration: underline;
 }
+
+.about-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 48px;
+  max-width: 680px;
+}
+
+.about-group-title {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--nav-inactive);
+  margin: 0 0 16px;
+}
+
+.about-entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.about-entry p {
+  margin: 0;
+}
+
+.about-entry-title {
+  color: var(--fg);
+}
+
+.about-entry-sub,
+.about-entry-year {
+  opacity: 0.7;
+  font-size: 15px;
+}
+
+@media (min-width: 1200px) {
+  .about-groups {
+    flex-direction: row;
+    gap: 60px;
+    max-width: none;
+  }
+
+  .about-group {
+    flex: 1;
+    max-width: 340px;
+  }
+}

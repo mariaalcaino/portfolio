@@ -1,6 +1,29 @@
 import Shell from "../components/Shell";
 import "./about.css";
 
+const education = [
+  {
+    title: "Diploma in Web Development",
+    place: "Pontificia Universidad Católica de Chile",
+    year: "2023",
+  },
+  {
+    title: "MSc in Design & Innovation",
+    place: "Universidad Adolfo Ibáñez",
+    year: "2020–2021",
+  },
+  {
+    title: "Design Engineering",
+    place: "Universidad Adolfo Ibáñez",
+    year: "2016–2020",
+  },
+];
+
+const recognition = [
+  { title: "Finalist — ARCHIMIA", place: "Chile", year: "2021" },
+  { title: "Product Design Winner — Reshape", place: "Barcelona", year: "2018" },
+];
+
 export default function About() {
   return (
     <Shell wrapperClassName="about-bg" mainClassName="about-content">
@@ -46,6 +69,35 @@ export default function About() {
           The Studio <a href="mailto:hello@mariaalcaino.com">[ Book a visit ]</a>
         </p>
         <p className="about-cta-sub">Arquitecto Teodoro Bendjerodt 1978, Vitacura.</p>
+      </div>
+
+      <div className="about-groups">
+        <section className="about-group">
+          <h2 className="about-group-title">Education</h2>
+          <ul className="about-entries">
+            {education.map((entry) => (
+              <li key={entry.title} className="about-entry">
+                <p className="about-entry-title">{entry.title}</p>
+                <p className="about-entry-sub">{entry.place}</p>
+                <p className="about-entry-year">{entry.year}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="about-group">
+          <h2 className="about-group-title">Selected Recognition</h2>
+          <ul className="about-entries">
+            {recognition.map((entry) => (
+              <li key={entry.title} className="about-entry">
+                <p className="about-entry-title">{entry.title}</p>
+                <p className="about-entry-sub">
+                  {entry.place} · {entry.year}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </Shell>
   );
