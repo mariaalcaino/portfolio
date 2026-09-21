@@ -18,9 +18,3 @@
   width: 12px;
   height: 12px;
 }
-
-@media (max-width: 960px) {
-  .brand-name {
-    font-size: 19px;
-  }
-}
