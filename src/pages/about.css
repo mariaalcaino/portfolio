@@ -8,7 +8,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(135deg, #e7eaed, #d7dee3, #c6ccd3, #d7dee3);
+  background: linear-gradient(135deg, #dce7f1, #c5d6e6, #a9c2dc, #c5d6e6);
   background-size: 300% 300%;
   opacity: 0;
   animation: about-bg-intro 2s ease-out forwards;
@@ -61,7 +61,7 @@
   font-size: 17px;
   font-weight: 400;
   color: var(--fg);
-  margin: 0 0 8px;
+  margin: 0 0 28px;
 }
 
 @media (max-width: 960px) {
@@ -144,5 +144,9 @@
 
 .about-studio-line a {
   opacity: 1;
+  text-decoration: none;
+}
+
+.about-studio-line a:hover {
   text-decoration: underline;
 }
