@@ -34,23 +34,10 @@
 }
 
 .about-title {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-}
-
-.about-columns {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.about-col {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--fg);
+  margin: 0 0 8px;
 }
 
 .about-dog {
@@ -59,59 +46,11 @@
   margin: -4px 0 0 6px;
 }
 
-@media (min-width: 1200px) {
-  .about-content {
-    max-width: none;
-  }
-
-  .about-title {
-    position: static;
-    width: auto;
-    height: auto;
-    overflow: visible;
-    clip: auto;
-    font-size: 17px;
-    font-weight: 400;
-    margin: 0 0 62px;
-  }
-
-  .about-columns {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 28px;
-  }
-
-  .about-col {
-    width: 260px;
-    flex-shrink: 0;
-  }
-}
-
-.about-cta,
-.about-studio {
-  margin-top: 24px;
-  font-size: 15px;
-}
-
-.about-cta p:first-child,
-.about-studio p:first-child {
-  margin: 0 0 2px;
-}
-
-.about-cta-sub {
-  opacity: 0.8;
-  margin: 0;
-}
-
-.about-studio a {
-  text-decoration: underline;
-}
-
 .about-groups {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  margin-top: 48px;
+  margin-top: 20px;
   max-width: 680px;
 }
 
@@ -155,11 +94,23 @@
   .about-groups {
     flex-direction: row;
     gap: 60px;
-    max-width: none;
   }
 
   .about-group {
     flex: 1;
     max-width: 340px;
   }
+}
+
+.about-availability {
+  margin-top: 12px;
+}
+
+.about-studio-line {
+  opacity: 0.8;
+}
+
+.about-studio-line a {
+  opacity: 1;
+  text-decoration: underline;
 }

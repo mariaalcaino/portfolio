@@ -7,9 +7,9 @@
 .sidebar {
   width: var(--sidebar-w);
   flex-shrink: 0;
-  position: sticky;
+  position: fixed;
   top: 0;
-  align-self: flex-start;
+  left: 0;
   height: 100vh;
   padding: 40px;
   display: flex;
@@ -39,6 +39,7 @@
 
 .shell-content {
   flex: 1;
+  margin-left: var(--sidebar-w);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -68,6 +69,10 @@
 
   .sidebar-contact {
     display: none;
+  }
+
+  .shell-content {
+    margin-left: 0;
   }
 
   .shell-main {
