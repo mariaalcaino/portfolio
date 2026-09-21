@@ -53,16 +53,10 @@
   gap: 17px;
 }
 
-.about-dog-line {
-  position: relative;
-  padding-right: 48px;
-}
-
 .about-dog {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  display: inline-block;
+  vertical-align: middle;
+  margin: -4px 0 0 6px;
 }
 
 @media (min-width: 1200px) {
