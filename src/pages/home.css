@@ -13,15 +13,22 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 64px 28px;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  align-items: start;
+  justify-items: start;
+  gap: 80px 40px;
 }
 
 @media (min-width: 1200px) {
   .work-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 72px 40px;
+    gap: 120px 64px;
   }
+}
+
+.work-card {
+  width: 100%;
+  max-width: 150px;
 }
 
 .work-card a {

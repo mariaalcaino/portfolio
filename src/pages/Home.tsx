@@ -14,7 +14,7 @@ export default function Home() {
       <ol className="work-grid">
         {projects.map((project) => {
           const media = getPreviewMedia(project);
-          const meta = [project.listCategory, project.listYears].filter(Boolean).join(" · ");
+          const meta = project.listCategory;
           return (
             <li key={project.slug} className="work-card">
               <Link to={`/${project.slug}`}>
