@@ -17,6 +17,13 @@
   gap: 64px 28px;
 }
 
+@media (min-width: 1200px) {
+  .work-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 72px 40px;
+  }
+}
+
 .work-card a {
   display: block;
 }
