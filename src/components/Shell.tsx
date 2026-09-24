@@ -2,6 +2,9 @@ import type { ReactNode } from "react";
 import Brand from "./Brand";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import LangSwitch from "./LangSwitch";
+import { useLang } from "../i18n/LanguageContext";
+import { useStrings } from "../i18n/strings";
 import "../styles/shell.css";
 
 export default function Shell({
@@ -13,13 +16,19 @@ export default function Shell({
   wrapperClassName?: string;
   mainClassName?: string;
 }) {
+  const { lang } = useLang();
+  const t = useStrings(lang);
+
   return (
     <div className={`site-shell${wrapperClassName ? ` ${wrapperClassName}` : ""}`}>
       <aside className="sidebar">
         <Brand />
-        <Nav />
+        <div className="sidebar-nav-row">
+          <Nav />
+          <LangSwitch />
+        </div>
         <div className="sidebar-contact">
-          <p className="contact-label">Contact</p>
+          <p className="contact-label">{t.contact.label}</p>
           <a href="mailto:hello@mariaalcaino.com">hello@mariaalcaino.com</a>
         </div>
       </aside>

@@ -1,0 +1,25 @@
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+}
+
+.lang-switch button {
+  padding: 0;
+  color: var(--nav-inactive);
+}
+
+.lang-switch button.active {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.lang-switch button:hover {
+  color: var(--fg);
+}
+
+.lang-switch-sep {
+  color: var(--line);
+}
