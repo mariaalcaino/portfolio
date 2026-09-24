@@ -63,7 +63,7 @@ export const projects: Project[] = [
   },
   {
     slug: "cocacolapassport",
-    name: "Coca-Cola Passport",
+    name: "Coca-Cola",
     images: [],
   },
   {
