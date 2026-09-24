@@ -61,7 +61,9 @@
 .work-card-name {
   font-size: 15px;
   line-height: 1.4;
-  min-height: calc(15px * 1.4 * 2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: var(--fg);
   margin: 0 0 10px;
 }
