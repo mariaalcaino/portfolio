@@ -17,13 +17,6 @@
   gap: 60px;
 }
 
-.sidebar-nav-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-}
-
 .sidebar-contact {
   display: flex;
   flex-direction: column;

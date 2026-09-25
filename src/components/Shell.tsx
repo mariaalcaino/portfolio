@@ -23,14 +23,12 @@ export default function Shell({
     <div className={`site-shell${wrapperClassName ? ` ${wrapperClassName}` : ""}`}>
       <aside className="sidebar">
         <Brand />
-        <div className="sidebar-nav-row">
-          <Nav />
-          <LangSwitch />
-        </div>
+        <Nav />
         <div className="sidebar-contact">
           <p className="contact-label">{t.contact.label}</p>
           <a href="mailto:hello@mariaalcaino.com">hello@mariaalcaino.com</a>
         </div>
+        <LangSwitch />
       </aside>
 
       <div className="shell-content">
