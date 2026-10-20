@@ -8,6 +8,10 @@
   margin: 0;
 }
 
+.hero a:hover {
+  text-decoration: underline;
+}
+
 .work-grid {
   list-style: none;
   margin: 0;

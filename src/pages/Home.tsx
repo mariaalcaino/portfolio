@@ -13,7 +13,13 @@ export default function Home() {
     <Shell>
       <div className="hero">
         <p>{t.home.line1}</p>
-        <p>{t.home.line2}</p>
+        <p>
+          {t.home.line2Prefix}
+          <a href="https://www.tandie.app" target="_blank" rel="noreferrer">
+            @Tandie
+          </a>
+          .
+        </p>
       </div>
 
       <ol className="work-grid">
