@@ -31,8 +31,9 @@ export function pick<T>(field: Localized<T> | undefined, lang: Lang): T | undefi
 
 export const projects: Project[] = [
   {
-    slug: "nuptio",
-    name: "Nuptio",
+    slug: "tandie",
+    name: "Tandie",
+    link: { label: { en: "www.tandie.app", es: "www.tandie.app" }, href: "https://www.tandie.app" },
     images: [],
   },
   {

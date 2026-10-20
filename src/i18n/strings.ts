@@ -20,7 +20,7 @@ export const strings = {
     },
     home: {
       line1: "Designer / Engineer.",
-      line2: "Currently building @Nuptio.",
+      line2: "Currently building @Tandie.",
     },
     work: {
       caseStudySoon: "Case study coming soon.",
@@ -60,7 +60,7 @@ export const strings = {
     },
     home: {
       line1: "Diseñadora / Ingeniera.",
-      line2: "Actualmente construyendo @Nuptio.",
+      line2: "Actualmente construyendo @Tandie.",
     },
     work: {
       caseStudySoon: "Caso de estudio próximamente.",
