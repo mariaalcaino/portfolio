@@ -60,9 +60,28 @@
   margin-top: 56px;
 }
 
-.work-gallery img {
+.work-gallery-item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.work-gallery-item img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.work-gallery-item:hover img {
+  opacity: 0.92;
+}
+
+.work-gallery-item:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 4px;
   border-radius: 4px;
 }

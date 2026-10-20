@@ -40,6 +40,16 @@ export const strings = {
     langSwitch: {
       label: "Language",
     },
+    gallery: {
+      dialog: "Image gallery",
+      open: "View image {i} of {n}",
+      imageLabel: "{name} — image {i} of {n}",
+      close: "[ Close ]",
+      prev: "Previous image",
+      next: "Next image",
+      zoomIn: "Zoom in",
+      zoomOut: "Zoom out",
+    },
   },
   es: {
     nav: {
@@ -79,6 +89,16 @@ export const strings = {
     },
     langSwitch: {
       label: "Idioma",
+    },
+    gallery: {
+      dialog: "Galería de imágenes",
+      open: "Ver imagen {i} de {n}",
+      imageLabel: "{name} — imagen {i} de {n}",
+      close: "[ Cerrar ]",
+      prev: "Imagen anterior",
+      next: "Imagen siguiente",
+      zoomIn: "Acercar",
+      zoomOut: "Alejar",
     },
   },
 } satisfies Record<Lang, unknown>;

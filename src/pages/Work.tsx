@@ -1,4 +1,5 @@
 import { Navigate, useParams } from "react-router-dom";
+import Gallery from "../components/Gallery";
 import Shell from "../components/Shell";
 import { pick, projects } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
@@ -42,13 +43,7 @@ export default function Work() {
         </a>
       )}
 
-      {project.images.length > 0 && (
-        <div className="work-gallery">
-          {project.images.map((src) => (
-            <img key={src} src={src} alt="" loading="lazy" />
-          ))}
-        </div>
-      )}
+      {project.images.length > 0 && <Gallery key={project.slug} images={project.images} name={project.name} />}
     </Shell>
   );
 }
