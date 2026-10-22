@@ -4,6 +4,9 @@ export type PreviewMedia = { type: "image" | "video"; src: string };
 
 type Localized<T> = { en: T; es: T };
 
+export type Section = { heading: string; paragraphs: string[] };
+export type Fact = { label: Localized<string>; value: Localized<string> };
+
 export type Project = {
   slug: string;
   name: string;
@@ -13,6 +16,10 @@ export type Project = {
   detailMeta?: Localized<string>;
   tagline?: Localized<string>;
   paragraphs?: Localized<string[]>;
+  /** Short label/value pairs (role, platform…) shown between the intro and the sections. */
+  facts?: Fact[];
+  /** Longer case studies: titled sections shown after the intro and facts. */
+  sections?: Localized<Section[]>;
   link?: { label: Localized<string>; href: string };
   images: string[];
   /** Hover preview on the Home list. Defaults to the first gallery image when omitted. */
@@ -33,6 +40,120 @@ export const projects: Project[] = [
   {
     slug: "tandie",
     name: "Tandie",
+    listCategory: { en: "Web application", es: "Aplicación web" },
+    tagline: {
+      en: "A shared workspace for couples and wedding planners.",
+      es: "Un espacio de trabajo compartido para parejas y wedding planners.",
+    },
+    paragraphs: {
+      en: [
+        "Tandie brings invitations, guests, seating, tasks and budgets into one planning experience. I co-founded the product and led its definition and design, from the initial structure to the detailed interactions.",
+      ],
+      es: [
+        "Tandie reúne invitaciones, invitados, distribución de mesas, tareas y presupuestos en una sola experiencia de planificación. Co-fundé el producto y lideré su definición y diseño, desde la estructura inicial hasta las interacciones de detalle.",
+      ],
+    },
+    facts: [
+      {
+        label: { en: "Role", es: "Rol" },
+        value: {
+          en: "Co-founder · Product strategy & design",
+          es: "Cofundadora · Estrategia y diseño de producto",
+        },
+      },
+      {
+        label: { en: "Platform", es: "Plataforma" },
+        value: { en: "Web application", es: "Aplicación web" },
+      },
+    ],
+    sections: {
+      en: [
+        {
+          heading: "The challenge",
+          paragraphs: [
+            "Planning a wedding involves decisions that depend on one another. Guest confirmations affect seating, budgets shape supplier choices, and tasks need coordination between several people.",
+            "The challenge was to bring these activities together in a product that couples could navigate easily and wedding planners could use across multiple events.",
+          ],
+        },
+        {
+          heading: "My contribution",
+          paragraphs: [
+            "I led product definition, information architecture, interaction design, the design system and visual identity. Working alongside my technical co-founder, I translated planning needs into product requirements and supported the experience through implementation.",
+            "The work involved defining how the different parts of the product should fit together, as well as designing each individual flow.",
+          ],
+        },
+        {
+          heading: "Connecting invitations with planning",
+          paragraphs: [
+            "The invitation is also a way to collect information. I designed an RSVP flow that captures attendance, accompanying guests and dietary requirements, connecting the guest-facing experience with the information needed to organize the wedding.",
+            "The aim was to make responding straightforward for guests and keep their answers useful for the people planning the event.",
+          ],
+        },
+        {
+          heading: "Making complex decisions easier to manage",
+          paragraphs: [
+            "I designed different interactions around the task at hand: dragging guests into seating arrangements, organizing tasks by category and priority, and reviewing expenses within a dedicated budget view.",
+            "A shared design system brings consistency across these tools while allowing each one to support a different kind of decision.",
+          ],
+        },
+        {
+          heading: "Supporting couples and professional planners",
+          paragraphs: [
+            "Couples organize one wedding; planners coordinate several. I designed experiences for both contexts, including collaboration within a wedding and an overview for moving between multiple events.",
+            "The product also offers different levels of access, from invitations and guest management to a broader planning workspace.",
+          ],
+        },
+        {
+          heading: "From concept to beta",
+          paragraphs: [
+            "Tandie has progressed into beta testing with early users. This stage provides an opportunity to evaluate how the connected workflows support real planning and identify what needs refinement before broader release.",
+          ],
+        },
+      ],
+      es: [
+        {
+          heading: "El desafío",
+          paragraphs: [
+            "Planificar un matrimonio implica decisiones que dependen unas de otras. Las confirmaciones de los invitados afectan la distribución de las mesas, los presupuestos condicionan la elección de proveedores y las tareas requieren coordinación entre varias personas.",
+            "El desafío fue reunir estas actividades en un producto que las parejas pudieran recorrer con facilidad y que los wedding planners pudieran usar en varios eventos.",
+          ],
+        },
+        {
+          heading: "Mi contribución",
+          paragraphs: [
+            "Lideré la definición del producto, la arquitectura de información, el diseño de interacción, el sistema de diseño y la identidad visual. Junto a mi cofundador técnico, traduje las necesidades de la planificación en requerimientos de producto y acompañé la experiencia durante la implementación.",
+            "El trabajo implicó definir cómo debían encajar las distintas partes del producto, además de diseñar cada flujo individual.",
+          ],
+        },
+        {
+          heading: "Conectando las invitaciones con la planificación",
+          paragraphs: [
+            "La invitación también es una forma de recopilar información. Diseñé un flujo de confirmación de asistencia (RSVP) que recoge la asistencia, los acompañantes y los requerimientos alimentarios, conectando la experiencia de los invitados con la información que se necesita para organizar el matrimonio.",
+            "El objetivo fue que responder fuera simple para los invitados y que sus respuestas fueran útiles para quienes planifican el evento.",
+          ],
+        },
+        {
+          heading: "Haciendo más manejables las decisiones complejas",
+          paragraphs: [
+            "Diseñé distintas interacciones según la tarea: arrastrar invitados para armar la distribución de mesas, organizar tareas por categoría y prioridad, y revisar los gastos en una vista de presupuesto dedicada.",
+            "Un sistema de diseño compartido aporta coherencia entre estas herramientas, permitiendo que cada una apoye un tipo distinto de decisión.",
+          ],
+        },
+        {
+          heading: "Acompañando a parejas y planners profesionales",
+          paragraphs: [
+            "Las parejas organizan un matrimonio; los planners coordinan varios. Diseñé experiencias para ambos contextos, incluyendo la colaboración dentro de un matrimonio y una vista general para moverse entre múltiples eventos.",
+            "El producto también ofrece distintos niveles de acceso, desde las invitaciones y la gestión de invitados hasta un espacio de planificación más amplio.",
+          ],
+        },
+        {
+          heading: "Del concepto a la beta",
+          paragraphs: [
+            "Tandie avanzó a una etapa de pruebas beta con usuarios tempranos. Esta etapa permite evaluar cómo los flujos conectados apoyan una planificación real e identificar qué necesita ajustarse antes de un lanzamiento más amplio.",
+          ],
+        },
+      ],
+    },
     link: { label: { en: "www.tandie.app", es: "www.tandie.app" }, href: "https://www.tandie.app" },
     images: [],
   },

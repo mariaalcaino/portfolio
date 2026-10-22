@@ -17,6 +17,7 @@ export default function Work() {
   const detailMeta = pick(project.detailMeta, lang);
   const tagline = pick(project.tagline, lang);
   const paragraphs = pick(project.paragraphs, lang);
+  const sections = pick(project.sections, lang);
   const linkLabel = pick(project.link?.label, lang);
   const hasCaseStudy = Boolean(tagline || paragraphs?.length);
 
@@ -34,6 +35,28 @@ export default function Work() {
           ))}
         </div>
       )}
+
+      {project.facts && project.facts.length > 0 && (
+        <dl className="work-facts">
+          {project.facts.map((fact) => (
+            <div key={fact.label.en} className="work-fact">
+              <dt>{fact.label[lang]}</dt>
+              <dd>{fact.value[lang]}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+
+      {sections?.map((section) => (
+        <section key={section.heading} className="work-section">
+          <h2 className="work-heading">{section.heading}</h2>
+          <div className="work-body">
+            {section.paragraphs.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       {!hasCaseStudy && <p className="work-soon">{t.work.caseStudySoon}</p>}
 
