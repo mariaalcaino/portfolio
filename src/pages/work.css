@@ -1,5 +1,5 @@
 .work-content {
-  max-width: 720px;
+  max-width: 920px;
 }
 
 .work-name {
@@ -19,7 +19,6 @@
   font-weight: 600;
   font-style: italic;
   margin: 0 0 24px;
-  max-width: 600px;
   line-height: 1.4;
 }
 
