@@ -50,39 +50,36 @@
 .contact-field input,
 .contact-field textarea {
   width: 100%;
-  padding: 8px 0 10px;
+  padding: 11px 12px;
   font: inherit;
   font-size: 16px;
   color: var(--fg);
   background: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(27, 27, 27, 0.25);
+  border: 1px solid rgba(27, 27, 27, 0.25);
   border-radius: 0;
   outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease;
 }
 
 .contact-field textarea {
   resize: vertical;
-  min-height: 140px;
+  min-height: 160px;
   line-height: 1.4;
 }
 
 .contact-field input:hover,
 .contact-field textarea:hover {
-  border-bottom-color: rgba(27, 27, 27, 0.5);
+  border-color: rgba(27, 27, 27, 0.5);
 }
 
 .contact-field input:focus,
 .contact-field textarea:focus {
-  border-bottom-color: var(--fg);
-  box-shadow: 0 1px 0 var(--fg);
+  border-color: var(--fg);
 }
 
 .contact-field.has-error input,
 .contact-field.has-error textarea {
-  border-bottom-color: var(--error);
-  box-shadow: 0 1px 0 var(--error);
+  border-color: var(--error);
 }
 
 .contact-content .contact-error {
@@ -117,6 +114,16 @@
 .contact-action:disabled {
   color: var(--nav-inactive);
   cursor: default;
+}
+
+.contact-submit {
+  padding: 0 24px;
+  border: 1px solid var(--fg);
+  transition: border-color 0.15s ease;
+}
+
+.contact-submit:disabled {
+  border-color: rgba(27, 27, 27, 0.25);
 }
 
 .contact-action:focus-visible,
