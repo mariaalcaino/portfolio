@@ -57,8 +57,8 @@ export const projects: Project[] = [
       {
         label: { en: "Role", es: "Rol" },
         value: {
-          en: "Co-founder · Product strategy & design",
-          es: "Cofundadora · Estrategia y diseño de producto",
+          en: "Co-founder · Designer & Developer",
+          es: "Cofundadora · Diseñadora y desarrolladora",
         },
       },
       {
