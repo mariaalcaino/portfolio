@@ -14,15 +14,7 @@
   margin: 4px 0 28px;
 }
 
-.work-tagline {
-  font-size: 17px;
-  font-weight: 600;
-  font-style: italic;
-  margin: 0 0 24px;
-  line-height: 1.4;
-}
-
-.work-name + .work-tagline {
+.work-name + .work-body {
   margin-top: 28px;
 }
 

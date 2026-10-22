@@ -14,7 +14,6 @@ export type Project = {
   listCategory?: Localized<string>;
   listYears?: string;
   detailMeta?: Localized<string>;
-  tagline?: Localized<string>;
   paragraphs?: Localized<string[]>;
   /** Short label/value pairs (role, platform…) shown between the intro and the sections. */
   facts?: Fact[];
@@ -41,10 +40,6 @@ export const projects: Project[] = [
     slug: "tandie",
     name: "Tandie",
     listCategory: { en: "Web application", es: "Aplicación web" },
-    tagline: {
-      en: "A shared workspace for couples and wedding planners.",
-      es: "Un espacio de trabajo compartido para parejas y wedding planners.",
-    },
     paragraphs: {
       en: [
         "Tandie brings invitations, guests, seating, tasks and budgets into one planning experience. I co-founded the product and led its definition and design, from the initial structure to the detailed interactions.",
@@ -163,10 +158,6 @@ export const projects: Project[] = [
     listCategory: { en: "B2B marketplace", es: "Marketplace B2B" },
     listYears: "2021 · 2022",
     detailMeta: { en: "B2B Marketplace / 2021-2022", es: "Marketplace B2B / 2021-2022" },
-    tagline: {
-      en: "A B2B marketplace connecting independent Chilean brands with local stores.",
-      es: "Un marketplace B2B que conecta marcas chilenas independientes con tiendas locales.",
-    },
     paragraphs: {
       en: [
         "I joined Bagoost at its founding stage as part of the design team. During my time there, we shaped the brand identity from scratch and designed the core product experience for a marketplace built around wholesale commerce.",
@@ -192,10 +183,6 @@ export const projects: Project[] = [
     listCategory: { en: "Loyalty & engagement SaaS", es: "SaaS de fidelización" },
     listYears: "2023 · 2025",
     detailMeta: { en: "SaaS / 2023 - 2025", es: "SaaS / 2023 - 2025" },
-    tagline: {
-      en: "Making engagement easier to join, repeat and remember.",
-      es: "Haciendo que la fidelización sea más fácil de adoptar, repetir y recordar.",
-    },
     paragraphs: {
       en: [
         "Many engagement programs rely on familiar mechanics: points, stamps, coupons and rewards. But the real design challenge is behavioral. People need to understand the value quickly, join without friction and remember to come back.",
@@ -226,10 +213,6 @@ export const projects: Project[] = [
     listCategory: { en: "App", es: "App" },
     listYears: "2026",
     detailMeta: { en: "App / 2026", es: "App / 2026" },
-    tagline: {
-      en: "A habit tracker that turns your year into a visual map.",
-      es: "Un rastreador de hábitos que convierte tu año en un mapa visual.",
-    },
     paragraphs: {
       en: [
         "Your Life in Dots is a minimal web app for tracking daily goals and seeing your entire year at a glance. Each dot represents one day. Over time, those small daily choices become a quiet visual record of consistency, rhythm and change.",
@@ -254,10 +237,6 @@ export const projects: Project[] = [
     listCategory: { en: "Data experiment", es: "Experimento de datos" },
     listYears: "2026",
     detailMeta: { en: "Data experiment / 2025", es: "Experimento de datos / 2025" },
-    tagline: {
-      en: "A daily forecast for the color of the sky.",
-      es: "Un pronóstico diario para el color del cielo.",
-    },
     paragraphs: {
       en: [
         "Light has physics, but it also has feeling. It scatters, diffuses and shifts through the atmosphere — shaped by humidity, cloud cover, air conditions and the position of the sun.",
@@ -296,10 +275,6 @@ export const projects: Project[] = [
     listCategory: { en: "Creative coding", es: "Creative coding" },
     listYears: "2024",
     detailMeta: { en: "Creative Coding / 2024", es: "Creative Coding / 2024" },
-    tagline: {
-      en: "An interactive drawing tool that lets you paint with your hands.",
-      es: "Una herramienta de dibujo interactiva que te deja pintar con las manos.",
-    },
     paragraphs: {
       en: [
         "fingerpaint.p5.js is a creative coding experiment inspired by the instinctive joy of painting with your hands as a child.",

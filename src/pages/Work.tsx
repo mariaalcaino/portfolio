@@ -15,18 +15,15 @@ export default function Work() {
   if (!project) return <Navigate to="/" replace />;
 
   const detailMeta = pick(project.detailMeta, lang);
-  const tagline = pick(project.tagline, lang);
   const paragraphs = pick(project.paragraphs, lang);
   const sections = pick(project.sections, lang);
   const linkLabel = pick(project.link?.label, lang);
-  const hasCaseStudy = Boolean(tagline || paragraphs?.length);
+  const hasCaseStudy = Boolean(paragraphs?.length || sections?.length);
 
   return (
     <Shell mainClassName="work-content">
       <h1 className="work-name">{project.name}</h1>
       {detailMeta && <p className="work-meta">{detailMeta}</p>}
-
-      {tagline && <p className="work-tagline">{tagline}</p>}
 
       {paragraphs && paragraphs.length > 0 && (
         <div className="work-body">
