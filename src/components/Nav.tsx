@@ -6,16 +6,20 @@ import "./Nav.css";
 export default function Nav() {
   const { pathname } = useLocation();
   const isAbout = pathname === "/about";
+  const isContact = pathname === "/contact";
   const { lang } = useLang();
   const t = useStrings(lang);
 
   return (
     <nav className="site-nav">
-      <Link to="/" className={isAbout ? "" : "active"}>
+      <Link to="/" className={isAbout || isContact ? "" : "active"}>
         {t.nav.works}
       </Link>
       <Link to="/about" className={isAbout ? "active" : ""}>
         {t.nav.about}
+      </Link>
+      <Link to="/contact" className={isContact ? "active" : ""}>
+        {t.nav.contact}
       </Link>
     </nav>
   );

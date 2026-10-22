@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
 import "./Footer.css";
@@ -11,7 +12,7 @@ const Copyright = ({ t }: { t: ReturnType<typeof useStrings> }) => (
 
 const Links = ({ t }: { t: ReturnType<typeof useStrings> }) => (
   <div className="footer-links">
-    <a href="mailto:hello@mariaalcaino.com">{t.footer.contact}</a>
+    <Link to="/contact">{t.footer.contact}</Link>
     <a href="https://linkedin.com" target="_blank" rel="noreferrer">
       {t.footer.linkedin}
     </a>

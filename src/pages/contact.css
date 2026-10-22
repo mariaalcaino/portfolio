@@ -1,0 +1,156 @@
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  line-height: 1.4;
+  max-width: 680px;
+}
+
+.contact-content p {
+  margin: 0;
+}
+
+.contact-title {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--fg);
+  margin: 0 0 28px;
+}
+
+@media (max-width: 960px) {
+  .contact-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: 0;
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 56px;
+  max-width: 520px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-field label {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  padding: 8px 0 10px;
+  font: inherit;
+  font-size: 16px;
+  color: var(--fg);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(27, 27, 27, 0.25);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.contact-field textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.4;
+}
+
+.contact-field input:hover,
+.contact-field textarea:hover {
+  border-bottom-color: rgba(27, 27, 27, 0.5);
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-bottom-color: var(--fg);
+  box-shadow: 0 1px 0 var(--fg);
+}
+
+.contact-field.has-error input,
+.contact-field.has-error textarea {
+  border-bottom-color: var(--error);
+  box-shadow: 0 1px 0 var(--error);
+}
+
+.contact-content .contact-error {
+  font-size: 14px;
+  color: var(--error);
+}
+
+.contact-failed a {
+  text-decoration: underline;
+}
+
+.contact-trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-action {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 0;
+  font-size: 16px;
+  color: var(--fg);
+}
+
+.contact-action:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.contact-action:disabled {
+  color: var(--nav-inactive);
+  cursor: default;
+}
+
+.contact-action:focus-visible,
+.contact-direct a:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.contact-sent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  margin-top: 56px;
+}
+
+.contact-sent-body {
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.contact-content > .contact-intro {
+  color: var(--fg);
+}
+
+.contact-content > .contact-direct {
+  margin-top: 56px;
+  color: var(--muted);
+}
+
+.contact-direct a {
+  color: var(--fg);
+}
+
+.contact-direct a:hover {
+  text-decoration: underline;
+}

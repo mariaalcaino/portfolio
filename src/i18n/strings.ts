@@ -5,9 +5,10 @@ export const strings = {
     nav: {
       works: "Works",
       about: "About",
+      contact: "Contact",
     },
     contact: {
-      label: "Contact",
+      label: "Email",
     },
     footer: {
       contact: "[ Contact ]",
@@ -40,6 +41,24 @@ export const strings = {
     langSwitch: {
       label: "Language",
     },
+    contactPage: {
+      title: "Contact",
+      intro: "Tell me about your project, or just say hello.",
+      name: "Name",
+      email: "Email",
+      message: "Message",
+      send: "[ Send message ]",
+      sending: "[ Sending… ]",
+      errorName: "Please enter your name.",
+      errorEmail: "Please enter a valid email address.",
+      errorMessage: "Please write a message.",
+      sentTitle: "Message sent.",
+      sentBody: "Thank you for reaching out.",
+      sendAnother: "[ Send another message ]",
+      failedBefore: "Something went wrong and your message wasn\u2019t sent. Please try again, or write to ",
+      failedAfter: ".",
+      directBefore: "Or write directly to ",
+    },
     gallery: {
       dialog: "Image gallery",
       open: "View image {i} of {n}",
@@ -55,9 +74,10 @@ export const strings = {
     nav: {
       works: "Proyectos",
       about: "Acerca de",
+      contact: "Contacto",
     },
     contact: {
-      label: "Contacto",
+      label: "Correo",
     },
     footer: {
       contact: "[ Contacto ]",
@@ -89,6 +109,24 @@ export const strings = {
     },
     langSwitch: {
       label: "Idioma",
+    },
+    contactPage: {
+      title: "Contacto",
+      intro: "Cuéntame sobre tu proyecto, o simplemente di hola.",
+      name: "Nombre",
+      email: "Correo",
+      message: "Mensaje",
+      send: "[ Enviar mensaje ]",
+      sending: "[ Enviando… ]",
+      errorName: "Ingresa tu nombre.",
+      errorEmail: "Ingresa un correo válido.",
+      errorMessage: "Escribe un mensaje.",
+      sentTitle: "Mensaje enviado.",
+      sentBody: "Gracias por escribirme.",
+      sendAnother: "[ Enviar otro mensaje ]",
+      failedBefore: "Algo salió mal y tu mensaje no se envió. Inténtalo de nuevo, o escribe a ",
+      failedAfter: ".",
+      directBefore: "O escribe directamente a ",
     },
     gallery: {
       dialog: "Galería de imágenes",
