@@ -23,3 +23,9 @@
 .lang-switch-sep {
   color: var(--line);
 }
+
+@media (max-width: 960px) {
+  .lang-switch {
+    display: none;
+  }
+}

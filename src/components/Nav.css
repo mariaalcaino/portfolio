@@ -19,3 +19,10 @@
   flex-direction: column;
   gap: 8px;
 }
+
+@media (max-width: 960px) {
+  .sidebar .site-nav {
+    flex-direction: row;
+    gap: 20px;
+  }
+}

@@ -70,8 +70,8 @@ const allProjects: Project[] = [
         },
       },
       {
-        label: { en: "Platform", es: "Plataforma" },
-        value: { en: "Web application", es: "Aplicación web" },
+        label: { en: "Year", es: "Año" },
+        value: { en: "2026", es: "2026" },
       },
     ],
     sections: {
