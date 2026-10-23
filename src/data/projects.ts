@@ -398,6 +398,67 @@ const allProjects: Project[] = [
   {
     slug: "zhagra",
     name: "Zhagra",
+    listCategory: { en: "Website & infographics", es: "Sitio web e infografías" },
+    paragraphs: {
+      en: [
+        "Zhagra is a startup applying artificial intelligence to agriculture. I designed its website and technical infographics, translating complex information into a clear and consistent visual experience.",
+      ],
+      es: [
+        "Zhagra es una startup que aplica inteligencia artificial a la agricultura. Diseñé su sitio web y sus infografías técnicas, traduciendo información compleja en una experiencia visual clara y coherente.",
+      ],
+    },
+    facts: [
+      {
+        label: { en: "Role", es: "Rol" },
+        value: { en: "Web & Information Designer", es: "Diseñadora web y de información" },
+      },
+      {
+        label: { en: "Year", es: "Año" },
+        value: { en: "2025", es: "2025" },
+      },
+    ],
+    sections: {
+      en: [
+        {
+          heading: "The challenge",
+          paragraphs: [
+            "Explain a technical product in a way that makes it approachable while preserving the detail needed to understand it.",
+          ],
+        },
+        {
+          heading: "Introducing the technology",
+          paragraphs: [
+            "I designed the website to introduce Zhagra’s platform, organizing technical content through clear layouts and visual hierarchy. The focus was on helping visitors understand the offering and its application to agriculture.",
+          ],
+        },
+        {
+          heading: "Making complexity visible",
+          paragraphs: [
+            "I designed technical infographics to support the explanation of the platform. By combining diagrams and concise text, I translated complex concepts into visual explanations that could be explored alongside the website’s content.",
+          ],
+        },
+      ],
+      es: [
+        {
+          heading: "El desafío",
+          paragraphs: [
+            "Explicar un producto técnico de manera que resulte accesible, sin perder el detalle necesario para entenderlo.",
+          ],
+        },
+        {
+          heading: "Presentando la tecnología",
+          paragraphs: [
+            "Diseñé el sitio web para presentar la plataforma de Zhagra, organizando el contenido técnico con composiciones claras y una jerarquía visual definida. El foco estuvo en ayudar a los visitantes a entender la oferta y su aplicación en la agricultura.",
+          ],
+        },
+        {
+          heading: "Haciendo visible la complejidad",
+          paragraphs: [
+            "Diseñé infografías técnicas para apoyar la explicación de la plataforma. Combinando diagramas y textos concisos, traduje conceptos complejos en explicaciones visuales que podían explorarse junto al contenido del sitio.",
+          ],
+        },
+      ],
+    },
     images: [],
   },
   {
