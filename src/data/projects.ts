@@ -461,6 +461,7 @@ const allProjects: Project[] = [
         },
       ],
     },
+    links: [{ label: { en: "zhagra.com", es: "zhagra.com" }, href: "https://zhagra.com/" }],
     images: ["/works/zhagra-1.mp4"],
   },
   {
