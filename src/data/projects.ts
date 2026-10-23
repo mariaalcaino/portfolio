@@ -9,7 +9,10 @@ export type Fact = { label: Localized<string>; value: Localized<string> };
 
 export type Project = {
   slug: string;
+  /** Short name used on the Home grid. */
   name: string;
+  /** Longer heading for the project page, when the grid name is abbreviated. */
+  title?: string;
   /** Keeps the project out of the grid and its page unreachable until it's ready to show. */
   hidden?: boolean;
   /** Omit while the case study isn't written yet — the grid card and detail page degrade gracefully. */
@@ -224,6 +227,108 @@ const allProjects: Project[] = [
   {
     slug: "cocacolapassport",
     name: "Coca-Cola",
+    title: "Coca-Cola / Pasaporte Barrio Italia",
+    listCategory: { en: "Campaign", es: "Campaña" },
+    paragraphs: {
+      en: [
+        "Pasaporte Barrio Italia is a Coca-Cola Andina initiative that connects visits to local restaurants with digital stamps and rewards. I designed the campaign’s mobile web experience, digital wallet pass and performance reporting.",
+      ],
+      es: [
+        "Pasaporte Barrio Italia es una iniciativa de Coca-Cola Andina que conecta las visitas a restaurantes locales con sellos digitales y recompensas. Diseñé la experiencia web mobile de la campaña, el pase para la billetera digital y los reportes de desempeño.",
+      ],
+    },
+    facts: [
+      {
+        label: { en: "Role", es: "Rol" },
+        value: { en: "Product Designer", es: "Diseñadora de producto" },
+      },
+      {
+        label: { en: "Year", es: "Año" },
+        value: { en: "2026", es: "2026" },
+      },
+    ],
+    sections: {
+      en: [
+        {
+          heading: "The challenge",
+          paragraphs: [
+            "Connect the experience of discovering restaurants, collecting stamps and accessing rewards across physical venues and digital touchpoints. The project also required reporting to help Coca-Cola and participating restaurants follow campaign activity.",
+          ],
+        },
+        {
+          heading: "Exploring the neighborhood",
+          paragraphs: [
+            "I designed a mobile-first landing page featuring 16 participating restaurants and their rewards. A neighborhood map and restaurant cards help visitors locate venues and explore what each one offers.",
+            "Consistent information across the cards makes the options easier to browse while moving through the neighborhood.",
+          ],
+        },
+        {
+          heading: "Taking the passport into the wallet",
+          paragraphs: [
+            "Participants scan a campaign QR code and save the passport to their phone’s digital wallet. Visits earn digital stamps that unlock rewards at participating venues.",
+            "I designed the visual presentation of the wallet pass, adapting the campaign experience to a compact format that participants could keep accessible throughout their visits.",
+          ],
+        },
+        {
+          heading: "Working with Coca-Cola’s visual identity",
+          paragraphs: [
+            "Coca-Cola provided the typography and color palette for the website. I applied these assets to the landing page, defining its layouts, visual hierarchy and components within the supplied identity.",
+          ],
+        },
+        {
+          heading: "Making campaign activity readable",
+          paragraphs: [
+            "I designed reporting templates for the brand and participating restaurants. Clear information hierarchy and data visualization support both an overview of campaign performance and a closer look at individual venues.",
+          ],
+        },
+        {
+          heading: "Campaign reach",
+          paragraphs: [
+            "The Clinic Lab reported more than 2,000 users during the campaign’s first six weeks, across 16 participating restaurants and bars.",
+          ],
+        },
+      ],
+      es: [
+        {
+          heading: "El desafío",
+          paragraphs: [
+            "Conectar la experiencia de descubrir restaurantes, juntar sellos y acceder a recompensas entre locales físicos y puntos de contacto digitales. El proyecto también requería reportes que ayudaran a Coca-Cola y a los restaurantes participantes a seguir la actividad de la campaña.",
+          ],
+        },
+        {
+          heading: "Explorando el barrio",
+          paragraphs: [
+            "Diseñé una landing page mobile-first con los 16 restaurantes participantes y sus recompensas. Un mapa del barrio y tarjetas de cada restaurante ayudan a ubicar los locales y a conocer lo que ofrece cada uno.",
+            "La información consistente entre las tarjetas facilita comparar las opciones mientras se recorre el barrio.",
+          ],
+        },
+        {
+          heading: "Llevando el pasaporte a la billetera",
+          paragraphs: [
+            "Las personas escanean un código QR de la campaña y guardan el pasaporte en la billetera digital de su teléfono. Las visitas suman sellos digitales que desbloquean recompensas en los locales participantes.",
+            "Diseñé la presentación visual del pase, adaptando la experiencia de la campaña a un formato compacto que los participantes pudieran tener a mano durante sus visitas.",
+          ],
+        },
+        {
+          heading: "Trabajando con la identidad visual de Coca-Cola",
+          paragraphs: [
+            "Coca-Cola entregó la tipografía y la paleta de colores del sitio. Apliqué estos recursos a la landing page, definiendo sus composiciones, jerarquía visual y componentes dentro de la identidad entregada.",
+          ],
+        },
+        {
+          heading: "Haciendo legible la actividad de la campaña",
+          paragraphs: [
+            "Diseñé plantillas de reportes para la marca y para los restaurantes participantes. Una jerarquía de información clara y la visualización de datos permiten tanto una mirada general del desempeño de la campaña como una más detallada de cada local.",
+          ],
+        },
+        {
+          heading: "Alcance de la campaña",
+          paragraphs: [
+            "The Clinic Lab reportó más de 2.000 usuarios durante las primeras seis semanas de la campaña, en 16 restaurantes y bares participantes.",
+          ],
+        },
+      ],
+    },
     images: [],
   },
   {

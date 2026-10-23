@@ -26,7 +26,7 @@ export default function Work() {
 
   return (
     <Shell mainClassName="work-content">
-      <h1 className="work-name">{project.name}</h1>
+      <h1 className="work-name">{project.title ?? project.name}</h1>
       {detailMeta && <p className="work-meta">{detailMeta}</p>}
 
       {paragraphs && paragraphs.length > 0 && (
