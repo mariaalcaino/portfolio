@@ -163,7 +163,13 @@ const allProjects: Project[] = [
       ],
     },
     link: { label: { en: "www.tandie.app", es: "www.tandie.app" }, href: "https://www.tandie.app" },
-    images: ["/works/tandie-1.mp4", "/works/tandie-2.mp4", "/works/tandie-3.mp4", "/works/tandie-4.mp4"],
+    images: [
+      "/works/tandie-1.mp4",
+      "/works/tandie-2.mp4",
+      "/works/tandie-3.mp4",
+      "/works/tandie-4.mp4",
+      "/works/tandie-5.mp4",
+    ],
   },
   {
     slug: "bagoost",
