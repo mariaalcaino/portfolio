@@ -4,8 +4,7 @@ export type PreviewMedia = { type: "image" | "video"; src: string };
 
 type Localized<T> = { en: T; es: T };
 
-export type Stat = { value: string; label: string };
-export type Section = { heading: string; paragraphs: string[]; stats?: Stat[] };
+export type Section = { heading: string; paragraphs: string[] };
 export type ProjectLink = { label: Localized<string>; href: string };
 export type Fact = { label: Localized<string>; value: Localized<string> };
 
@@ -291,11 +290,6 @@ const allProjects: Project[] = [
           paragraphs: [
             "Within its first six weeks, the campaign reached more than 2,000 users across 16 participating restaurants and bars. According to coverage published by The Clinic Lab, 16% of reported revenue came from consumers who returned to use the system.",
           ],
-          stats: [
-            { value: "2,000+", label: "Users in the first six weeks" },
-            { value: "16", label: "Participating restaurants and bars" },
-            { value: "16%", label: "Of reported revenue from returning users" },
-          ],
         },
       ],
       es: [
@@ -335,11 +329,6 @@ const allProjects: Project[] = [
           heading: "Resultados de la campaña",
           paragraphs: [
             "En sus primeras seis semanas, la campaña alcanzó a más de 2.000 usuarios en 16 restaurantes y bares participantes. Según la cobertura publicada por The Clinic Lab, el 16% de los ingresos reportados provino de consumidores que volvieron a usar el sistema.",
-          ],
-          stats: [
-            { value: "2.000+", label: "Usuarios en las primeras seis semanas" },
-            { value: "16", label: "Restaurantes y bares participantes" },
-            { value: "16%", label: "De los ingresos reportados vino de usuarios recurrentes" },
           ],
         },
       ],

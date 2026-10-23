@@ -57,16 +57,6 @@ export default function Work() {
               <p key={i}>{paragraph}</p>
             ))}
           </div>
-          {section.stats && (
-            <ul className="work-stats">
-              {section.stats.map((stat) => (
-                <li key={stat.label} className="work-stat">
-                  <span className="work-stat-value">{stat.value}</span>
-                  <span className="work-stat-label">{stat.label}</span>
-                </li>
-              ))}
-            </ul>
-          )}
         </section>
       ))}
 
