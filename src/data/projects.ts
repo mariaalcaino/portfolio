@@ -22,10 +22,16 @@ export type Project = {
   /** Longer case studies: titled sections shown after the intro and facts. */
   sections?: Localized<Section[]>;
   link?: { label: Localized<string>; href: string };
+  /** Gallery items. A path ending in .mp4 is a looping video; its poster is the same path with a .jpg extension. */
   images: string[];
-  /** Hover preview on the Home list. Defaults to the first gallery image when omitted. */
+  /** "stack" lists every item full width (default); "strip" is a horizontal scroll gallery. */
+  galleryLayout?: "stack" | "strip";
+  /** Cover on the Home grid. Defaults to the first gallery image when omitted. */
   preview?: PreviewMedia;
 };
+
+export const isVideo = (src: string) => /\.mp4$/i.test(src);
+export const posterOf = (src: string) => src.replace(/\.mp4$/i, ".jpg");
 
 export function getPreviewMedia(project: Project): PreviewMedia | null {
   if (project.preview) return project.preview;
@@ -41,6 +47,8 @@ const allProjects: Project[] = [
   {
     slug: "tandie",
     name: "Tandie",
+    preview: { type: "image", src: "/works/tandie-1.jpg" },
+    galleryLayout: "strip",
     listCategory: { en: "Web application", es: "Aplicación web" },
     paragraphs: {
       en: [
@@ -152,7 +160,7 @@ const allProjects: Project[] = [
       ],
     },
     link: { label: { en: "www.tandie.app", es: "www.tandie.app" }, href: "https://www.tandie.app" },
-    images: [],
+    images: ["/works/tandie-1.mp4", "/works/tandie-2.mp4", "/works/tandie-3.mp4", "/works/tandie-4.mp4"],
   },
   {
     slug: "bagoost",

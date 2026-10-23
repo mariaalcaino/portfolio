@@ -63,7 +63,9 @@ export default function Work() {
         </a>
       )}
 
-      {project.images.length > 0 && <Gallery key={project.slug} images={project.images} name={project.name} />}
+      {project.images.length > 0 && (
+        <Gallery key={project.slug} images={project.images} name={project.name} layout={project.galleryLayout} />
+      )}
     </Shell>
   );
 }

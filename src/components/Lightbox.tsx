@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { createPortal } from "react-dom";
+import { isVideo, posterOf } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
 import "./Lightbox.css";
@@ -48,7 +49,10 @@ export default function Lightbox({
 
   const dialogRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const imgRef = useRef<HTMLImageElement | null>(null);
+  const imgRef = useRef<HTMLElement | null>(null);
+  const setCurrentMedia = useCallback((el: HTMLElement | null) => {
+    imgRef.current = el;
+  }, []);
   const viewRef = useRef<View>(RESET);
   const pointers = useRef(new Map<number, Point>());
   const lastTap = useRef({ time: 0, x: 0, y: 0 });
@@ -95,7 +99,8 @@ export default function Lightbox({
     (px: number, py: number) => {
       if (viewRef.current.scale > 1.05) return commit(RESET);
       const img = imgRef.current;
-      const natural = img && img.offsetWidth ? img.naturalWidth / img.offsetWidth : 2;
+      const naturalWidth = img instanceof HTMLVideoElement ? img.videoWidth : (img as HTMLImageElement | null)?.naturalWidth;
+      const natural = img && img.offsetWidth && naturalWidth ? naturalWidth / img.offsetWidth : 2;
       zoomAt(clamp(natural, 2, 3.5), px, py);
     },
     [commit, zoomAt],
@@ -305,6 +310,13 @@ export default function Lightbox({
     };
   }, []);
 
+  useEffect(() => {
+    dialogRef.current?.querySelectorAll<HTMLVideoElement>("video").forEach((video) => {
+      if (Number(video.dataset.index) === index) video.play().catch(() => {});
+      else video.pause();
+    });
+  }, [index]);
+
   const zoomed = view.scale > 1.01;
   const fill = (template: string, values: Record<string, string | number>) =>
     template.replace(/\{(\w+)\}/g, (_, key) => String(values[key]));
@@ -359,20 +371,39 @@ export default function Lightbox({
         >
           {images.map((src, i) => (
             <div className="lb-slide" key={src} aria-hidden={i !== index}>
-              {Math.abs(i - index) <= 1 && (
-                <img
-                  src={src}
-                  alt={fill(t.imageLabel, { name, i: i + 1, n: images.length })}
-                  draggable={false}
-                  ref={i === index ? imgRef : undefined}
-                  className={i === index ? (zoomed ? "is-current is-zoomed" : "is-current") : undefined}
-                  style={
-                    i === index
-                      ? { transform: `translate3d(${view.x}px, ${view.y}px, 0) scale(${view.scale})` }
-                      : undefined
-                  }
-                />
-              )}
+              {Math.abs(i - index) <= 1 &&
+                (isVideo(src) ? (
+                  <video
+                    src={src}
+                    poster={posterOf(src)}
+                    aria-label={fill(t.imageLabel, { name, i: i + 1, n: images.length })}
+                    data-index={i}
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    ref={i === index ? setCurrentMedia : undefined}
+                    className={i === index ? (zoomed ? "is-current is-zoomed" : "is-current") : undefined}
+                    style={
+                      i === index
+                        ? { transform: `translate3d(${view.x}px, ${view.y}px, 0) scale(${view.scale})` }
+                        : undefined
+                    }
+                  />
+                ) : (
+                  <img
+                    src={src}
+                    alt={fill(t.imageLabel, { name, i: i + 1, n: images.length })}
+                    draggable={false}
+                    ref={i === index ? setCurrentMedia : undefined}
+                    className={i === index ? (zoomed ? "is-current is-zoomed" : "is-current") : undefined}
+                    style={
+                      i === index
+                        ? { transform: `translate3d(${view.x}px, ${view.y}px, 0) scale(${view.scale})` }
+                        : undefined
+                    }
+                  />
+                ))}
             </div>
           ))}
         </div>
