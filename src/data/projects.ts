@@ -236,10 +236,10 @@ const allProjects: Project[] = [
     listCategory: { en: "Campaign", es: "Campaña" },
     paragraphs: {
       en: [
-        "Pasaporte Barrio Italia is a digital rewards experience by Zoön Loyalty for Coca-Cola Andina, connecting visits to local restaurants with stamps and benefits. I designed the campaign’s mobile web experience, digital wallet pass and performance reporting.",
+        "Pasaporte Barrio Italia is a digital rewards experience for Coca-Cola Andina, connecting visits to local restaurants with stamps and benefits. I designed the campaign’s mobile web experience, digital wallet pass and performance reporting.",
       ],
       es: [
-        "Pasaporte Barrio Italia es una experiencia digital de recompensas creada por Zoön Loyalty para Coca-Cola Andina, que conecta las visitas a restaurantes locales con sellos y beneficios. Diseñé la experiencia web mobile de la campaña, el pase para la billetera digital y los reportes de desempeño.",
+        "Pasaporte Barrio Italia es una experiencia digital de recompensas para Coca-Cola Andina, que conecta las visitas a restaurantes locales con sellos y beneficios. Diseñé la experiencia web mobile de la campaña, el pase para la billetera digital y los reportes de desempeño.",
       ],
     },
     facts: [
