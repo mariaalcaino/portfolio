@@ -10,6 +10,8 @@ export type Fact = { label: Localized<string>; value: Localized<string> };
 export type Project = {
   slug: string;
   name: string;
+  /** Keeps the project out of the grid and its page unreachable until it's ready to show. */
+  hidden?: boolean;
   /** Omit while the case study isn't written yet — the grid card and detail page degrade gracefully. */
   listCategory?: Localized<string>;
   listYears?: string;
@@ -35,7 +37,7 @@ export function pick<T>(field: Localized<T> | undefined, lang: Lang): T | undefi
   return field ? field[lang] : undefined;
 }
 
-export const projects: Project[] = [
+const allProjects: Project[] = [
   {
     slug: "tandie",
     name: "Tandie",
@@ -267,6 +269,7 @@ export const projects: Project[] = [
   {
     slug: "josefinaconlledo",
     name: "Josefina Conlledo",
+    hidden: true,
     images: [],
   },
   {
@@ -368,3 +371,5 @@ export const projects: Project[] = [
     images: [],
   },
 ];
+
+export const projects = allProjects.filter((project) => !project.hidden);
