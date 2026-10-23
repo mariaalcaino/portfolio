@@ -40,7 +40,8 @@ export const posterOf = (src: string) => src.replace(/\.mp4$/i, ".jpg");
 
 export function getPreviewMedia(project: Project): PreviewMedia | null {
   if (project.preview) return project.preview;
-  if (project.images[0]) return { type: "image", src: project.images[0] };
+  const first = project.images[0];
+  if (first) return { type: "image", src: isVideo(first) ? posterOf(first) : first };
   return null;
 }
 
@@ -228,6 +229,7 @@ const allProjects: Project[] = [
     slug: "cocacolapassport",
     name: "Coca-Cola",
     title: "Coca-Cola / Pasaporte Barrio Italia",
+    galleryPosition: "top",
     listCategory: { en: "Campaign", es: "Campaña" },
     paragraphs: {
       en: [
@@ -329,7 +331,11 @@ const allProjects: Project[] = [
         },
       ],
     },
-    images: [],
+    link: {
+      label: { en: "Read the campaign coverage ↗", es: "Leer la cobertura de la campaña ↗" },
+      href: "https://www.theclinic.cl/2026/05/18/juntos-en-todas-coca-cola-andina-pasaporte-digital/",
+    },
+    images: ["/works/cocacola-1.mp4"],
   },
   {
     slug: "lifeindots",
