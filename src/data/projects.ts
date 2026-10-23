@@ -398,6 +398,8 @@ const allProjects: Project[] = [
   {
     slug: "zhagra",
     name: "Zhagra",
+    galleryLayout: "strip",
+    galleryPosition: "top",
     listCategory: { en: "Website & infographics", es: "Sitio web e infografías" },
     paragraphs: {
       en: [
@@ -459,7 +461,7 @@ const allProjects: Project[] = [
         },
       ],
     },
-    images: [],
+    images: ["/works/zhagra-1.mp4"],
   },
   {
     slug: "josefinaconlledo",
