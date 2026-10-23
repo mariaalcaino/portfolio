@@ -295,7 +295,76 @@ export const projects: Project[] = [
   },
   {
     slug: "collegeusa",
-    name: "College USA",
+    name: "CollegeUSA",
+    listCategory: { en: "Landing page", es: "Landing page" },
+    paragraphs: {
+      en: [
+        "CollegeUSA helps students navigate the application process for universities in the United States. I designed and developed its landing page, translating the brand identity into a responsive website that introduces the service, explains its approach and invites visitors to get in touch.",
+      ],
+      es: [
+        "CollegeUSA ayuda a estudiantes a navegar el proceso de postulación a universidades de Estados Unidos. Diseñé y desarrollé su landing page, traduciendo la identidad de marca en un sitio web responsivo que presenta el servicio, explica su enfoque e invita a los visitantes a ponerse en contacto.",
+      ],
+    },
+    facts: [
+      {
+        label: { en: "Role", es: "Rol" },
+        value: { en: "Web Designer & Developer", es: "Diseñadora y desarrolladora web" },
+      },
+    ],
+    sections: {
+      en: [
+        {
+          heading: "The challenge",
+          paragraphs: [
+            "Communicate a service with several stages and a strong personal component. The landing needed to help students and families understand the support available and feel confident starting a conversation.",
+          ],
+        },
+        {
+          heading: "Translating the brand into the experience",
+          paragraphs: [
+            "I adapted the brand’s visual identity to the web through typography, color, layout and graphic elements. I designed the content hierarchy to guide visitors through the service, methodology, testimonials and founder’s experience.",
+          ],
+        },
+        {
+          heading: "Designing across screens",
+          paragraphs: [
+            "I designed and implemented desktop and mobile layouts, adapting spacing, navigation and interactions to each screen size. On mobile, card-based content becomes a swipeable carousel, keeping information accessible within a compact layout.",
+          ],
+        },
+        {
+          heading: "From design to launch",
+          paragraphs: [
+            "I carried the landing from design through development and publication, including responsive behavior, interactions and a direct email contact route.",
+          ],
+        },
+      ],
+      es: [
+        {
+          heading: "El desafío",
+          paragraphs: [
+            "Comunicar un servicio con varias etapas y un fuerte componente personal. La landing debía ayudar a estudiantes y familias a entender el apoyo disponible y a sentirse seguros de iniciar una conversación.",
+          ],
+        },
+        {
+          heading: "Llevando la marca a la experiencia",
+          paragraphs: [
+            "Adapté la identidad visual de la marca a la web a través de la tipografía, el color, la composición y los elementos gráficos. Diseñé la jerarquía de contenidos para guiar a los visitantes por el servicio, la metodología, los testimonios y la experiencia de la persona fundadora.",
+          ],
+        },
+        {
+          heading: "Diseñando para todas las pantallas",
+          paragraphs: [
+            "Diseñé e implementé versiones para desktop y mobile, adaptando espaciados, navegación e interacciones a cada tamaño de pantalla. En mobile, el contenido en tarjetas se convierte en un carrusel deslizable, manteniendo la información accesible en un formato compacto.",
+          ],
+        },
+        {
+          heading: "Del diseño al lanzamiento",
+          paragraphs: [
+            "Llevé la landing desde el diseño hasta el desarrollo y la publicación, incluyendo el comportamiento responsivo, las interacciones y una vía de contacto directa por correo.",
+          ],
+        },
+      ],
+    },
     images: [],
   },
 ];
