@@ -17,7 +17,6 @@ export default function Work() {
   const detailMeta = pick(project.detailMeta, lang);
   const paragraphs = pick(project.paragraphs, lang);
   const sections = pick(project.sections, lang);
-  const linkLabel = pick(project.link?.label, lang);
   const gallery =
     project.images.length > 0 ? (
       <Gallery key={project.slug} images={project.images} name={project.name} layout={project.galleryLayout} />
@@ -58,15 +57,29 @@ export default function Work() {
               <p key={i}>{paragraph}</p>
             ))}
           </div>
+          {section.stats && (
+            <ul className="work-stats">
+              {section.stats.map((stat) => (
+                <li key={stat.label} className="work-stat">
+                  <span className="work-stat-value">{stat.value}</span>
+                  <span className="work-stat-label">{stat.label}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
       ))}
 
       {!hasCaseStudy && <p className="work-soon">{t.work.caseStudySoon}</p>}
 
-      {project.link && (
-        <a className="work-link" href={project.link.href} target="_blank" rel="noreferrer">
-          {linkLabel}
-        </a>
+      {project.links && project.links.length > 0 && (
+        <div className="work-links">
+          {project.links.map((link) => (
+            <a key={link.href} className="work-link" href={link.href} target="_blank" rel="noreferrer">
+              {pick(link.label, lang)}
+            </a>
+          ))}
+        </div>
       )}
 
 

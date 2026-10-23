@@ -92,7 +92,7 @@ export default function Gallery({
             ))}
           </div>
 
-          <div className="gallery-strip-bar">
+          <div className="gallery-strip-bar" hidden={images.length < 2}>
             <p className="gallery-strip-count" aria-live="polite">
               {active + 1} / {images.length}
             </p>

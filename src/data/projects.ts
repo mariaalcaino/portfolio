@@ -4,7 +4,9 @@ export type PreviewMedia = { type: "image" | "video"; src: string };
 
 type Localized<T> = { en: T; es: T };
 
-export type Section = { heading: string; paragraphs: string[] };
+export type Stat = { value: string; label: string };
+export type Section = { heading: string; paragraphs: string[]; stats?: Stat[] };
+export type ProjectLink = { label: Localized<string>; href: string };
 export type Fact = { label: Localized<string>; value: Localized<string> };
 
 export type Project = {
@@ -24,7 +26,7 @@ export type Project = {
   facts?: Fact[];
   /** Longer case studies: titled sections shown after the intro and facts. */
   sections?: Localized<Section[]>;
-  link?: { label: Localized<string>; href: string };
+  links?: ProjectLink[];
   /** Gallery items. A path ending in .mp4 is a looping video; its poster is the same path with a .jpg extension. */
   images: string[];
   /** "stack" lists every item full width (default); "strip" is a horizontal scroll gallery. */
@@ -166,7 +168,7 @@ const allProjects: Project[] = [
         },
       ],
     },
-    link: { label: { en: "www.tandie.app", es: "www.tandie.app" }, href: "https://www.tandie.app" },
+    links: [{ label: { en: "www.tandie.app", es: "www.tandie.app" }, href: "https://www.tandie.app" }],
     images: [
       "/works/tandie-1.mp4",
       "/works/tandie-2.mp4",
@@ -197,7 +199,7 @@ const allProjects: Project[] = [
         "Cuando me fui, Bagoost ya había alcanzado más de 80 marcas, más de 1.400 productos y más de 400 tiendas a nivel nacional. La startup también fue seleccionada por Corfo entre las 50 innovaciones alimentarias más destacadas de Chile en 2022.",
       ],
     },
-    link: { label: { en: "www.bagoost.com", es: "www.bagoost.com" }, href: "https://www.bagoost.com" },
+    links: [{ label: { en: "www.bagoost.com", es: "www.bagoost.com" }, href: "https://www.bagoost.com" }],
     images: ["/works/bagoost-1.png", "/works/bagoost-2.png", "/works/bagoost-3.png", "/works/bagoost-4.png"],
   },
   {
@@ -222,21 +224,22 @@ const allProjects: Project[] = [
         "Cuando me fui, el producto ya había alcanzado más de 12.000 consumidores inscritos, un promedio de 2,7 compras repetidas por cliente y un aumento de ventas del 27% en los locales asociados.",
       ],
     },
-    link: { label: { en: "www.zoonloyalty.io", es: "www.zoonloyalty.io" }, href: "https://www.zoonloyalty.io" },
+    links: [{ label: { en: "www.zoonloyalty.io", es: "www.zoonloyalty.io" }, href: "https://www.zoonloyalty.io" }],
     images: ["/works/zoon-1.png", "/works/zoon-2.png"],
   },
   {
     slug: "cocacolapassport",
     name: "Coca-Cola",
     title: "Coca-Cola / Pasaporte Barrio Italia",
+    galleryLayout: "strip",
     galleryPosition: "top",
     listCategory: { en: "Campaign", es: "Campaña" },
     paragraphs: {
       en: [
-        "Pasaporte Barrio Italia is a Coca-Cola Andina initiative that connects visits to local restaurants with digital stamps and rewards. I designed the campaign’s mobile web experience, digital wallet pass and performance reporting.",
+        "Pasaporte Barrio Italia is a digital rewards experience by Zoön Loyalty for Coca-Cola Andina, connecting visits to local restaurants with stamps and benefits. I designed the campaign’s mobile web experience, digital wallet pass and performance reporting.",
       ],
       es: [
-        "Pasaporte Barrio Italia es una iniciativa de Coca-Cola Andina que conecta las visitas a restaurantes locales con sellos digitales y recompensas. Diseñé la experiencia web mobile de la campaña, el pase para la billetera digital y los reportes de desempeño.",
+        "Pasaporte Barrio Italia es una experiencia digital de recompensas creada por Zoön Loyalty para Coca-Cola Andina, que conecta las visitas a restaurantes locales con sellos y beneficios. Diseñé la experiencia web mobile de la campaña, el pase para la billetera digital y los reportes de desempeño.",
       ],
     },
     facts: [
@@ -284,9 +287,14 @@ const allProjects: Project[] = [
           ],
         },
         {
-          heading: "Campaign reach",
+          heading: "Campaign results",
           paragraphs: [
-            "The Clinic Lab reported more than 2,000 users during the campaign’s first six weeks, across 16 participating restaurants and bars.",
+            "Within its first six weeks, the campaign reached more than 2,000 users across 16 participating restaurants and bars. According to coverage published by The Clinic Lab, 16% of reported revenue came from consumers who returned to use the system.",
+          ],
+          stats: [
+            { value: "2,000+", label: "Users in the first six weeks" },
+            { value: "16", label: "Participating restaurants and bars" },
+            { value: "16%", label: "Of reported revenue from returning users" },
           ],
         },
       ],
@@ -324,17 +332,26 @@ const allProjects: Project[] = [
           ],
         },
         {
-          heading: "Alcance de la campaña",
+          heading: "Resultados de la campaña",
           paragraphs: [
-            "The Clinic Lab reportó más de 2.000 usuarios durante las primeras seis semanas de la campaña, en 16 restaurantes y bares participantes.",
+            "En sus primeras seis semanas, la campaña alcanzó a más de 2.000 usuarios en 16 restaurantes y bares participantes. Según la cobertura publicada por The Clinic Lab, el 16% de los ingresos reportados provino de consumidores que volvieron a usar el sistema.",
+          ],
+          stats: [
+            { value: "2.000+", label: "Usuarios en las primeras seis semanas" },
+            { value: "16", label: "Restaurantes y bares participantes" },
+            { value: "16%", label: "De los ingresos reportados vino de usuarios recurrentes" },
           ],
         },
       ],
     },
-    link: {
+    links: [{
       label: { en: "Read the campaign coverage ↗", es: "Leer la cobertura de la campaña ↗" },
       href: "https://www.theclinic.cl/2026/05/18/juntos-en-todas-coca-cola-andina-pasaporte-digital/",
     },
+    {
+      label: { en: "Visit the passport ↗", es: "Visitar el pasaporte ↗" },
+      href: "https://cocacola.zoonloyalty.io/",
+    }],
     images: ["/works/cocacola-1.mp4"],
   },
   {
@@ -355,10 +372,10 @@ const allProjects: Project[] = [
         "El producto está diseñado en torno a una interacción clara: define tus metas, marca lo que completaste y observa cómo tu año va tomando forma poco a poco.",
       ],
     },
-    link: {
+    links: [{
       label: { en: "www.yourlifeindots.com", es: "www.yourlifeindots.com" },
       href: "https://www.yourlifeindots.com",
-    },
+    }],
     images: ["/works/lifeindots-1.png", "/works/lifeindots-2.png"],
   },
   {
@@ -383,10 +400,10 @@ const allProjects: Project[] = [
         "Inspirado en el trabajo de Olafur Eliasson y James Turrell.",
       ],
     },
-    link: {
+    links: [{
       label: { en: "sunset.mariaalcaino.com", es: "sunset.mariaalcaino.com" },
       href: "https://sunset.mariaalcaino.com",
-    },
+    }],
     images: ["/works/sunset-1.png", "/works/sunset-2.png", "/works/sunset-3.png"],
   },
   {
@@ -418,10 +435,10 @@ const allProjects: Project[] = [
         "Lo construí como un pequeño estudio de la memoria de infancia, el creative coding y la interacción corporal — una forma de volver a los primeros trazos que hacemos antes de que el diseño se vuelva demasiado controlado.",
       ],
     },
-    link: {
+    links: [{
       label: { en: "Try the experiment →", es: "Probar el experimento →" },
       href: "https://editor.p5js.org/ignaciaalcaino97/full/WdH2oXdwq",
-    },
+    }],
     images: [],
   },
   {
