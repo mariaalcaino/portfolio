@@ -26,6 +26,8 @@ export type Project = {
   images: string[];
   /** "stack" lists every item full width (default); "strip" is a horizontal scroll gallery. */
   galleryLayout?: "stack" | "strip";
+  /** "top" puts the gallery right after the intro and facts; default is at the end of the page. */
+  galleryPosition?: "top" | "end";
   /** Cover on the Home grid. Defaults to the first gallery image when omitted. */
   preview?: PreviewMedia;
 };
@@ -49,6 +51,7 @@ const allProjects: Project[] = [
     name: "Tandie",
     preview: { type: "image", src: "/works/tandie-1.jpg" },
     galleryLayout: "strip",
+    galleryPosition: "top",
     listCategory: { en: "Web application", es: "Aplicación web" },
     paragraphs: {
       en: [

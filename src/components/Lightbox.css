@@ -58,11 +58,6 @@
   text-decoration: underline;
 }
 
-.lb-text-btn:disabled {
-  color: var(--nav-inactive);
-  cursor: default;
-}
-
 .lb-nav {
   align-self: center;
   justify-self: center;

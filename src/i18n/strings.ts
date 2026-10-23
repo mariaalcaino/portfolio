@@ -66,8 +66,6 @@ export const strings = {
       close: "[ Close ]",
       prev: "Previous image",
       next: "Next image",
-      zoomIn: "Zoom in",
-      zoomOut: "Zoom out",
     },
   },
   es: {
@@ -135,8 +133,6 @@ export const strings = {
       close: "[ Cerrar ]",
       prev: "Imagen anterior",
       next: "Imagen siguiente",
-      zoomIn: "Acercar",
-      zoomOut: "Alejar",
     },
   },
 } satisfies Record<Lang, unknown>;

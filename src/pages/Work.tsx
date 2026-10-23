@@ -18,6 +18,10 @@ export default function Work() {
   const paragraphs = pick(project.paragraphs, lang);
   const sections = pick(project.sections, lang);
   const linkLabel = pick(project.link?.label, lang);
+  const gallery =
+    project.images.length > 0 ? (
+      <Gallery key={project.slug} images={project.images} name={project.name} layout={project.galleryLayout} />
+    ) : null;
   const hasCaseStudy = Boolean(paragraphs?.length || sections?.length);
 
   return (
@@ -44,6 +48,8 @@ export default function Work() {
         </dl>
       )}
 
+      {project.galleryPosition === "top" && gallery}
+
       {sections?.map((section) => (
         <section key={section.heading} className="work-section">
           <h2 className="work-heading">{section.heading}</h2>
@@ -63,9 +69,8 @@ export default function Work() {
         </a>
       )}
 
-      {project.images.length > 0 && (
-        <Gallery key={project.slug} images={project.images} name={project.name} layout={project.galleryLayout} />
-      )}
+
+      {project.galleryPosition !== "top" && gallery}
     </Shell>
   );
 }

@@ -328,18 +328,6 @@ export default function Lightbox({
           {images.length > 1 ? `${index + 1} / ${images.length}` : ""}
         </p>
         <div className="lb-actions">
-          <button type="button" className="lb-text-btn" aria-label={t.zoomOut} disabled={!zoomed} onClick={() => stepZoom(1 / 1.5)}>
-            [&nbsp;&minus;&nbsp;]
-          </button>
-          <button
-            type="button"
-            className="lb-text-btn"
-            aria-label={t.zoomIn}
-            disabled={view.scale >= MAX_SCALE}
-            onClick={() => stepZoom(1.5)}
-          >
-            [&nbsp;+&nbsp;]
-          </button>
           <button type="button" className="lb-text-btn" onClick={onClose}>
             {t.close}
           </button>

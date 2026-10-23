@@ -1,5 +1,9 @@
-.work-content {
-  max-width: 920px;
+.work-content > * {
+  max-width: 840px;
+}
+
+.work-content > .gallery-strip {
+  max-width: none;
 }
 
 .work-name {
@@ -119,7 +123,7 @@
 }
 
 .gallery-strip {
-  margin-top: 56px;
+  margin-top: 48px;
 }
 
 .gallery-strip-track {
@@ -217,5 +221,19 @@
 
   .gallery-strip-item {
     flex-basis: 82%;
+  }
+}
+
+@media (min-width: 961px) {
+  .gallery-strip {
+    margin-right: -40px;
+  }
+
+  .gallery-strip-track {
+    padding-right: 40px;
+  }
+
+  .gallery-strip-bar {
+    padding-right: 40px;
   }
 }
