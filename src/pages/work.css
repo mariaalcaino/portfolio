@@ -9,7 +9,9 @@
 .work-name {
   font-size: 18px;
   font-weight: 500;
+  line-height: 21px;
   margin: 0;
+  padding-bottom: 4px;
 }
 
 .work-meta {
