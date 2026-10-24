@@ -462,7 +462,7 @@ const allProjects: Project[] = [
       ],
     },
     links: [{ label: { en: "zhagra.com", es: "zhagra.com" }, href: "https://zhagra.com/" }],
-    images: ["/works/zhagra-1.mp4", "/works/zhagra-2.webp", "/works/zhagra-3.webp"],
+    images: ["/works/zhagra-1.mp4", "/works/zhagra-2.webp", "/works/zhagra-4.mp4", "/works/zhagra-3.webp"],
   },
   {
     slug: "josefinaconlledo",
