@@ -341,7 +341,7 @@ const allProjects: Project[] = [
       label: { en: "Visit the passport ↗", es: "Visitar el pasaporte ↗" },
       href: "https://cocacola.zoonloyalty.io/",
     }],
-    images: ["/works/cocacola-1.mp4"],
+    images: ["/works/cocacola-1.mp4", "/works/cocacola-2.mp4"],
   },
   {
     slug: "lifeindots",
