@@ -199,7 +199,8 @@ const allProjects: Project[] = [
       ],
     },
     links: [{ label: { en: "www.bagoost.com", es: "www.bagoost.com" }, href: "https://www.bagoost.com" }],
-    images: ["/works/bagoost-1.png", "/works/bagoost-2.png", "/works/bagoost-3.png", "/works/bagoost-4.png"],
+    preview: { type: "image", src: "/works/bagoost-1.png" },
+    images: ["/works/bagoost-5.mp4", "/works/bagoost-6.mp4", "/works/bagoost-1.png", "/works/bagoost-2.png", "/works/bagoost-3.png", "/works/bagoost-4.png"],
   },
   {
     slug: "zoon",
