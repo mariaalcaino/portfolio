@@ -179,6 +179,8 @@ const allProjects: Project[] = [
   {
     slug: "bagoost",
     name: "Bagoost",
+    galleryLayout: "strip",
+    galleryPosition: "top",
     listCategory: { en: "B2B marketplace", es: "Marketplace B2B" },
     listYears: "2021 · 2022",
     detailMeta: { en: "B2B Marketplace / 2021-2022", es: "Marketplace B2B / 2021-2022" },
@@ -199,8 +201,7 @@ const allProjects: Project[] = [
       ],
     },
     links: [{ label: { en: "www.bagoost.com", es: "www.bagoost.com" }, href: "https://www.bagoost.com" }],
-    preview: { type: "image", src: "/works/bagoost-1.png" },
-    images: ["/works/bagoost-5.mp4", "/works/bagoost-6.mp4", "/works/bagoost-1.png", "/works/bagoost-2.png", "/works/bagoost-3.png", "/works/bagoost-4.png"],
+    images: ["/works/bagoost-5.mp4", "/works/bagoost-6.mp4"],
   },
   {
     slug: "zoon",
