@@ -22,11 +22,25 @@ export default function Work() {
       <Gallery key={project.slug} images={project.images} name={project.name} layout={project.galleryLayout} />
     ) : null;
   const hasCaseStudy = Boolean(paragraphs?.length || sections?.length);
+  const factsOnTop = project.factsPosition === "top";
+  const facts =
+    project.facts && project.facts.length > 0 ? (
+      <dl className={factsOnTop ? "work-facts work-facts--top" : "work-facts"}>
+        {project.facts.map((fact) => (
+          <div key={fact.label.en} className="work-fact">
+            <dt>{fact.label[lang]}</dt>
+            <dd>{fact.value[lang]}</dd>
+          </div>
+        ))}
+      </dl>
+    ) : null;
 
   return (
     <Shell mainClassName="work-content">
       <h1 className="work-name">{project.title ?? project.name}</h1>
       {detailMeta && <p className="work-meta">{detailMeta}</p>}
+
+      {factsOnTop && facts}
 
       {paragraphs && paragraphs.length > 0 && (
         <div className="work-body">
@@ -36,16 +50,7 @@ export default function Work() {
         </div>
       )}
 
-      {project.facts && project.facts.length > 0 && (
-        <dl className="work-facts">
-          {project.facts.map((fact) => (
-            <div key={fact.label.en} className="work-fact">
-              <dt>{fact.label[lang]}</dt>
-              <dd>{fact.value[lang]}</dd>
-            </div>
-          ))}
-        </dl>
-      )}
+      {!factsOnTop && facts}
 
       {project.galleryPosition === "top" && gallery}
 

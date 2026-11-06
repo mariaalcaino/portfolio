@@ -34,6 +34,15 @@
   letter-spacing: -0.26px;
 }
 
+/* facts right under the title: the subtitle above already leaves the gap, the text below needs its own */
+.work-facts--top {
+  margin-top: 0;
+}
+
+.work-facts--top + .work-body {
+  margin-top: 28px;
+}
+
 .work-fact {
   display: grid;
   grid-template-columns: 96px minmax(0, 1fr);

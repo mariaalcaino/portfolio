@@ -23,6 +23,8 @@ export type Project = {
   paragraphs?: Localized<string[]>;
   /** Short label/value pairs (role, platform…) shown between the intro and the sections. */
   facts?: Fact[];
+  /** "top" shows the facts right under the title; by default they follow the intro paragraphs. */
+  factsPosition?: "top";
   /** Longer case studies: titled sections shown after the intro and facts. */
   sections?: Localized<Section[]>;
   links?: ProjectLink[];
@@ -181,26 +183,37 @@ const allProjects: Project[] = [
     name: "Bagoost",
     galleryLayout: "strip",
     galleryPosition: "top",
-    listCategory: { en: "B2B marketplace", es: "Marketplace B2B" },
+    listCategory: { en: "B2B Wholesale Marketplace", es: "Marketplace mayorista B2B" },
     listYears: "2021 · 2022",
-    detailMeta: { en: "B2B Marketplace / 2021-2022", es: "Marketplace B2B / 2021-2022" },
+    detailMeta: { en: "B2B Wholesale Marketplace", es: "Marketplace mayorista B2B" },
     paragraphs: {
       en: [
-        "I joined Bagoost at its founding stage as part of the design team. During my time there, we shaped the brand identity from scratch and designed the core product experience for a marketplace built around wholesale commerce.",
-        "One of the main UX challenges was making a complex purchasing system feel simple for store owners. Each brand had different wholesale rules, minimum order quantities, volume discounts and promotional logic. My role was to translate that complexity into clear flows that helped stores discover, compare and buy products with less friction.",
-        "I also designed key parts of the platform, including the store dashboard, referral program, mobile experience and Bagoost Points, a physical retail concept installed in partner stores across Chile.",
-        "Research played an important role throughout the process. I spent time in the field visiting local stores and speaking with store owners and brands to understand their pain points, workflows and decision-making habits, then brought those insights back into the product.",
-        "By the time I left, Bagoost had reached 80+ brands, 1,400+ products and 400+ stores nationwide. The startup was also selected by Corfo among Chile's top 50 food innovations of 2022.",
+        "I joined Bagoost at its founding stage as part of the design team, helping build a B2B marketplace connecting local stores with independent brands. My work included creating the brand identity and designing the core product experience from the ground up.",
+        "The main UX challenge was translating complex wholesale purchasing rules into clear, usable experiences. Each brand had different minimum order quantities, volume discounts and promotions. I worked on flows that helped store owners discover products, understand purchasing requirements and place orders.",
+        "To inform these decisions, I visited local stores and spoke with store owners and brands about their workflows, pain points and purchasing habits. I translated those insights into information architecture, user flows and responsive interfaces that addressed both user needs and business requirements.",
+        "My work also covered the store dashboard, referral program, mobile experience and Bagoost Points, a physical retail concept introduced in partner stores across Chile.",
+        "By the time I left, Bagoost had grown to 80+ brands, 1,400+ products and 400+ stores nationwide. In 2022, the startup was also selected by Corfo among Chile’s top 50 food innovations.",
       ],
       es: [
-        "Me uní a Bagoost en su etapa fundacional como parte del equipo de diseño. Durante ese tiempo, construimos la identidad de marca desde cero y diseñamos la experiencia central de un marketplace pensado para el comercio mayorista.",
-        "Uno de los principales desafíos de UX fue hacer que un sistema de compra complejo se sintiera simple para los dueños de tienda. Cada marca tenía reglas mayoristas distintas, cantidades mínimas de compra, descuentos por volumen y lógicas promocionales propias. Mi rol fue traducir esa complejidad en flujos claros que ayudaran a las tiendas a descubrir, comparar y comprar productos con menos fricción.",
-        "También diseñé partes clave de la plataforma, incluyendo el dashboard de tiendas, el programa de referidos, la experiencia mobile y Bagoost Points, un concepto de retail físico instalado en tiendas asociadas de todo Chile.",
-        "La investigación jugó un rol importante durante todo el proceso. Pasé tiempo en terreno visitando tiendas locales y conversando con dueños y marcas para entender sus dolores, flujos de trabajo y forma de tomar decisiones, para luego traer esos aprendizajes de vuelta al producto.",
-        "Cuando me fui, Bagoost ya había alcanzado más de 80 marcas, más de 1.400 productos y más de 400 tiendas a nivel nacional. La startup también fue seleccionada por Corfo entre las 50 innovaciones alimentarias más destacadas de Chile en 2022.",
+        "Me uní a Bagoost en su etapa fundacional como parte del equipo de diseño, ayudando a construir un marketplace B2B que conecta tiendas locales con marcas independientes. Mi trabajo incluyó crear la identidad de marca y diseñar desde cero la experiencia central del producto.",
+        "El principal desafío de UX fue traducir reglas complejas de compra mayorista en experiencias claras y fáciles de usar. Cada marca tenía cantidades mínimas de pedido, descuentos por volumen y promociones distintas. Trabajé en flujos que ayudaban a los dueños de tienda a descubrir productos, entender los requisitos de compra y hacer pedidos.",
+        "Para fundamentar estas decisiones, visité tiendas locales y conversé con dueños de tiendas y marcas sobre sus flujos de trabajo, sus dolores y sus hábitos de compra. Traduje esos aprendizajes en arquitectura de información, flujos de usuario e interfaces responsivas que respondían tanto a las necesidades de los usuarios como a los requisitos del negocio.",
+        "Mi trabajo también abarcó el dashboard de tiendas, el programa de referidos, la experiencia mobile y Bagoost Points, un concepto de retail físico introducido en tiendas asociadas de todo Chile.",
+        "Cuando me fui, Bagoost había crecido hasta más de 80 marcas, más de 1.400 productos y más de 400 tiendas a nivel nacional. En 2022, la startup también fue seleccionada por Corfo entre las 50 innovaciones alimentarias más destacadas de Chile.",
       ],
     },
-    links: [{ label: { en: "www.bagoost.com", es: "www.bagoost.com" }, href: "https://www.bagoost.com" }],
+    facts: [
+      {
+        label: { en: "Role", es: "Rol" },
+        value: { en: "Product Designer", es: "Diseñadora de producto" },
+      },
+      {
+        label: { en: "Year", es: "Año" },
+        value: { en: "2021-2022", es: "2021-2022" },
+      },
+    ],
+    factsPosition: "top",
+    links: [{ label: { en: "www.bagoost.com ↗", es: "www.bagoost.com ↗" }, href: "https://www.bagoost.com" }],
     images: ["/works/bagoost-5.mp4", "/works/bagoost-7.mp4", "/works/bagoost-8.mp4"],
   },
   {

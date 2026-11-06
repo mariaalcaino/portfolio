@@ -66,6 +66,8 @@ export const strings = {
       close: "[ Close ]",
       prev: "Previous image",
       next: "Next image",
+      pauseVideo: "Pause video",
+      playVideo: "Play video",
     },
   },
   es: {
@@ -133,6 +135,8 @@ export const strings = {
       close: "[ Cerrar ]",
       prev: "Imagen anterior",
       next: "Imagen siguiente",
+      pauseVideo: "Pausar video",
+      playVideo: "Reproducir video",
     },
   },
 } satisfies Record<Lang, unknown>;

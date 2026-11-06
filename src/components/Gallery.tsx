@@ -1,22 +1,107 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
 import { isVideo, posterOf } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
 import Lightbox from "./Lightbox";
+import "./Gallery.css";
 
-function Media({ src }: { src: string }) {
+function Media({
+  src,
+  videoRef,
+  onPlay,
+}: {
+  src: string;
+  videoRef: RefObject<HTMLVideoElement | null>;
+  onPlay: () => void;
+}) {
   if (!isVideo(src)) return <img src={src} alt="" loading="lazy" />;
+  // No autoPlay: GalleryItem starts the video once it is on screen (and pauses it again when it leaves).
+  return <video ref={videoRef} src={src} poster={posterOf(src)} muted loop playsInline preload="auto" onPlay={onPlay} />;
+}
+
+/** One gallery cell: the button that opens the lightbox and, for videos, a small pause/play toggle at the bottom right. */
+function GalleryItem({
+  src,
+  className,
+  label,
+  pauseLabel,
+  playLabel,
+  onOpen,
+}: {
+  src: string;
+  className: string;
+  label: string;
+  pauseLabel: string;
+  playLabel: string;
+  onOpen: () => void;
+}) {
+  const cellRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [paused, setPaused] = useState(false);
+  const pausedByUser = useRef(false);
+
+  // A video plays only while at least half of its cell is on screen (this also accounts for the strip's own
+  // horizontal scroll). Leaving the screen pauses it; coming back resumes it unless it was paused with the button.
+  useEffect(() => {
+    const cell = cellRef.current;
+    const video = videoRef.current;
+    if (!cell || !video) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          video.pause();
+        } else if (!pausedByUser.current) {
+          // Only a refused autoplay (e.g. iOS low-power mode) should show the play icon; an AbortError just means
+          // the video left the screen while it was starting.
+          video.play().catch((error: DOMException) => {
+            if (error.name === "NotAllowedError") setPaused(true);
+          });
+        }
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(cell);
+    return () => observer.disconnect();
+  }, [src]);
+
+  const toggle = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      pausedByUser.current = false;
+      video.play().catch(() => {});
+    } else {
+      pausedByUser.current = true;
+      video.pause();
+      setPaused(true);
+    }
+  };
+
   return (
-    <video
-      src={src}
-      poster={posterOf(src)}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      onLoadedData={(e) => e.currentTarget.play().catch(() => {})}
-    />
+    <div ref={cellRef} className={className}>
+      <button type="button" className="gallery-open" aria-label={label} onClick={onOpen}>
+        <Media src={src} videoRef={videoRef} onPlay={() => setPaused(false)} />
+      </button>
+      {isVideo(src) && (
+        <button
+          type="button"
+          className="gallery-pause"
+          aria-label={paused ? playLabel : pauseLabel}
+          onClick={toggle}
+        >
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="#fff" aria-hidden="true">
+            {paused ? (
+              <path d="M12 9.5 23 16 12 22.5Z" stroke="#fff" strokeWidth="2" strokeLinejoin="round" />
+            ) : (
+              <>
+                <rect x="10" y="9" width="4" height="14" rx="1" />
+                <rect x="18" y="9" width="4" height="14" rx="1" />
+              </>
+            )}
+          </svg>
+        </button>
+      )}
+    </div>
   );
 }
 
@@ -80,15 +165,15 @@ export default function Gallery({
         <div className="gallery-strip" role="region" aria-label={t.dialog}>
           <div className="gallery-strip-track" ref={trackRef} onScroll={sync}>
             {images.map((src, i) => (
-              <button
+              <GalleryItem
                 key={src}
-                type="button"
+                src={src}
                 className="gallery-strip-item"
-                aria-label={label(i)}
-                onClick={() => setOpenIndex(i)}
-              >
-                <Media src={src} />
-              </button>
+                label={label(i)}
+                pauseLabel={t.pauseVideo}
+                playLabel={t.playVideo}
+                onOpen={() => setOpenIndex(i)}
+              />
             ))}
           </div>
 
@@ -109,15 +194,15 @@ export default function Gallery({
       ) : (
         <div className="work-gallery">
           {images.map((src, i) => (
-            <button
+            <GalleryItem
               key={src}
-              type="button"
+              src={src}
               className="work-gallery-item"
-              aria-label={label(i)}
-              onClick={() => setOpenIndex(i)}
-            >
-              <Media src={src} />
-            </button>
+              label={label(i)}
+              pauseLabel={t.pauseVideo}
+              playLabel={t.playVideo}
+              onOpen={() => setOpenIndex(i)}
+            />
           ))}
         </div>
       )}
