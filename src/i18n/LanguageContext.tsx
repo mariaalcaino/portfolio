@@ -4,15 +4,14 @@ export type Lang = "en" | "es";
 
 const STORAGE_KEY = "lang";
 
-function detectLang(): Lang {
+// English by default, whatever the browser's language is: Spanish only after the visitor picks it with the switch.
+function initialLang(): Lang {
   if (typeof window === "undefined") return "en";
-
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === "en" || stored === "es") return stored;
-
-  const candidates = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
-  const isSpanish = candidates.some((locale) => locale?.toLowerCase().startsWith("es"));
-  return isSpanish ? "es" : "en";
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === "es" ? "es" : "en";
+  } catch {
+    return "en";
+  }
 }
 
 type LanguageContextValue = {
@@ -23,7 +22,7 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(detectLang);
+  const [lang, setLangState] = useState<Lang>(initialLang);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -31,7 +30,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const setLang = (next: Lang) => {
     setLangState(next);
-    window.localStorage.setItem(STORAGE_KEY, next);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      // storage unavailable (private mode…): the choice just lasts until the page is closed
+    }
   };
 
   const value = useMemo(() => ({ lang, setLang }), [lang]);

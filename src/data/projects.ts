@@ -52,7 +52,6 @@ const allProjects: Project[] = [
   {
     slug: "tandie",
     name: "Tandie",
-    preview: { type: "image", src: "/works/tandie-1.jpg" },
     galleryLayout: "strip",
     listCategory: { en: "Wedding Planning SaaS", es: "SaaS de planificación de matrimonios" },
     detailMeta: { en: "Wedding Planning SaaS", es: "SaaS de planificación de matrimonios" },
