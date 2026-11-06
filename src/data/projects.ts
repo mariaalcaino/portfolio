@@ -248,7 +248,7 @@ const allProjects: Project[] = [
       label: { en: "sunset.mariaalcaino.com ↗", es: "sunset.mariaalcaino.com ↗" },
       href: "https://sunset.mariaalcaino.com",
     }],
-    images: ["/works/sunset-1.png", "/works/sunset-2.png", "/works/sunset-3.png"],
+    images: ["/works/sunset-4.png", "/works/sunset-1.png", "/works/sunset-2.png", "/works/sunset-3.png"],
   },
   {
     slug: "zhagra",
