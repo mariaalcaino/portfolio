@@ -9,14 +9,28 @@ function Media({
   src,
   videoRef,
   onPlay,
+  onPause,
 }: {
   src: string;
   videoRef: RefObject<HTMLVideoElement | null>;
   onPlay: () => void;
+  onPause: () => void;
 }) {
   if (!isVideo(src)) return <img src={src} alt="" loading="lazy" />;
   // No autoPlay: GalleryItem starts the video once it is on screen (and pauses it again when it leaves).
-  return <video ref={videoRef} src={src} poster={posterOf(src)} muted loop playsInline preload="auto" onPlay={onPlay} />;
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      poster={posterOf(src)}
+      muted
+      loop
+      playsInline
+      preload="auto"
+      onPlay={onPlay}
+      onPause={onPause}
+    />
+  );
 }
 
 /** One gallery cell: the button that opens the lightbox and, for videos, a small pause/play toggle at the bottom right. */
@@ -37,7 +51,9 @@ function GalleryItem({
 }) {
   const cellRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [paused, setPaused] = useState(false);
+  // Follows the real state of the video (its play/pause events), so the icon is right whether the visitor paused it,
+  // the observer paused it, or the browser refused to start it.
+  const [paused, setPaused] = useState(true);
   const pausedByUser = useRef(false);
 
   // A video plays only while at least half of its cell is on screen (this also accounts for the strip's own
@@ -51,11 +67,7 @@ function GalleryItem({
         if (!entry.isIntersecting) {
           video.pause();
         } else if (!pausedByUser.current) {
-          // Only a refused autoplay (e.g. iOS low-power mode) should show the play icon; an AbortError just means
-          // the video left the screen while it was starting.
-          video.play().catch((error: DOMException) => {
-            if (error.name === "NotAllowedError") setPaused(true);
-          });
+          video.play().catch(() => {}); // refused (e.g. iOS low-power mode) or interrupted: it simply stays paused
         }
       },
       { threshold: 0.5 },
@@ -73,14 +85,13 @@ function GalleryItem({
     } else {
       pausedByUser.current = true;
       video.pause();
-      setPaused(true);
     }
   };
 
   return (
     <div ref={cellRef} className={className}>
       <button type="button" className="gallery-open" aria-label={label} onClick={onOpen}>
-        <Media src={src} videoRef={videoRef} onPlay={() => setPaused(false)} />
+        <Media src={src} videoRef={videoRef} onPlay={() => setPaused(false)} onPause={() => setPaused(true)} />
       </button>
       {isVideo(src) && (
         <button
