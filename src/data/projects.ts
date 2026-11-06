@@ -247,13 +247,24 @@ const allProjects: Project[] = [
     title: "Coca-Cola / Pasaporte Barrio Italia",
     galleryLayout: "strip",
     galleryPosition: "top",
-    listCategory: { en: "Campaign", es: "Campaña" },
+    listCategory: { en: "Loyalty Experience", es: "Experiencia de fidelización" },
+    detailMeta: { en: "Loyalty Experience", es: "Experiencia de fidelización" },
     paragraphs: {
       en: [
-        "Pasaporte Barrio Italia is a digital rewards experience for Coca-Cola Andina, connecting visits to local restaurants with stamps and benefits. I designed the campaign’s mobile web experience, digital wallet pass and performance reporting.",
+        "Pasaporte Barrio Italia is a digital loyalty experience for Coca-Cola Andina, designed to encourage people to discover local restaurants and return through rewards. Participants scan a QR code, save a passport to their phone’s digital wallet and collect stamps during their visits to unlock benefits.",
+        "I designed the campaign’s mobile web experience, the visual presentation of the wallet pass and reporting templates for the brand and participating restaurants.",
+        "The main UX challenge was connecting restaurant discovery, reward information and passport access into a clear experience that people could use while exploring the neighborhood. I organized the 16 participating venues into consistent restaurant cards, supported by a neighborhood map, to help visitors find locations and understand the benefits available at each stop.",
+        "Using the typography and color palette provided by Coca-Cola, I defined the website’s layouts, visual hierarchy and components. I also adapted the campaign’s visual language to the compact wallet format, keeping the passport accessible throughout the experience.",
+        "For the reporting templates, I focused on information hierarchy and data visualization to make campaign activity readable at both the overall and individual restaurant level.",
+        "Within its first six weeks, the campaign reached more than 2,000 users. According to The Clinic Lab’s campaign coverage, 16% of reported revenue came from consumers who returned to use the system.",
       ],
       es: [
-        "Pasaporte Barrio Italia es una experiencia digital de recompensas para Coca-Cola Andina, que conecta las visitas a restaurantes locales con sellos y beneficios. Diseñé la experiencia web mobile de la campaña, el pase para la billetera digital y los reportes de desempeño.",
+        "Pasaporte Barrio Italia es una experiencia digital de fidelización para Coca-Cola Andina, diseñada para incentivar a las personas a descubrir restaurantes locales y volver gracias a las recompensas. Los participantes escanean un código QR, guardan un pasaporte en la billetera digital de su teléfono y juntan sellos durante sus visitas para desbloquear beneficios.",
+        "Diseñé la experiencia web mobile de la campaña, la presentación visual del pase de la billetera y las plantillas de reportes para la marca y los restaurantes participantes.",
+        "El principal desafío de UX fue conectar el descubrimiento de restaurantes, la información de recompensas y el acceso al pasaporte en una experiencia clara que las personas pudieran usar mientras recorren el barrio. Organicé los 16 locales participantes en tarjetas de restaurante consistentes, apoyadas por un mapa del barrio, para ayudar a los visitantes a encontrar los lugares y entender los beneficios disponibles en cada parada.",
+        "Usando la tipografía y la paleta de colores entregadas por Coca-Cola, definí las composiciones, la jerarquía visual y los componentes del sitio. También adapté el lenguaje visual de la campaña al formato compacto de la billetera, manteniendo el pasaporte accesible a lo largo de toda la experiencia.",
+        "En las plantillas de reportes me enfoqué en la jerarquía de información y la visualización de datos para que la actividad de la campaña fuera legible tanto a nivel general como de cada restaurante.",
+        "En sus primeras seis semanas, la campaña alcanzó a más de 2.000 usuarios. Según la cobertura de la campaña de The Clinic Lab, el 16% de los ingresos reportados provino de consumidores que volvieron a usar el sistema.",
       ],
     },
     facts: [
@@ -266,88 +277,7 @@ const allProjects: Project[] = [
         value: { en: "2026", es: "2026" },
       },
     ],
-    sections: {
-      en: [
-        {
-          heading: "The challenge",
-          paragraphs: [
-            "Connect the experience of discovering restaurants, collecting stamps and accessing rewards across physical venues and digital touchpoints. The project also required reporting to help Coca-Cola and participating restaurants follow campaign activity.",
-          ],
-        },
-        {
-          heading: "Exploring the neighborhood",
-          paragraphs: [
-            "I designed a mobile-first landing page featuring 16 participating restaurants and their rewards. A neighborhood map and restaurant cards help visitors locate venues and explore what each one offers.",
-            "Consistent information across the cards makes the options easier to browse while moving through the neighborhood.",
-          ],
-        },
-        {
-          heading: "Taking the passport into the wallet",
-          paragraphs: [
-            "Participants scan a campaign QR code and save the passport to their phone’s digital wallet. Visits earn digital stamps that unlock rewards at participating venues.",
-            "I designed the visual presentation of the wallet pass, adapting the campaign experience to a compact format that participants could keep accessible throughout their visits.",
-          ],
-        },
-        {
-          heading: "Working with Coca-Cola’s visual identity",
-          paragraphs: [
-            "Coca-Cola provided the typography and color palette for the website. I applied these assets to the landing page, defining its layouts, visual hierarchy and components within the supplied identity.",
-          ],
-        },
-        {
-          heading: "Making campaign activity readable",
-          paragraphs: [
-            "I designed reporting templates for the brand and participating restaurants. Clear information hierarchy and data visualization support both an overview of campaign performance and a closer look at individual venues.",
-          ],
-        },
-        {
-          heading: "Campaign results",
-          paragraphs: [
-            "Within its first six weeks, the campaign reached more than 2,000 users across 16 participating restaurants and bars. According to coverage published by The Clinic Lab, 16% of reported revenue came from consumers who returned to use the system.",
-          ],
-        },
-      ],
-      es: [
-        {
-          heading: "El desafío",
-          paragraphs: [
-            "Conectar la experiencia de descubrir restaurantes, juntar sellos y acceder a recompensas entre locales físicos y puntos de contacto digitales. El proyecto también requería reportes que ayudaran a Coca-Cola y a los restaurantes participantes a seguir la actividad de la campaña.",
-          ],
-        },
-        {
-          heading: "Explorando el barrio",
-          paragraphs: [
-            "Diseñé una landing page mobile-first con los 16 restaurantes participantes y sus recompensas. Un mapa del barrio y tarjetas de cada restaurante ayudan a ubicar los locales y a conocer lo que ofrece cada uno.",
-            "La información consistente entre las tarjetas facilita comparar las opciones mientras se recorre el barrio.",
-          ],
-        },
-        {
-          heading: "Llevando el pasaporte a la billetera",
-          paragraphs: [
-            "Las personas escanean un código QR de la campaña y guardan el pasaporte en la billetera digital de su teléfono. Las visitas suman sellos digitales que desbloquean recompensas en los locales participantes.",
-            "Diseñé la presentación visual del pase, adaptando la experiencia de la campaña a un formato compacto que los participantes pudieran tener a mano durante sus visitas.",
-          ],
-        },
-        {
-          heading: "Trabajando con la identidad visual de Coca-Cola",
-          paragraphs: [
-            "Coca-Cola entregó la tipografía y la paleta de colores del sitio. Apliqué estos recursos a la landing page, definiendo sus composiciones, jerarquía visual y componentes dentro de la identidad entregada.",
-          ],
-        },
-        {
-          heading: "Haciendo legible la actividad de la campaña",
-          paragraphs: [
-            "Diseñé plantillas de reportes para la marca y para los restaurantes participantes. Una jerarquía de información clara y la visualización de datos permiten tanto una mirada general del desempeño de la campaña como una más detallada de cada local.",
-          ],
-        },
-        {
-          heading: "Resultados de la campaña",
-          paragraphs: [
-            "En sus primeras seis semanas, la campaña alcanzó a más de 2.000 usuarios en 16 restaurantes y bares participantes. Según la cobertura publicada por The Clinic Lab, el 16% de los ingresos reportados provino de consumidores que volvieron a usar el sistema.",
-          ],
-        },
-      ],
-    },
+    factsPosition: "top",
     links: [{
       label: { en: "Read the campaign coverage ↗", es: "Leer la cobertura de la campaña ↗" },
       href: "https://www.theclinic.cl/2026/05/18/juntos-en-todas-coca-cola-andina-pasaporte-digital/",
