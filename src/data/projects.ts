@@ -266,13 +266,24 @@ const allProjects: Project[] = [
     slug: "zhagra",
     name: "Zhagra",
     galleryLayout: "strip",
-    listCategory: { en: "Website & infographics", es: "Sitio web e infografías" },
+    listCategory: { en: "Website", es: "Sitio web" },
+    detailMeta: { en: "Website", es: "Sitio web" },
     paragraphs: {
       en: [
-        "Zhagra is a startup applying artificial intelligence to agriculture. I designed its website and technical infographics, translating complex information into a clear and consistent visual experience.",
+        "[Zhagra](https://zhagra.com/) is an agricultural technology startup that uses AI and sensor data to support decisions about irrigation, nutrients and growing conditions. Its platform translates information from the farm into recommendations delivered through WhatsApp.",
+        "I designed the website and technical infographics, shaping how the company introduces its technology and communicates its application to agriculture.",
+        "The main design challenge was explaining the relationship between sensors, AI analysis and farming decisions. I focused on making those connections understandable and helping visitors recognize the practical value of the technology.",
+        "For the website, I organized the content around the product’s benefits, how it works and its use cases. Clear layouts and visual hierarchy guide visitors from an introduction to more detailed explanations of the system and the environments where it can be applied.",
+        "I also designed technical infographics showing how environmental data moves through the platform, from sensor inputs to analysis, actions and notifications. Combining diagrams with concise text made the relationships between these components easier to follow.",
+        "Across the website and infographics, I maintained a consistent visual language, using composition, hierarchy and supporting imagery to connect the technical explanation with the broader product story.",
       ],
       es: [
-        "Zhagra es una startup que aplica inteligencia artificial a la agricultura. Diseñé su sitio web y sus infografías técnicas, traduciendo información compleja en una experiencia visual clara y coherente.",
+        "[Zhagra](https://zhagra.com/) es una startup de tecnología agrícola que usa IA y datos de sensores para apoyar decisiones sobre riego, nutrientes y condiciones de cultivo. Su plataforma traduce la información de la granja en recomendaciones que se entregan por WhatsApp.",
+        "Diseñé el sitio web y las infografías técnicas, dando forma a cómo la empresa presenta su tecnología y comunica su aplicación en la agricultura.",
+        "El principal desafío de diseño fue explicar la relación entre los sensores, el análisis de IA y las decisiones de cultivo. Me enfoqué en hacer comprensibles esas conexiones y en ayudar a los visitantes a reconocer el valor práctico de la tecnología.",
+        "Para el sitio web, organicé el contenido en torno a los beneficios del producto, cómo funciona y sus casos de uso. Composiciones claras y una jerarquía visual definida guían a los visitantes desde una introducción hasta explicaciones más detalladas del sistema y de los entornos donde puede aplicarse.",
+        "También diseñé infografías técnicas que muestran cómo los datos ambientales se mueven por la plataforma, desde los sensores hasta el análisis, las acciones y las notificaciones. Combinar diagramas con textos concisos hizo que las relaciones entre estos componentes fueran más fáciles de seguir.",
+        "A lo largo del sitio web y las infografías mantuve un lenguaje visual consistente, usando composición, jerarquía e imágenes de apoyo para conectar la explicación técnica con la historia más amplia del producto.",
       ],
     },
     facts: [
@@ -285,48 +296,6 @@ const allProjects: Project[] = [
         value: { en: "2025", es: "2025" },
       },
     ],
-    sections: {
-      en: [
-        {
-          heading: "The challenge",
-          paragraphs: [
-            "Explain a technical product in a way that makes it approachable while preserving the detail needed to understand it.",
-          ],
-        },
-        {
-          heading: "Introducing the technology",
-          paragraphs: [
-            "I designed the website to introduce Zhagra’s platform, organizing technical content through clear layouts and visual hierarchy. The focus was on helping visitors understand the offering and its application to agriculture.",
-          ],
-        },
-        {
-          heading: "Making complexity visible",
-          paragraphs: [
-            "I designed technical infographics to support the explanation of the platform. By combining diagrams and concise text, I translated complex concepts into visual explanations that could be explored alongside the website’s content.",
-          ],
-        },
-      ],
-      es: [
-        {
-          heading: "El desafío",
-          paragraphs: [
-            "Explicar un producto técnico de manera que resulte accesible, sin perder el detalle necesario para entenderlo.",
-          ],
-        },
-        {
-          heading: "Presentando la tecnología",
-          paragraphs: [
-            "Diseñé el sitio web para presentar la plataforma de Zhagra, organizando el contenido técnico con composiciones claras y una jerarquía visual definida. El foco estuvo en ayudar a los visitantes a entender la oferta y su aplicación en la agricultura.",
-          ],
-        },
-        {
-          heading: "Haciendo visible la complejidad",
-          paragraphs: [
-            "Diseñé infografías técnicas para apoyar la explicación de la plataforma. Combinando diagramas y textos concisos, traduje conceptos complejos en explicaciones visuales que podían explorarse junto al contenido del sitio.",
-          ],
-        },
-      ],
-    },
     links: [{ label: { en: "zhagra.com ↗", es: "zhagra.com ↗" }, href: "https://zhagra.com/" }],
     images: ["/works/zhagra-1.mp4", "/works/zhagra-2.webp", "/works/zhagra-4.mp4", "/works/zhagra-3.webp"],
   },
