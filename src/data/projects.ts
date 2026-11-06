@@ -225,30 +225,42 @@ const allProjects: Project[] = [
   {
     slug: "sunsetpredictor",
     name: "Sunset Predictor",
-    listCategory: { en: "Data experiment", es: "Experimento de datos" },
+    listCategory: { en: "Data Visualization", es: "Visualización de datos" },
     listYears: "2026",
-    detailMeta: { en: "Data experiment / 2025", es: "Experimento de datos / 2025" },
+    detailMeta: { en: "Data Visualization", es: "Visualización de datos" },
     paragraphs: {
       en: [
-        "Light has physics, but it also has feeling. It scatters, diffuses and shifts through the atmosphere — shaped by humidity, cloud cover, air conditions and the position of the sun.",
-        "Sunset Predictor is a web experiment that uses atmospheric data to estimate the quality and color of the evening light. Instead of forecasting rain or temperature, it asks a quieter question: will the sky be worth watching today?",
-        "The system reads real-time weather variables and translates them into a color gradient rendered as a sphere of light. The result lives on a small monitor like a daily painting — sometimes golden, sometimes muted, sometimes dramatic, always connected to the sky outside.",
-        "I built it as a study of light, perception and attention. A way to turn environmental data into something emotional, observable and almost ritual.",
+        "Sunset Predictor is a web experiment that uses atmospheric data to estimate the color and character of the evening light. At its center is a simple question: will the sky be worth watching today?",
+        "I designed and built the project as an exploration of light, perception and attention. My work connected environmental data, visual interpretation and interface design, turning changing weather conditions into a sphere of light.",
+        "The main design challenge was deciding how to translate atmospheric variables into a visual experience. Cloud cover, humidity, air conditions and the position of the sun inform a color gradient that gives the forecast its expression: sometimes warm and golden, sometimes muted, sometimes more dramatic.",
+        "I made the sphere the focus of the interface, keeping the surrounding information minimal. Location provides context, while the option to explore other cities invites people to observe how the visualization changes across places.",
+        "Designed to live on a small monitor, the result becomes a daily, changing image connected to the sky outside. The project explores how data visualization can encourage curiosity and observation, giving environmental information an emotional and aesthetic presence.",
         "Inspired by the work of Olafur Eliasson and James Turrell.",
       ],
       es: [
-        "La luz tiene física, pero también tiene sensación. Se dispersa, se difumina y cambia a través de la atmósfera — moldeada por la humedad, la nubosidad, las condiciones del aire y la posición del sol.",
-        "Sunset Predictor es un experimento web que usa datos atmosféricos para estimar la calidad y el color de la luz del atardecer. En lugar de pronosticar lluvia o temperatura, plantea una pregunta más silenciosa: ¿valdrá la pena mirar el cielo hoy?",
-        "El sistema lee variables meteorológicas en tiempo real y las traduce en un degradado de color renderizado como una esfera de luz. El resultado vive en una pequeña pantalla como una pintura diaria — a veces dorada, a veces apagada, a veces dramática, siempre conectada al cielo de afuera.",
-        "Lo construí como un estudio de la luz, la percepción y la atención. Una forma de convertir datos ambientales en algo emocional, observable y casi ritual.",
+        "Sunset Predictor es un experimento web que usa datos atmosféricos para estimar el color y el carácter de la luz del atardecer. En su centro hay una pregunta simple: ¿valdrá la pena mirar el cielo hoy?",
+        "Diseñé y construí el proyecto como una exploración de la luz, la percepción y la atención. Mi trabajo conectó datos ambientales, interpretación visual y diseño de interfaz, convirtiendo las condiciones cambiantes del clima en una esfera de luz.",
+        "El principal desafío de diseño fue decidir cómo traducir variables atmosféricas en una experiencia visual. La nubosidad, la humedad, las condiciones del aire y la posición del sol dan forma a un degradado de color que le da expresión al pronóstico: a veces cálido y dorado, a veces apagado, a veces más dramático.",
+        "Hice de la esfera el foco de la interfaz, manteniendo mínima la información que la rodea. La ubicación aporta contexto, mientras que la opción de explorar otras ciudades invita a observar cómo cambia la visualización de un lugar a otro.",
+        "Pensado para vivir en una pantalla pequeña, el resultado se convierte en una imagen diaria y cambiante, conectada con el cielo de afuera. El proyecto explora cómo la visualización de datos puede fomentar la curiosidad y la observación, dándole a la información ambiental una presencia emocional y estética.",
         "Inspirado en el trabajo de Olafur Eliasson y James Turrell.",
       ],
     },
+    facts: [
+      {
+        label: { en: "Role", es: "Rol" },
+        value: { en: "Designer & Developer", es: "Diseñadora y desarrolladora" },
+      },
+      {
+        label: { en: "Year", es: "Año" },
+        value: { en: "2026", es: "2026" },
+      },
+    ],
     links: [{
       label: { en: "sunset.mariaalcaino.com ↗", es: "sunset.mariaalcaino.com ↗" },
       href: "https://sunset.mariaalcaino.com",
     }],
-    images: ["/works/sunset-4.png", "/works/sunset-1.png", "/works/sunset-2.png", "/works/sunset-3.png"],
+    images: ["/works/sunset-4.png"],
   },
   {
     slug: "zhagra",
