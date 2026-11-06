@@ -21,10 +21,8 @@ export type Project = {
   listYears?: string;
   detailMeta?: Localized<string>;
   paragraphs?: Localized<string[]>;
-  /** Short label/value pairs (role, platform…) shown between the intro and the sections. */
+  /** Short label/value pairs (role, year…) shown right under the title, before the mockups. */
   facts?: Fact[];
-  /** "top" shows the facts right under the title; by default they follow the intro paragraphs. */
-  factsPosition?: "top";
   /** Longer case studies: titled sections shown after the intro and facts. */
   sections?: Localized<Section[]>;
   links?: ProjectLink[];
@@ -32,8 +30,6 @@ export type Project = {
   images: string[];
   /** "stack" lists every item full width (default); "strip" is a horizontal scroll gallery. */
   galleryLayout?: "stack" | "strip";
-  /** "top" puts the gallery right after the intro and facts; default is at the end of the page. */
-  galleryPosition?: "top" | "end";
   /** Cover on the Home grid. Defaults to the first gallery image when omitted. */
   preview?: PreviewMedia;
 };
@@ -58,131 +54,49 @@ const allProjects: Project[] = [
     name: "Tandie",
     preview: { type: "image", src: "/works/tandie-1.jpg" },
     galleryLayout: "strip",
-    galleryPosition: "top",
-    listCategory: { en: "Web application", es: "Aplicación web" },
+    listCategory: { en: "Wedding Planning SaaS", es: "SaaS de planificación de matrimonios" },
+    detailMeta: { en: "Wedding Planning SaaS", es: "SaaS de planificación de matrimonios" },
     paragraphs: {
       en: [
-        "Tandie brings invitations, guests, seating, tasks and budgets into one planning experience. I co-founded the product and led its definition and design, from the initial structure to the detailed interactions.",
+        "[Tandie](https://www.tandie.app) brings invitations, guest management, seating, tasks and budgets into one planning experience for couples and professional wedding planners. I co-founded the product and led its definition and design, working alongside my technical co-founder to take it from an initial idea to a working platform.",
+        "The main UX challenge was organizing decisions that depend on one another. Guest confirmations influence seating arrangements, budgets shape supplier choices, and tasks require coordination between several people. I defined the information architecture and core workflows to connect these activities while keeping each tool focused on the decision at hand.",
+        "One key decision was to make the invitation part of the planning workflow. I designed an RSVP experience that collects attendance, accompanying guests and dietary requirements, connecting what guests submit with the information couples and planners need to organize the event.",
+        "Across the planning tools, I designed interactions suited to different tasks: dragging guests into seating arrangements, organizing checklists by category and priority, and tracking expenses and payments in a dedicated budget view.",
+        "The product also needed to accommodate two contexts: couples planning their own wedding and professionals managing several events. I designed collaboration within each wedding and an overview that allows planners to move between their clients’ events.",
+        "My work also included creating Tandie’s visual identity and design system, establishing a consistent language across invitations and planning tools, and contributing to implementation. The product has progressed into beta testing with early users, providing a foundation for evaluating and refining the connected workflows.",
       ],
       es: [
-        "Tandie reúne invitaciones, invitados, distribución de mesas, tareas y presupuestos en una sola experiencia de planificación. Co-fundé el producto y lideré su definición y diseño, desde la estructura inicial hasta las interacciones de detalle.",
+        "[Tandie](https://www.tandie.app) reúne invitaciones, gestión de invitados, distribución de mesas, tareas y presupuestos en una sola experiencia de planificación para parejas y wedding planners profesionales. Co-fundé el producto y lideré su definición y diseño, trabajando junto a mi cofundador técnico para llevarlo desde una idea inicial hasta una plataforma funcional.",
+        "El principal desafío de UX fue organizar decisiones que dependen unas de otras. Las confirmaciones de los invitados afectan la distribución de las mesas, los presupuestos condicionan la elección de proveedores y las tareas requieren coordinación entre varias personas. Definí la arquitectura de información y los flujos centrales para conectar estas actividades, manteniendo cada herramienta enfocada en la decisión que se debe tomar.",
+        "Una decisión clave fue hacer que la invitación formara parte del flujo de planificación. Diseñé una experiencia de confirmación de asistencia (RSVP) que recoge la asistencia, los acompañantes y los requerimientos alimentarios, conectando lo que envían los invitados con la información que las parejas y los planners necesitan para organizar el evento.",
+        "En las distintas herramientas de planificación diseñé interacciones pensadas para cada tarea: arrastrar invitados a las mesas, organizar listas de pendientes por categoría y prioridad, y hacer seguimiento de gastos y pagos en una vista de presupuesto dedicada.",
+        "El producto también debía acomodar dos contextos: parejas que planifican su propio matrimonio y profesionales que gestionan varios eventos. Diseñé la colaboración dentro de cada matrimonio y una vista general que permite a los planners moverse entre los eventos de sus clientes.",
+        "Mi trabajo también incluyó crear la identidad visual y el sistema de diseño de Tandie, estableciendo un lenguaje consistente entre las invitaciones y las herramientas de planificación, y contribuyendo a la implementación. El producto ha avanzado a una etapa de beta con usuarios tempranos, lo que ofrece una base para evaluar y refinar los flujos conectados.",
       ],
     },
     facts: [
       {
         label: { en: "Role", es: "Rol" },
-        value: {
-          en: "Co-founder · Designer & Developer",
-          es: "Cofundadora · Diseñadora y desarrolladora",
-        },
+        value: { en: "Product Designer & Developer", es: "Diseñadora de producto y desarrolladora" },
       },
       {
         label: { en: "Year", es: "Año" },
         value: { en: "2026", es: "2026" },
       },
     ],
-    sections: {
-      en: [
-        {
-          heading: "The challenge",
-          paragraphs: [
-            "Planning a wedding involves decisions that depend on one another. Guest confirmations affect seating, budgets shape supplier choices, and tasks need coordination between several people.",
-            "The challenge was to bring these activities together in a product that couples could navigate easily and wedding planners could use across multiple events.",
-          ],
-        },
-        {
-          heading: "My contribution",
-          paragraphs: [
-            "I led product definition, information architecture, interaction design, the design system and visual identity. Working alongside my technical co-founder, I translated planning needs into product requirements and supported the experience through implementation.",
-            "The work involved defining how the different parts of the product should fit together, as well as designing each individual flow.",
-          ],
-        },
-        {
-          heading: "Connecting invitations with planning",
-          paragraphs: [
-            "The invitation is also a way to collect information. I designed an RSVP flow that captures attendance, accompanying guests and dietary requirements, connecting the guest-facing experience with the information needed to organize the wedding.",
-            "The aim was to make responding straightforward for guests and keep their answers useful for the people planning the event.",
-          ],
-        },
-        {
-          heading: "Making complex decisions easier to manage",
-          paragraphs: [
-            "I designed different interactions around the task at hand: dragging guests into seating arrangements, organizing tasks by category and priority, and reviewing expenses within a dedicated budget view.",
-            "A shared design system brings consistency across these tools while allowing each one to support a different kind of decision.",
-          ],
-        },
-        {
-          heading: "Supporting couples and professional planners",
-          paragraphs: [
-            "Couples organize one wedding; planners coordinate several. I designed experiences for both contexts, including collaboration within a wedding and an overview for moving between multiple events.",
-            "The product also offers different levels of access, from invitations and guest management to a broader planning workspace.",
-          ],
-        },
-        {
-          heading: "From concept to beta",
-          paragraphs: [
-            "Tandie has progressed into beta testing with early users. This stage provides an opportunity to evaluate how the connected workflows support real planning and identify what needs refinement before broader release.",
-          ],
-        },
-      ],
-      es: [
-        {
-          heading: "El desafío",
-          paragraphs: [
-            "Planificar un matrimonio implica decisiones que dependen unas de otras. Las confirmaciones de los invitados afectan la distribución de las mesas, los presupuestos condicionan la elección de proveedores y las tareas requieren coordinación entre varias personas.",
-            "El desafío fue reunir estas actividades en un producto que las parejas pudieran recorrer con facilidad y que los wedding planners pudieran usar en varios eventos.",
-          ],
-        },
-        {
-          heading: "Mi contribución",
-          paragraphs: [
-            "Lideré la definición del producto, la arquitectura de información, el diseño de interacción, el sistema de diseño y la identidad visual. Junto a mi cofundador técnico, traduje las necesidades de la planificación en requerimientos de producto y acompañé la experiencia durante la implementación.",
-            "El trabajo implicó definir cómo debían encajar las distintas partes del producto, además de diseñar cada flujo individual.",
-          ],
-        },
-        {
-          heading: "Conectando las invitaciones con la planificación",
-          paragraphs: [
-            "La invitación también es una forma de recopilar información. Diseñé un flujo de confirmación de asistencia (RSVP) que recoge la asistencia, los acompañantes y los requerimientos alimentarios, conectando la experiencia de los invitados con la información que se necesita para organizar el matrimonio.",
-            "El objetivo fue que responder fuera simple para los invitados y que sus respuestas fueran útiles para quienes planifican el evento.",
-          ],
-        },
-        {
-          heading: "Haciendo más manejables las decisiones complejas",
-          paragraphs: [
-            "Diseñé distintas interacciones según la tarea: arrastrar invitados para armar la distribución de mesas, organizar tareas por categoría y prioridad, y revisar los gastos en una vista de presupuesto dedicada.",
-            "Un sistema de diseño compartido aporta coherencia entre estas herramientas, permitiendo que cada una apoye un tipo distinto de decisión.",
-          ],
-        },
-        {
-          heading: "Acompañando a parejas y planners profesionales",
-          paragraphs: [
-            "Las parejas organizan un matrimonio; los planners coordinan varios. Diseñé experiencias para ambos contextos, incluyendo la colaboración dentro de un matrimonio y una vista general para moverse entre múltiples eventos.",
-            "El producto también ofrece distintos niveles de acceso, desde las invitaciones y la gestión de invitados hasta un espacio de planificación más amplio.",
-          ],
-        },
-        {
-          heading: "Del concepto a la beta",
-          paragraphs: [
-            "Tandie avanzó a una etapa de pruebas beta con usuarios tempranos. Esta etapa permite evaluar cómo los flujos conectados apoyan una planificación real e identificar qué necesita ajustarse antes de un lanzamiento más amplio.",
-          ],
-        },
-      ],
-    },
-    links: [{ label: { en: "www.tandie.app", es: "www.tandie.app" }, href: "https://www.tandie.app" }],
+    links: [{ label: { en: "www.tandie.app ↗", es: "www.tandie.app ↗" }, href: "https://www.tandie.app" }],
     images: [
+      "/works/tandie-5.mp4",
       "/works/tandie-1.mp4",
       "/works/tandie-2.mp4",
       "/works/tandie-3.mp4",
       "/works/tandie-4.mp4",
-      "/works/tandie-5.mp4",
     ],
   },
   {
     slug: "bagoost",
     name: "Bagoost",
     galleryLayout: "strip",
-    galleryPosition: "top",
     listCategory: { en: "B2B Wholesale Marketplace", es: "Marketplace mayorista B2B" },
     listYears: "2021 · 2022",
     detailMeta: { en: "B2B Wholesale Marketplace", es: "Marketplace mayorista B2B" },
@@ -212,7 +126,6 @@ const allProjects: Project[] = [
         value: { en: "2021-2022", es: "2021-2022" },
       },
     ],
-    factsPosition: "top",
     links: [{ label: { en: "www.bagoost.com ↗", es: "www.bagoost.com ↗" }, href: "https://www.bagoost.com" }],
     images: ["/works/bagoost-5.mp4", "/works/bagoost-7.mp4", "/works/bagoost-8.mp4"],
   },
@@ -238,7 +151,7 @@ const allProjects: Project[] = [
         "Cuando me fui, el producto ya había alcanzado más de 12.000 consumidores inscritos, un promedio de 2,7 compras repetidas por cliente y un aumento de ventas del 27% en los locales asociados.",
       ],
     },
-    links: [{ label: { en: "www.zoonloyalty.io", es: "www.zoonloyalty.io" }, href: "https://www.zoonloyalty.io" }],
+    links: [{ label: { en: "www.zoonloyalty.io ↗", es: "www.zoonloyalty.io ↗" }, href: "https://www.zoonloyalty.io" }],
     images: ["/works/zoon-1.png", "/works/zoon-2.png"],
   },
   {
@@ -246,7 +159,6 @@ const allProjects: Project[] = [
     name: "Coca-Cola",
     title: "Coca-Cola / Pasaporte Barrio Italia",
     galleryLayout: "strip",
-    galleryPosition: "top",
     listCategory: { en: "Loyalty Experience", es: "Experiencia de fidelización" },
     detailMeta: { en: "Loyalty Experience", es: "Experiencia de fidelización" },
     paragraphs: {
@@ -277,7 +189,6 @@ const allProjects: Project[] = [
         value: { en: "2026", es: "2026" },
       },
     ],
-    factsPosition: "top",
     links: [{
       label: { en: "Read the campaign coverage ↗", es: "Leer la cobertura de la campaña ↗" },
       href: "https://www.theclinic.cl/2026/05/18/juntos-en-todas-coca-cola-andina-pasaporte-digital/",
@@ -307,7 +218,7 @@ const allProjects: Project[] = [
       ],
     },
     links: [{
-      label: { en: "www.yourlifeindots.com", es: "www.yourlifeindots.com" },
+      label: { en: "www.yourlifeindots.com ↗", es: "www.yourlifeindots.com ↗" },
       href: "https://www.yourlifeindots.com",
     }],
     images: ["/works/lifeindots-1.png", "/works/lifeindots-2.png"],
@@ -335,7 +246,7 @@ const allProjects: Project[] = [
       ],
     },
     links: [{
-      label: { en: "sunset.mariaalcaino.com", es: "sunset.mariaalcaino.com" },
+      label: { en: "sunset.mariaalcaino.com ↗", es: "sunset.mariaalcaino.com ↗" },
       href: "https://sunset.mariaalcaino.com",
     }],
     images: ["/works/sunset-1.png", "/works/sunset-2.png", "/works/sunset-3.png"],
@@ -344,7 +255,6 @@ const allProjects: Project[] = [
     slug: "zhagra",
     name: "Zhagra",
     galleryLayout: "strip",
-    galleryPosition: "top",
     listCategory: { en: "Website & infographics", es: "Sitio web e infografías" },
     paragraphs: {
       en: [
@@ -406,7 +316,7 @@ const allProjects: Project[] = [
         },
       ],
     },
-    links: [{ label: { en: "zhagra.com", es: "zhagra.com" }, href: "https://zhagra.com/" }],
+    links: [{ label: { en: "zhagra.com ↗", es: "zhagra.com ↗" }, href: "https://zhagra.com/" }],
     images: ["/works/zhagra-1.mp4", "/works/zhagra-2.webp", "/works/zhagra-4.mp4", "/works/zhagra-3.webp"],
   },
   {
@@ -434,7 +344,7 @@ const allProjects: Project[] = [
       ],
     },
     links: [{
-      label: { en: "Try the experiment →", es: "Probar el experimento →" },
+      label: { en: "Try the experiment ↗", es: "Probar el experimento ↗" },
       href: "https://editor.p5js.org/ignaciaalcaino97/full/WdH2oXdwq",
     }],
     images: [],

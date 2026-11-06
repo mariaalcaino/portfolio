@@ -28,19 +28,21 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 32px 0 0;
+  margin: 0;
   font-size: 16px;
   line-height: 1.4;
   letter-spacing: -0.26px;
 }
 
-/* facts right under the title: the subtitle above already leaves the gap, the text below needs its own */
-.work-facts--top {
-  margin-top: 0;
+/* every project reads: title, subtitle, facts (role, year), mockups, text, links. The subtitle already leaves the gap above the facts. */
+.work-name + .work-facts {
+  margin-top: 28px;
 }
 
-.work-facts--top + .work-body {
-  margin-top: 28px;
+.work-facts + .work-body,
+.gallery-strip + .work-body,
+.work-gallery + .work-body {
+  margin-top: 40px;
 }
 
 .work-fact {
@@ -79,6 +81,13 @@
 
 .work-body p {
   margin: 0;
+}
+
+.work-body a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 .work-soon {

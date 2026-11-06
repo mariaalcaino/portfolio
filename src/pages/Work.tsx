@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Gallery from "../components/Gallery";
 import Shell from "../components/Shell";
@@ -5,6 +6,20 @@ import { pick, projects } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
 import "./work.css";
+
+// Paragraphs are plain strings; "[text](https://…)" becomes an inline link.
+const INLINE_LINK = /^\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)$/;
+const withLinks = (text: string): ReactNode[] =>
+  text.split(/(\[[^\]]+\]\(https?:\/\/[^\s)]+\))/g).map((part, i) => {
+    const match = INLINE_LINK.exec(part);
+    return match ? (
+      <a key={i} href={match[2]} target="_blank" rel="noreferrer">
+        {match[1]}
+      </a>
+    ) : (
+      part
+    );
+  });
 
 export default function Work() {
   const { slug } = useParams();
@@ -22,10 +37,9 @@ export default function Work() {
       <Gallery key={project.slug} images={project.images} name={project.name} layout={project.galleryLayout} />
     ) : null;
   const hasCaseStudy = Boolean(paragraphs?.length || sections?.length);
-  const factsOnTop = project.factsPosition === "top";
   const facts =
     project.facts && project.facts.length > 0 ? (
-      <dl className={factsOnTop ? "work-facts work-facts--top" : "work-facts"}>
+      <dl className="work-facts">
         {project.facts.map((fact) => (
           <div key={fact.label.en} className="work-fact">
             <dt>{fact.label[lang]}</dt>
@@ -40,26 +54,24 @@ export default function Work() {
       <h1 className="work-name">{project.title ?? project.name}</h1>
       {detailMeta && <p className="work-meta">{detailMeta}</p>}
 
-      {factsOnTop && facts}
+      {facts}
+
+      {gallery}
 
       {paragraphs && paragraphs.length > 0 && (
         <div className="work-body">
           {paragraphs.map((paragraph, i) => (
-            <p key={i}>{paragraph}</p>
+            <p key={i}>{withLinks(paragraph)}</p>
           ))}
         </div>
       )}
-
-      {!factsOnTop && facts}
-
-      {project.galleryPosition === "top" && gallery}
 
       {sections?.map((section) => (
         <section key={section.heading} className="work-section">
           <h2 className="work-heading">{section.heading}</h2>
           <div className="work-body">
             {section.paragraphs.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
+              <p key={i}>{withLinks(paragraph)}</p>
             ))}
           </div>
         </section>
@@ -76,9 +88,6 @@ export default function Work() {
           ))}
         </div>
       )}
-
-
-      {project.galleryPosition !== "top" && gallery}
     </Shell>
   );
 }
