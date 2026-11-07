@@ -361,7 +361,8 @@ const allProjects: Project[] = [
         value: { en: "2023", es: "2023" },
       },
     ],
-    images: ["/works/collegeusa-1.mp4", "/works/collegeusa-2.mp4"],
+    links: [{ label: { en: "collegeusa.cl ↗", es: "collegeusa.cl ↗" }, href: "https://www.collegeusa.cl/" }],
+    images: ["/works/collegeusa-1.mp4", "/works/collegeusa-2.mp4", "/works/collegeusa-3.mp4"],
   },
 ];
 
