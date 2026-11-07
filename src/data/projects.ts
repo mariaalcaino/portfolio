@@ -332,13 +332,23 @@ const allProjects: Project[] = [
   {
     slug: "collegeusa",
     name: "CollegeUSA",
-    listCategory: { en: "Landing page", es: "Landing page" },
+    galleryLayout: "strip",
+    listCategory: { en: "Website", es: "Sitio web" },
+    detailMeta: { en: "Website", es: "Sitio web" },
     paragraphs: {
       en: [
-        "CollegeUSA helps students navigate the application process for universities in the United States. I designed and developed its landing page, translating the brand identity into a responsive website that introduces the service, explains its approach and invites visitors to get in touch.",
+        "CollegeUSA helps students navigate the application process for universities in the United States. I designed and developed its landing page, translating the existing brand identity into a responsive website that introduces the service, explains its approach and invites visitors to get in touch.",
+        "The main design challenge was presenting a service with several stages and a strong personal component. Students and families needed to understand the support available, how the process worked and who would be guiding them.",
+        "I structured the content around the service, methodology, testimonials and founder’s experience. The information hierarchy connects the practical explanation of the offering with the people and experience behind it, helping visitors assess whether the service fits their needs.",
+        "I adapted the brand’s typography, colors and graphic elements to the web, defining layouts and interactions for desktop and mobile. On smaller screens, card-based content becomes a swipeable carousel, allowing visitors to explore the information within a compact layout.",
+        "My work covered design, development and publication, including responsive behavior, interactive elements and a direct email contact route to make starting a conversation straightforward.",
       ],
       es: [
-        "CollegeUSA ayuda a estudiantes a navegar el proceso de postulación a universidades de Estados Unidos. Diseñé y desarrollé su landing page, traduciendo la identidad de marca en un sitio web responsivo que presenta el servicio, explica su enfoque e invita a los visitantes a ponerse en contacto.",
+        "CollegeUSA ayuda a estudiantes a navegar el proceso de postulación a universidades de Estados Unidos. Diseñé y desarrollé su landing page, traduciendo la identidad de marca existente en un sitio web responsivo que presenta el servicio, explica su enfoque e invita a los visitantes a ponerse en contacto.",
+        "El principal desafío de diseño fue presentar un servicio con varias etapas y un fuerte componente personal. Estudiantes y familias necesitaban entender el apoyo disponible, cómo funcionaba el proceso y quién los acompañaría.",
+        "Estructuré el contenido en torno al servicio, la metodología, los testimonios y la experiencia del fundador. La jerarquía de información conecta la explicación práctica de la oferta con las personas y la experiencia que hay detrás, ayudando a los visitantes a evaluar si el servicio se ajusta a sus necesidades.",
+        "Adapté la tipografía, los colores y los elementos gráficos de la marca a la web, definiendo composiciones e interacciones para desktop y mobile. En pantallas más pequeñas, el contenido en tarjetas se convierte en un carrusel deslizable, lo que permite explorar la información en un formato compacto.",
+        "Mi trabajo abarcó el diseño, el desarrollo y la publicación, incluyendo el comportamiento responsivo, los elementos interactivos y una vía de contacto directa por correo para que iniciar una conversación sea sencillo.",
       ],
     },
     facts: [
@@ -346,62 +356,12 @@ const allProjects: Project[] = [
         label: { en: "Role", es: "Rol" },
         value: { en: "Web Designer & Developer", es: "Diseñadora y desarrolladora web" },
       },
+      {
+        label: { en: "Year", es: "Año" },
+        value: { en: "2023", es: "2023" },
+      },
     ],
-    sections: {
-      en: [
-        {
-          heading: "The challenge",
-          paragraphs: [
-            "Communicate a service with several stages and a strong personal component. The landing needed to help students and families understand the support available and feel confident starting a conversation.",
-          ],
-        },
-        {
-          heading: "Translating the brand into the experience",
-          paragraphs: [
-            "I adapted the brand’s visual identity to the web through typography, color, layout and graphic elements. I designed the content hierarchy to guide visitors through the service, methodology, testimonials and founder’s experience.",
-          ],
-        },
-        {
-          heading: "Designing across screens",
-          paragraphs: [
-            "I designed and implemented desktop and mobile layouts, adapting spacing, navigation and interactions to each screen size. On mobile, card-based content becomes a swipeable carousel, keeping information accessible within a compact layout.",
-          ],
-        },
-        {
-          heading: "From design to launch",
-          paragraphs: [
-            "I carried the landing from design through development and publication, including responsive behavior, interactions and a direct email contact route.",
-          ],
-        },
-      ],
-      es: [
-        {
-          heading: "El desafío",
-          paragraphs: [
-            "Comunicar un servicio con varias etapas y un fuerte componente personal. La landing debía ayudar a estudiantes y familias a entender el apoyo disponible y a sentirse seguros de iniciar una conversación.",
-          ],
-        },
-        {
-          heading: "Llevando la marca a la experiencia",
-          paragraphs: [
-            "Adapté la identidad visual de la marca a la web a través de la tipografía, el color, la composición y los elementos gráficos. Diseñé la jerarquía de contenidos para guiar a los visitantes por el servicio, la metodología, los testimonios y la experiencia de la persona fundadora.",
-          ],
-        },
-        {
-          heading: "Diseñando para todas las pantallas",
-          paragraphs: [
-            "Diseñé e implementé versiones para desktop y mobile, adaptando espaciados, navegación e interacciones a cada tamaño de pantalla. En mobile, el contenido en tarjetas se convierte en un carrusel deslizable, manteniendo la información accesible en un formato compacto.",
-          ],
-        },
-        {
-          heading: "Del diseño al lanzamiento",
-          paragraphs: [
-            "Llevé la landing desde el diseño hasta el desarrollo y la publicación, incluyendo el comportamiento responsivo, las interacciones y una vía de contacto directa por correo.",
-          ],
-        },
-      ],
-    },
-    images: [],
+    images: ["/works/collegeusa-1.mp4", "/works/collegeusa-2.mp4"],
   },
 ];
 
