@@ -72,3 +72,25 @@
 .footer-stack .footer-studio {
   align-items: center;
 }
+
+/* Phones: a tighter footer. The links, then the copyright and the rights on one line, then the flower; the studio line and the city are left out. */
+@media (max-width: 767px) {
+  .footer-stack {
+    gap: 10px;
+  }
+
+  .footer-stack p {
+    margin: 0;
+  }
+
+  .footer-stack .footer-studio {
+    display: none;
+  }
+
+  .footer-stack .footer-copyright {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 10px;
+  }
+}
