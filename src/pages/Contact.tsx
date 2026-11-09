@@ -1,4 +1,5 @@
-import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { useRef, useState, useSyncExternalStore, type ChangeEvent, type FormEvent } from "react";
+import PixelFlower from "../components/PixelFlower";
 import Shell from "../components/Shell";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
@@ -8,6 +9,15 @@ const ENDPOINT = "https://formsubmit.co/ajax/ignaciaalcaino97@gmail.com";
 const PUBLIC_EMAIL = "hello@mariaalcaino.com";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TIMEOUT_MS = 15000;
+
+// The flower is for tablet and desktop; on phones it isn't even drawn.
+const TABLET_UP = "(min-width: 768px)";
+const subscribeToTabletUp = (onChange: () => void) => {
+  const query = window.matchMedia(TABLET_UP);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+const isTabletUp = () => window.matchMedia(TABLET_UP).matches;
 
 type FieldName = "name" | "email" | "message";
 type Values = Record<FieldName, string>;
@@ -23,6 +33,7 @@ export default function Contact() {
   const [values, setValues] = useState<Values>(EMPTY);
   const [invalid, setInvalid] = useState<Partial<Record<FieldName, boolean>>>({});
   const [status, setStatus] = useState<Status>("idle");
+  const showFlower = useSyncExternalStore(subscribeToTabletUp, isTabletUp, () => true);
   const formRef = useRef<HTMLFormElement>(null);
 
   const errorText: Record<FieldName, string> = {
@@ -95,78 +106,84 @@ export default function Contact() {
 
   return (
     <Shell mainClassName="contact-content">
-      <h1 className="contact-title">{t.title}</h1>
-      <p className="contact-intro">{t.intro}</p>
+      <div className="contact-layout">
+        <div className="contact-main">
+          <h1 className="contact-title">{t.title}</h1>
+          <p className="contact-intro">{t.intro}</p>
 
-      {status === "sent" ? (
-        <div className="contact-sent" role="status">
-          <p>{t.sentTitle}</p>
-          <p className="contact-sent-body">{t.sentBody}</p>
-          <button type="button" className="contact-action" onClick={() => setStatus("idle")}>
-            {t.sendAnother}
-          </button>
-        </div>
-      ) : (
-        <form className="contact-form" ref={formRef} onSubmit={handleSubmit} noValidate>
-          {ORDER.map((field) => (
-            <div key={field} className={`contact-field${invalid[field] ? " has-error" : ""}`}>
-              <label htmlFor={`contact-${field}`}>{t[field]}</label>
-              {field === "message" ? (
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows={6}
-                  maxLength={5000}
-                  value={values.message}
-                  onChange={handleChange}
-                  aria-invalid={invalid.message || undefined}
-                  aria-describedby={invalid.message ? "contact-message-error" : undefined}
-                />
-              ) : (
-                <input
-                  id={`contact-${field}`}
-                  name={field}
-                  type={field === "email" ? "email" : "text"}
-                  inputMode={field === "email" ? "email" : undefined}
-                  autoComplete={field === "email" ? "email" : "name"}
-                  maxLength={field === "email" ? 254 : 120}
-                  value={values[field]}
-                  onChange={handleChange}
-                  aria-invalid={invalid[field] || undefined}
-                  aria-describedby={invalid[field] ? `contact-${field}-error` : undefined}
-                />
-              )}
-              {invalid[field] && (
-                <p className="contact-error" id={`contact-${field}-error`}>
-                  {errorText[field]}
+          {status === "sent" ? (
+            <div className="contact-sent" role="status">
+              <p>{t.sentTitle}</p>
+              <p className="contact-sent-body">{t.sentBody}</p>
+              <button type="button" className="contact-action" onClick={() => setStatus("idle")}>
+                {t.sendAnother}
+              </button>
+            </div>
+          ) : (
+            <form className="contact-form" ref={formRef} onSubmit={handleSubmit} noValidate>
+              {ORDER.map((field) => (
+                <div key={field} className={`contact-field${field === "message" ? " contact-field-wide" : ""}${invalid[field] ? " has-error" : ""}`}>
+                  <label htmlFor={`contact-${field}`}>{t[field]}</label>
+                  {field === "message" ? (
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      rows={6}
+                      maxLength={5000}
+                      value={values.message}
+                      onChange={handleChange}
+                      aria-invalid={invalid.message || undefined}
+                      aria-describedby={invalid.message ? "contact-message-error" : undefined}
+                    />
+                  ) : (
+                    <input
+                      id={`contact-${field}`}
+                      name={field}
+                      type={field === "email" ? "email" : "text"}
+                      inputMode={field === "email" ? "email" : undefined}
+                      autoComplete={field === "email" ? "email" : "name"}
+                      maxLength={field === "email" ? 254 : 120}
+                      value={values[field]}
+                      onChange={handleChange}
+                      aria-invalid={invalid[field] || undefined}
+                      aria-describedby={invalid[field] ? `contact-${field}-error` : undefined}
+                    />
+                  )}
+                  {invalid[field] && (
+                    <p className="contact-error" id={`contact-${field}-error`}>
+                      {errorText[field]}
+                    </p>
+                  )}
+                </div>
+              ))}
+
+              <div className="contact-trap" aria-hidden="true">
+                <label htmlFor="contact-website">Website</label>
+                <input id="contact-website" name="_honey" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
+
+              {status === "error" && (
+                <p className="contact-error contact-failed" role="alert">
+                  {t.failedBefore}
+                  <a href={`mailto:${PUBLIC_EMAIL}`}>{PUBLIC_EMAIL}</a>
+                  {t.failedAfter}
                 </p>
               )}
-            </div>
-          ))}
 
-          <div className="contact-trap" aria-hidden="true">
-            <label htmlFor="contact-website">Website</label>
-            <input id="contact-website" name="_honey" type="text" tabIndex={-1} autoComplete="off" />
-          </div>
-
-          {status === "error" && (
-            <p className="contact-error contact-failed" role="alert">
-              {t.failedBefore}
-              <a href={`mailto:${PUBLIC_EMAIL}`}>{PUBLIC_EMAIL}</a>
-              {t.failedAfter}
-            </p>
+              <button type="submit" className="contact-action contact-submit" disabled={status === "sending"}>
+                {status === "sending" ? t.sending : t.send}
+              </button>
+            </form>
           )}
 
-          <button type="submit" className="contact-action contact-submit" disabled={status === "sending"}>
-            {status === "sending" ? t.sending : t.send}
-          </button>
-        </form>
-      )}
+          <p className="contact-direct">
+            {t.directBefore}
+            <a href={`mailto:${PUBLIC_EMAIL}`}>{PUBLIC_EMAIL}</a>
+          </p>
+        </div>
 
-      <p className="contact-direct">
-        {t.directBefore}
-        <a href={`mailto:${PUBLIC_EMAIL}`}>{PUBLIC_EMAIL}</a>
-      </p>
+        {showFlower && <PixelFlower className="contact-flower" />}
+      </div>
     </Shell>
   );
 }

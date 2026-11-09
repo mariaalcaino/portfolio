@@ -1,0 +1,20 @@
+.pixel-flower {
+  display: flex;
+  color: var(--fg);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* The canvas is sized to whatever room this area has left inside the box's padding. */
+.pixel-flower-stage {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pixel-flower canvas {
+  display: block;
+}

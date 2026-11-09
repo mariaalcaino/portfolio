@@ -1,9 +1,29 @@
 .contact-content {
-  display: flex;
-  flex-direction: column;
   font-size: 16px;
   line-height: 1.4;
-  max-width: 680px;
+}
+
+/* The form and the text sit together on the left and take the larger share; the pixel flower grows on the right (tablet and desktop only). */
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 1.7fr) minmax(240px, 1fr);
+  column-gap: clamp(24px, 4vw, 72px);
+  align-items: start;
+}
+
+.contact-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* No frame: this area only gives the flower its room, and keeps a steady shape as the column grows or shrinks. */
+.contact-flower {
+  position: sticky;
+  top: 40px;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  max-height: min(620px, calc(100vh - 120px));
 }
 
 .contact-content p {
@@ -15,7 +35,7 @@
   font-weight: 400;
   line-height: 21.8px;
   color: var(--fg);
-  margin: 0 0 28px;
+  margin: 0 0 12px;
   padding-bottom: 2px;
 }
 
@@ -30,12 +50,34 @@
   }
 }
 
+/* Phones: one column and no flower (it isn't rendered at this size either, see Contact.tsx). */
+@media (max-width: 767px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-flower {
+    display: none;
+  }
+}
+
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  margin-top: 56px;
-  max-width: 520px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+  margin-top: 28px;
+}
+
+.contact-field-wide,
+.contact-failed,
+.contact-submit {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 520px) {
+  .contact-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .contact-field {
@@ -65,7 +107,7 @@
 
 .contact-field textarea {
   resize: vertical;
-  min-height: 160px;
+  min-height: 150px;
   line-height: 1.4;
 }
 
@@ -119,6 +161,7 @@
 }
 
 .contact-submit {
+  justify-self: start;
   padding: 0 24px;
   border: 1px solid var(--fg);
   transition: border-color 0.15s ease;
@@ -139,7 +182,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 2px;
-  margin-top: 56px;
+  margin-top: 28px;
 }
 
 .contact-sent-body {
@@ -147,12 +190,12 @@
   margin-bottom: 16px;
 }
 
-.contact-content > .contact-intro {
+.contact-main > .contact-intro {
   color: var(--fg);
 }
 
-.contact-content > .contact-direct {
-  margin-top: 56px;
+.contact-main > .contact-direct {
+  margin-top: 32px;
   color: var(--muted);
 }
 
