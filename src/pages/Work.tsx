@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Gallery from "../components/Gallery";
+import ProjectDemo from "../components/ProjectDemo";
 import Shell from "../components/Shell";
 import { pick, projects } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
@@ -33,8 +34,10 @@ export default function Work() {
   const paragraphs = pick(project.paragraphs, lang);
   const sections = pick(project.sections, lang);
   const gallery =
-    project.images.length > 0 ? (
-      <Gallery key={project.slug} images={project.images} name={project.name} layout={project.galleryLayout} />
+    project.images.length > 0 || project.demo ? (
+      <Gallery key={project.slug} images={project.images} name={project.name} layout={project.galleryLayout}>
+        {project.demo && <ProjectDemo demo={project.demo} />}
+      </Gallery>
     ) : null;
   const hasCaseStudy = Boolean(paragraphs?.length || sections?.length);
   const facts =

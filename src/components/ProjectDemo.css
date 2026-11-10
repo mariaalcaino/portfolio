@@ -1,0 +1,67 @@
+.project-demo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.project-demo-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.project-demo-start {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.project-demo-start:hover {
+  background: #1b1b1b;
+}
+
+.project-demo-start:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+.project-demo-label {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.project-demo-start:hover .project-demo-label {
+  text-decoration: underline;
+}
+
+.project-demo-note {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* after a strip gallery there is no flex gap to space it */
+.gallery-strip + .project-demo {
+  margin-top: 24px;
+}
+
+@media (max-width: 560px) {
+  .project-demo {
+    aspect-ratio: 3 / 4;
+  }
+}

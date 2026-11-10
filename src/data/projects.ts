@@ -8,6 +8,14 @@ export type Section = { heading: string; paragraphs: string[] };
 export type ProjectLink = { label: Localized<string>; href: string };
 export type Fact = { label: Localized<string>; value: Localized<string> };
 
+/** A live piece the visitor can run in place (an iframe started with a click, so nothing asks for the camera on load). */
+export type Demo = {
+  src: string;
+  title: Localized<string>;
+  button: Localized<string>;
+  note: Localized<string>;
+};
+
 export type Project = {
   slug: string;
   /** Short name used on the Home grid. */
@@ -26,6 +34,8 @@ export type Project = {
   /** Longer case studies: titled sections shown after the intro and facts. */
   sections?: Localized<Section[]>;
   links?: ProjectLink[];
+  /** Shown as the last item of the gallery, after the media. */
+  demo?: Demo;
   /** Gallery items. A path ending in .mp4 is a looping video; its poster is the same path with a .jpg extension. */
   images: string[];
   /** "stack" lists every item full width (default); "strip" is a horizontal scroll gallery. */
@@ -337,6 +347,12 @@ const allProjects: Project[] = [
       label: { en: "Try the experiment ↗", es: "Probar el experimento ↗" },
       href: "https://editor.p5js.org/ignaciaalcaino97/full/WdH2oXdwq",
     }],
+    demo: {
+      src: "https://editor.p5js.org/ignaciaalcaino97/full/WdH2oXdwq",
+      title: { en: "fingerpaint.p5js, running live", es: "fingerpaint.p5js, en vivo" },
+      button: { en: "[ Try it here ]", es: "[ Pruébalo aquí ]" },
+      note: { en: "Needs access to your webcam.", es: "Necesita acceso a tu cámara." },
+    },
     images: ["/works/fingerpaint-1.mp4"],
     // the cover on the Home grid is a light copy of the same video (the gallery one is much bigger)
     preview: { type: "video", src: "/works/fingerpaint-cover.mp4" },

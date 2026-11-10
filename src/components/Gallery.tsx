@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
 import { isVideo, posterOf } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
@@ -120,10 +120,13 @@ export default function Gallery({
   images,
   name,
   layout = "stack",
+  children,
 }: {
   images: string[];
   name: string;
   layout?: "stack" | "strip";
+  /** Shown after the last item (e.g. a live demo), spaced like one more gallery item. */
+  children?: ReactNode;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [active, setActive] = useState(0);
@@ -215,8 +218,10 @@ export default function Gallery({
               onOpen={() => setOpenIndex(i)}
             />
           ))}
+          {children}
         </div>
       )}
+      {layout === "strip" && children}
 
       {openIndex !== null && (
         <Lightbox images={images} startIndex={openIndex} name={name} onClose={() => setOpenIndex(null)} />
