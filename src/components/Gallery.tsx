@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
+import { prefersLightMedia, smallOf, smallPosterOf } from "../data/media";
 import { isVideo, posterOf } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
@@ -7,28 +8,37 @@ import "./Gallery.css";
 
 function Media({
   src,
+  light,
+  eager,
   videoRef,
   onPlay,
   onPause,
 }: {
   src: string;
+  light: boolean;
+  eager: boolean;
   videoRef: RefObject<HTMLVideoElement | null>;
   onPlay: () => void;
   onPause: () => void;
 }) {
+  // If the light copy is missing for some reason, the full one takes over.
+  const [lightFailed, setLightFailed] = useState(false);
   if (!isVideo(src)) return <img src={src} alt="" loading="lazy" />;
+  const useLight = light && !lightFailed;
   // No autoPlay: GalleryItem starts the video once it is on screen (and pauses it again when it leaves).
+  // Only the first video fetches its whole file up front; the others fetch just their metadata until the visitor gets close (see GalleryItem).
   return (
     <video
       ref={videoRef}
-      src={src}
-      poster={posterOf(src)}
+      src={useLight ? smallOf(src) : src}
+      poster={useLight ? smallPosterOf(src) : posterOf(src)}
       muted
       loop
       playsInline
-      preload="auto"
+      preload={eager ? "auto" : "metadata"}
       onPlay={onPlay}
       onPause={onPause}
+      onError={() => setLightFailed(true)}
     />
   );
 }
@@ -36,6 +46,8 @@ function Media({
 /** One gallery cell: the button that opens the lightbox and, for videos, a small pause/play toggle at the bottom right. */
 function GalleryItem({
   src,
+  light,
+  eager,
   className,
   label,
   pauseLabel,
@@ -43,6 +55,8 @@ function GalleryItem({
   onOpen,
 }: {
   src: string;
+  light: boolean;
+  eager: boolean;
   className: string;
   label: string;
   pauseLabel: string;
@@ -76,6 +90,23 @@ function GalleryItem({
     return () => observer.disconnect();
   }, [src]);
 
+  // A video that is not the first starts fetching its file when the visitor gets within a screen's reach of it.
+  useEffect(() => {
+    const cell = cellRef.current;
+    const video = videoRef.current;
+    if (!cell || !video || eager) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        video.preload = "auto";
+        observer.disconnect();
+      },
+      { rootMargin: "300px" },
+    );
+    observer.observe(cell);
+    return () => observer.disconnect();
+  }, [src, eager]);
+
   const toggle = () => {
     const video = videoRef.current;
     if (!video) return;
@@ -91,7 +122,14 @@ function GalleryItem({
   return (
     <div ref={cellRef} className={className}>
       <button type="button" className="gallery-open" aria-label={label} onClick={onOpen}>
-        <Media src={src} videoRef={videoRef} onPlay={() => setPaused(false)} onPause={() => setPaused(true)} />
+        <Media
+          src={src}
+          light={light}
+          eager={eager}
+          videoRef={videoRef}
+          onPlay={() => setPaused(false)}
+          onPause={() => setPaused(true)}
+        />
       </button>
       {isVideo(src) && (
         <button
@@ -129,6 +167,7 @@ export default function Gallery({
   children?: ReactNode;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [light] = useState(prefersLightMedia);
   const [active, setActive] = useState(0);
   const [edges, setEdges] = useState({ start: true, end: false });
   const trackRef = useRef<HTMLDivElement>(null);
@@ -182,6 +221,8 @@ export default function Gallery({
               <GalleryItem
                 key={src}
                 src={src}
+                light={light}
+                eager={i === 0}
                 className="gallery-strip-item"
                 label={label(i)}
                 pauseLabel={t.pauseVideo}
@@ -211,6 +252,8 @@ export default function Gallery({
             <GalleryItem
               key={src}
               src={src}
+              light={light}
+              eager={i === 0}
               className="work-gallery-item"
               label={label(i)}
               pauseLabel={t.pauseVideo}

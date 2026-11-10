@@ -369,7 +369,7 @@ export default function Lightbox({
                     muted
                     loop
                     playsInline
-                    preload="auto"
+                    preload={i === index ? "auto" : "metadata"}
                     ref={i === index ? setCurrentMedia : undefined}
                     className={i === index ? (zoomed ? "is-current is-zoomed" : "is-current") : undefined}
                     style={
