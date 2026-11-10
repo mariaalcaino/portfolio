@@ -308,26 +308,38 @@ const allProjects: Project[] = [
   {
     slug: "fingerpaint",
     name: "fingerpaint.p5js",
-    listCategory: { en: "Creative coding", es: "Creative coding" },
+    listCategory: { en: "Creative Coding", es: "Creative Coding" },
     listYears: "2024",
-    detailMeta: { en: "Creative Coding / 2024", es: "Creative Coding / 2024" },
+    detailMeta: { en: "Creative Coding", es: "Creative Coding" },
     paragraphs: {
       en: [
-        "fingerpaint.p5.js is a creative coding experiment inspired by the instinctive joy of painting with your hands as a child.",
-        "Built with p5.js and ml5.js, the project uses real-time hand tracking to turn the hand into both input and brush. Extend your index finger to draw, pinch to change color and close your fist to move without leaving a mark.",
-        "I built it as a small study of childhood memory, creative coding and embodied interaction — a way to return to the first marks we make before design becomes too controlled.",
+        "fingerpaint.p5js is a drawing experiment inspired by the feeling of painting with my hands as a child. I designed and built it to explore how that physical experience could translate to a digital canvas.",
+        "I built the canvas with p5.js and used ml5.js to track hand gestures through the webcam in real time. Extend your index finger to draw, pinch to change colors, and close your fist to move without leaving a mark.",
+        "Closing your fist works like lifting a brush off the page. That gesture gives you control over where each stroke begins and ends, while keeping drawing, color changes and movement in your hand.",
       ],
       es: [
-        "fingerpaint.p5.js es un experimento de creative coding inspirado en la alegría instintiva de pintar con las manos durante la infancia.",
-        "Construido con p5.js y ml5.js, el proyecto usa seguimiento de manos en tiempo real para convertir la mano en input y pincel a la vez. Extiende el dedo índice para dibujar, junta los dedos para cambiar de color y cierra el puño para moverte sin dejar marca.",
-        "Lo construí como un pequeño estudio de la memoria de infancia, el creative coding y la interacción corporal — una forma de volver a los primeros trazos que hacemos antes de que el diseño se vuelva demasiado controlado.",
+        "fingerpaint.p5js es un experimento de dibujo inspirado en la sensación de pintar con las manos cuando era niña. Lo diseñé y construí para explorar cómo esa experiencia física podría traducirse a un lienzo digital.",
+        "Construí el lienzo con p5.js y usé ml5.js para seguir los gestos de la mano a través de la webcam en tiempo real. Extiende el dedo índice para dibujar, junta los dedos para cambiar de color y cierra el puño para moverte sin dejar marca.",
+        "Cerrar el puño funciona como levantar el pincel del papel. Ese gesto te da control sobre dónde empieza y termina cada trazo, y mantiene el dibujo, el cambio de color y el movimiento en tu mano.",
       ],
     },
+    facts: [
+      {
+        label: { en: "Role", es: "Rol" },
+        value: { en: "Designer & Developer", es: "Diseñadora y desarrolladora" },
+      },
+      {
+        label: { en: "Year", es: "Año" },
+        value: { en: "2024", es: "2024" },
+      },
+    ],
     links: [{
       label: { en: "Try the experiment ↗", es: "Probar el experimento ↗" },
       href: "https://editor.p5js.org/ignaciaalcaino97/full/WdH2oXdwq",
     }],
-    images: [],
+    images: ["/works/fingerpaint-1.mp4"],
+    // the cover on the Home grid is a light copy of the same video (the gallery one is much bigger)
+    preview: { type: "video", src: "/works/fingerpaint-cover.mp4" },
   },
   {
     slug: "collegeusa",
