@@ -1,4 +1,5 @@
 import type { Lang } from "../i18n/LanguageContext";
+import type { Tag } from "./tags";
 
 export type PreviewMedia = { type: "image" | "video"; src: string };
 
@@ -31,6 +32,8 @@ export type Project = {
   paragraphs?: Localized<string[]>;
   /** Short label/value pairs (role, year…) shown right under the title, before the mockups. */
   facts?: Fact[];
+  /** Kinds of work (brand, web, product…), shown as coloured pills in an extra "Areas" row at the end of the facts. */
+  tags?: Tag[];
   /** Longer case studies: titled sections shown after the intro and facts. */
   sections?: Localized<Section[]>;
   links?: ProjectLink[];
@@ -93,6 +96,7 @@ const allProjects: Project[] = [
         value: { en: "2026", es: "2026" },
       },
     ],
+    tags: ["brand", "web", "product", "code"],
     links: [{ label: { en: "www.tandie.app ↗", es: "www.tandie.app ↗" }, href: "https://www.tandie.app" }],
     images: [
       "/works/tandie-5.mp4",
@@ -135,6 +139,7 @@ const allProjects: Project[] = [
         value: { en: "2021-2022", es: "2021-2022" },
       },
     ],
+    tags: ["brand", "web", "product"],
     links: [{ label: { en: "www.bagoost.com ↗", es: "www.bagoost.com ↗" }, href: "https://www.bagoost.com" }],
     images: ["/works/bagoost-5.mp4", "/works/bagoost-7.mp4", "/works/bagoost-8.mp4"],
   },
@@ -160,6 +165,7 @@ const allProjects: Project[] = [
         "Cuando me fui, el producto ya había alcanzado más de 12.000 consumidores inscritos, un promedio de 2,7 compras repetidas por cliente y un aumento de ventas del 27% en los locales asociados.",
       ],
     },
+    tags: ["brand", "product"],
     links: [{ label: { en: "www.zoonloyalty.io ↗", es: "www.zoonloyalty.io ↗" }, href: "https://www.zoonloyalty.io" }],
     images: ["/works/zoon-1.png", "/works/zoon-2.png"],
   },
@@ -198,6 +204,7 @@ const allProjects: Project[] = [
         value: { en: "2026", es: "2026" },
       },
     ],
+    tags: ["web", "product"],
     links: [{
       label: { en: "Read the campaign coverage ↗", es: "Leer la cobertura de la campaña ↗" },
       href: "https://www.theclinic.cl/2026/05/18/juntos-en-todas-coca-cola-andina-pasaporte-digital/",
@@ -226,6 +233,7 @@ const allProjects: Project[] = [
         "El producto está diseñado en torno a una interacción clara: define tus metas, marca lo que completaste y observa cómo tu año va tomando forma poco a poco.",
       ],
     },
+    tags: ["web", "product", "code"],
     links: [{
       label: { en: "www.yourlifeindots.com ↗", es: "www.yourlifeindots.com ↗" },
       href: "https://www.yourlifeindots.com",
@@ -266,6 +274,7 @@ const allProjects: Project[] = [
         value: { en: "2026", es: "2026" },
       },
     ],
+    tags: ["code"],
     links: [{
       label: { en: "sunset.mariaalcaino.com ↗", es: "sunset.mariaalcaino.com ↗" },
       href: "https://sunset.mariaalcaino.com",
@@ -306,6 +315,7 @@ const allProjects: Project[] = [
         value: { en: "2025", es: "2025" },
       },
     ],
+    tags: ["brand", "web"],
     links: [{ label: { en: "zhagra.com ↗", es: "zhagra.com ↗" }, href: "https://zhagra.com/" }],
     images: ["/works/zhagra-1.mp4", "/works/zhagra-2.webp", "/works/zhagra-4.mp4", "/works/zhagra-3.webp"],
   },
@@ -343,6 +353,7 @@ const allProjects: Project[] = [
         value: { en: "2024", es: "2024" },
       },
     ],
+    tags: ["code"],
     links: [{
       label: { en: "Try the experiment ↗", es: "Probar el experimento ↗" },
       href: "https://editor.p5js.org/ignaciaalcaino97/full/WdH2oXdwq",
@@ -389,6 +400,7 @@ const allProjects: Project[] = [
         value: { en: "2023", es: "2023" },
       },
     ],
+    tags: ["web", "code"],
     links: [{ label: { en: "collegeusa.cl ↗", es: "collegeusa.cl ↗" }, href: "https://www.collegeusa.cl/" }],
     images: ["/works/collegeusa-1.mp4", "/works/collegeusa-2.mp4", "/works/collegeusa-3.mp4"],
   },

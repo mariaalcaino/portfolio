@@ -10,11 +10,19 @@ import "./ProjectDemo.css";
 export default function ProjectDemo({ demo }: { demo: Demo }) {
   const { lang } = useLang();
   const [running, setRunning] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
+  // Once started, the box is a skeleton until the page inside has loaded (see styles/skeleton.css).
   return (
-    <div className="project-demo">
+    <div className="project-demo sk sk-dark" data-ready={!running || loaded} aria-busy={running && !loaded}>
       {running ? (
-        <iframe className="project-demo-frame" src={demo.src} title={pick(demo.title, lang)} allow="camera" />
+        <iframe
+          className="project-demo-frame"
+          src={demo.src}
+          title={pick(demo.title, lang)}
+          allow="camera"
+          onLoad={() => setLoaded(true)}
+        />
       ) : (
         <button type="button" className="project-demo-start" onClick={() => setRunning(true)}>
           <span className="project-demo-label">{pick(demo.button, lang)}</span>

@@ -126,6 +126,24 @@
   padding: 8px 16px 24px;
 }
 
+/* the placeholder sits behind the media, centred, in roughly the shape most of the work has */
+.lb-slide {
+  position: relative;
+  isolation: isolate;
+}
+
+.lb-slide > .lb-ghost {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: min(calc(100% - 32px), 960px);
+  max-height: calc(100% - 32px);
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+}
+
 .lb-slide img,
 .lb-slide video {
   display: block;

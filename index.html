@@ -8,9 +8,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="María Alcaíno — Product Designer / Design Engineer. Design systems, product design and creative strategy." />
     <title>María Alcaíno — Product Designer</title>
+    <!--
+      Tells the page skeleton below (src/styles/skeleton.css) which page it is standing in for, and calms it down
+      (no more shimmer) if the app has not taken over after 15 seconds, so a script that never arrives is not an endless animation.
+    -->
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var p = location.pathname.toLowerCase().replace(/\/+$/, "") || "/";
+        root.setAttribute("data-route", p === "/" ? "home" : p === "/about" ? "about" : p === "/contact" ? "contact" : "work");
+        setTimeout(function () {
+          root.setAttribute("data-boot", "stalled");
+        }, 15000);
+      })();
+    </script>
+    <!-- Without scripts nothing would ever replace the skeleton. -->
+    <noscript><style>.boot { display: none; }</style></noscript>
   </head>
   <body>
-    <div id="root"></div>
+    <!--
+      The skeleton: what the visitor sees while the scripts download. It uses the real layout's classes, so when the app
+      mounts (and replaces everything inside #root) nothing moves. It has no text, so it is the same in both languages.
+    -->
+    <div id="root">
+      <div class="boot" aria-hidden="true">
+        <div class="site-shell">
+          <aside class="sidebar">
+            <div class="brand">
+              <span class="sk sk-bar brand-name-bar"></span>
+              <span class="sk brand-mark"></span>
+            </div>
+            <nav class="site-nav">
+              <div class="boot-line" style="--w:52px"><span class="sk"></span></div><div class="boot-line" style="--w:44px"><span class="sk"></span></div><div class="boot-line" style="--w:56px"><span class="sk"></span></div>
+            </nav>
+            <div class="sidebar-contact">
+              <div class="boot-line" style="--w:52px"><span class="sk"></span></div><div class="boot-line" style="--w:188px"><span class="sk"></span></div>
+            </div>
+            <div class="lang-switch">
+              <div class="boot-line" style="--w:44px; --lh:20px"><span class="sk"></span></div>
+            </div>
+          </aside>
+
+          <div class="shell-content">
+            <div class="shell-main">
+              <div class="boot-view boot-home">
+                <div class="hero">
+                  <div class="boot-line" style="--w:150px"><span class="sk"></span></div>
+                  <div class="boot-line" style="--w:232px"><span class="sk"></span></div>
+                </div>
+                <ol class="work-grid">
+                  <li class="work-card">
+                    <p class="work-card-name"><span class="sk sk-bar" style="width:58%"></span></p>
+                    <div class="work-card-thumb sk"></div>
+                    <p class="work-card-meta"><span class="sk sk-bar" style="width:38%"></span></p>
+                  </li>
+                  <li class="work-card">
+                    <p class="work-card-name"><span class="sk sk-bar" style="width:72%"></span></p>
+                    <div class="work-card-thumb sk"></div>
+                    <p class="work-card-meta"><span class="sk sk-bar" style="width:30%"></span></p>
+                  </li>
+                  <li class="work-card">
+                    <p class="work-card-name"><span class="sk sk-bar" style="width:46%"></span></p>
+                    <div class="work-card-thumb sk"></div>
+                    <p class="work-card-meta"><span class="sk sk-bar" style="width:44%"></span></p>
+                  </li>
+                  <li class="work-card">
+                    <p class="work-card-name"><span class="sk sk-bar" style="width:64%"></span></p>
+                    <div class="work-card-thumb sk"></div>
+                    <p class="work-card-meta"><span class="sk sk-bar" style="width:34%"></span></p>
+                  </li>
+                  <li class="work-card">
+                    <p class="work-card-name"><span class="sk sk-bar" style="width:52%"></span></p>
+                    <div class="work-card-thumb sk"></div>
+                    <p class="work-card-meta"><span class="sk sk-bar" style="width:40%"></span></p>
+                  </li>
+                  <li class="work-card">
+                    <p class="work-card-name"><span class="sk sk-bar" style="width:70%"></span></p>
+                    <div class="work-card-thumb sk"></div>
+                    <p class="work-card-meta"><span class="sk sk-bar" style="width:28%"></span></p>
+                  </li>
+                  <li class="work-card">
+                    <p class="work-card-name"><span class="sk sk-bar" style="width:48%"></span></p>
+                    <div class="work-card-thumb sk"></div>
+                    <p class="work-card-meta"><span class="sk sk-bar" style="width:42%"></span></p>
+                  </li>
+                  <li class="work-card">
+                    <p class="work-card-name"><span class="sk sk-bar" style="width:60%"></span></p>
+                    <div class="work-card-thumb sk"></div>
+                    <p class="work-card-meta"><span class="sk sk-bar" style="width:36%"></span></p>
+                  </li>
+                  <li class="work-card">
+                    <p class="work-card-name"><span class="sk sk-bar" style="width:66%"></span></p>
+                    <div class="work-card-thumb sk"></div>
+                    <p class="work-card-meta"><span class="sk sk-bar" style="width:32%"></span></p>
+                  </li>
+                </ol>
+              </div>
+
+              <div class="boot-view boot-work work-content">
+                <h1 class="work-name"><span class="sk sk-bar" style="width:210px"></span></h1>
+                <p class="work-meta"><span class="sk sk-bar" style="width:96px"></span></p>
+                <dl class="work-facts">
+                  <div class="work-fact"><dt><span class="sk sk-bar" style="width:48px"></span></dt><dd><span class="sk sk-bar" style="width:170px"></span></dd></div>
+                  <div class="work-fact"><dt><span class="sk sk-bar" style="width:36px"></span></dt><dd><span class="sk sk-bar" style="width:60px"></span></dd></div>
+                  <div class="work-fact"><dt><span class="sk sk-bar" style="width:40px"></span></dt><dd><ul class="work-tags"><li class="work-tag sk" style="width:49px"></li><li class="work-tag sk" style="width:60px"></li></ul></dd></div>
+                </dl>
+                <div class="gallery-strip">
+                  <div class="gallery-strip-track">
+                    <div class="gallery-strip-item sk"></div>
+                    <div class="gallery-strip-item sk"></div>
+                    <div class="gallery-strip-item sk"></div>
+                  </div>
+                  <div class="gallery-strip-bar">
+                    <p class="gallery-strip-count"><span class="sk sk-bar" style="width:34px"></span></p>
+                    <div class="gallery-strip-arrows"><span style="display:block;min-height:44px;width:70px"></span></div>
+                  </div>
+                </div>
+                <div class="work-body">
+                  <div><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:97%"><span class="sk"></span></div><div class="boot-line" style="--w:91%"><span class="sk"></span></div><div class="boot-line" style="--w:58%"><span class="sk"></span></div></div>
+                  <div><div class="boot-line" style="--w:99%"><span class="sk"></span></div><div class="boot-line" style="--w:94%"><span class="sk"></span></div><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:42%"><span class="sk"></span></div></div>
+                  <div><div class="boot-line" style="--w:96%"><span class="sk"></span></div><div class="boot-line" style="--w:88%"><span class="sk"></span></div><div class="boot-line" style="--w:64%"><span class="sk"></span></div></div>
+                </div>
+              </div>
+
+              <div class="boot-view boot-about about-content">
+                <h1 class="about-title"><span class="sk sk-bar" style="width:70px"></span></h1>
+                <div><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:96%"><span class="sk"></span></div><div class="boot-line" style="--w:99%"><span class="sk"></span></div><div class="boot-line" style="--w:92%"><span class="sk"></span></div><div class="boot-line" style="--w:97%"><span class="sk"></span></div><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:94%"><span class="sk"></span></div><div class="boot-line" style="--w:98%"><span class="sk"></span></div><div class="boot-line" style="--w:90%"><span class="sk"></span></div><div class="boot-line" style="--w:96%"><span class="sk"></span></div><div class="boot-line" style="--w:99%"><span class="sk"></span></div><div class="boot-line" style="--w:93%"><span class="sk"></span></div><div class="boot-line boot-wide-end" style="--w:48%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:97%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:99%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:93%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:100%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:95%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:98%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:91%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:96%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:94%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:52%"><span class="sk"></span></div></div>
+                <div class="about-groups">
+                  <section class="about-group">
+                    <h2 class="about-group-title"><span class="sk sk-bar" style="width:84px"></span></h2>
+                    <div class="boot-stack" style="gap:18px">
+                      <div><div class="boot-line" style="--w:78%"><span class="sk"></span></div><div class="boot-line" style="--w:52%"><span class="sk"></span></div></div>
+                      <div><div class="boot-line" style="--w:70%"><span class="sk"></span></div><div class="boot-line" style="--w:46%"><span class="sk"></span></div></div>
+                      <div><div class="boot-line" style="--w:82%"><span class="sk"></span></div><div class="boot-line" style="--w:50%"><span class="sk"></span></div></div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+
+              <div class="boot-view boot-contact contact-content">
+                <div class="contact-layout">
+                  <div class="contact-main">
+                    <h1 class="contact-title"><span class="sk sk-bar" style="width:70px"></span></h1>
+                    <div class="contact-intro"><div class="boot-line" style="--w:86%"><span class="sk"></span></div></div>
+                    <div class="contact-form">
+                      <div class="contact-field"><div class="boot-line" style="--w:56px; --lh:21px"><span class="sk"></span></div><div class="sk" style="height:46px"></div></div>
+                      <div class="contact-field"><div class="boot-line" style="--w:56px; --lh:21px"><span class="sk"></span></div><div class="sk" style="height:46px"></div></div>
+                      <div class="contact-field contact-field-wide"><div class="boot-line" style="--w:72px; --lh:21px"><span class="sk"></span></div><div class="sk" style="height:157px"></div></div>
+                      <div class="contact-field-wide"><div class="sk" style="height:46px;width:96px"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

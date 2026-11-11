@@ -1,0 +1,203 @@
+/*
+ * Skeleton loading.
+ *
+ * Anything with `.sk` is a placeholder: a quiet grey block with a soft light sweeping across it. Give it
+ * `data-ready="true"` once what it stands for has arrived and the block fades away, showing the content underneath.
+ * Without the attribute (or with "false") it keeps loading. The block is an overlay (::before) and the sweep (::after)
+ * is a transform-only animation, so it runs on the compositor and never repaints the page.
+ *
+ * Media that is already at hand (a picture seen earlier in the visit, or one the browser has in memory) is ready before the
+ * first paint and shows no skeleton at all; one that arrives within a blink only gets a calm fade, because the sweep waits
+ * 150ms before it starts. Anything that has to come over the network (a first visit, a reload) shows the skeleton until it does.
+ */
+
+:root {
+  --sk-base: #e4e4e4; /* the grey of the site's thumbnails (rgba(27, 27, 27, 0.1) over --bg), opaque so it can cover the media */
+  --sk-shine: rgba(255, 255, 255, 0.62);
+  --sk-radius: 3px;
+  --sk-duration: 1.7s;
+}
+
+/* a placeholder on a dark surface (the live demo) */
+.sk-dark {
+  --sk-base: #1c1c1c;
+  --sk-shine: rgba(255, 255, 255, 0.07);
+}
+
+.sk {
+  position: relative;
+}
+
+.sk::before,
+.sk::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* the block that covers the media until it is ready */
+.sk::before {
+  z-index: 1;
+  background: var(--sk-base);
+  opacity: 1;
+  transition: opacity 0.45s ease;
+}
+
+/* the light that sweeps across it; it waits a moment so quick loads never show it */
+.sk::after {
+  z-index: 2;
+  background: linear-gradient(100deg, transparent 18%, var(--sk-shine) 50%, transparent 82%);
+  transform: translateX(-100%);
+  animation: sk-sweep var(--sk-duration) cubic-bezier(0.4, 0, 0.2, 1) 0.15s infinite;
+}
+
+.sk:not([data-ready="true"]) {
+  overflow: hidden;
+}
+
+.sk[data-ready="true"]::before {
+  opacity: 0;
+}
+
+.sk[data-ready="true"]::after {
+  display: none;
+}
+
+@keyframes sk-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  65%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* a line of text (or any small bar) drawn as a placeholder */
+.sk-bar {
+  display: inline-block;
+  height: 0.72em;
+  border-radius: var(--sk-radius);
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sk::after {
+    animation: none;
+    display: none;
+  }
+
+  .sk::before {
+    transition: none;
+  }
+}
+
+/*
+ * The page skeleton that sits inside #root while the scripts download (see index.html). It reuses the real layout's
+ * classes (sidebar, shell, grid, cards, facts…), so the frame around the content (sidebar, title, first row) stays where it is
+ * when React takes over. Below that it is a generic stand-in: one project skeleton serves every project page.
+ * The inline script in index.html sets <html data-route="home|work|about|contact">; the matching block shows.
+ */
+
+/*
+ * It has no text, but it must not make the browser download the site's web font before the scripts do (the two would share
+ * the connection and the app would start later), so it is set in a system font. This is a deliberate exception to the real
+ * pages' Inter. The selector is heavy on purpose: it has to win over any font-family a layout class sets.
+ */
+:root .boot,
+:root .boot * {
+  font-family: sans-serif;
+}
+
+/* the scripts have not arrived after a long while: stop the shimmer, keep the calm grey blocks */
+:root[data-boot="stalled"] .boot .sk::after {
+  display: none;
+}
+/* (".boot" in front so these win over the display the real page classes, like .about-content, set later) */
+.boot .boot-view {
+  display: none;
+}
+
+:root:not([data-route]) .boot .boot-home,
+:root[data-route="home"] .boot .boot-home,
+:root[data-route="work"] .boot .boot-work,
+:root[data-route="contact"] .boot .boot-contact {
+  display: block;
+}
+
+:root[data-route="about"] .boot .boot-about {
+  display: flex; /* .about-content is a column */
+}
+
+/* a line box as tall as the real text it stands in for, with the bar centred in it */
+.boot-line {
+  display: flex;
+  align-items: center;
+  height: var(--lh, 22.4px);
+  width: var(--w, 100%);
+  max-width: 100%;
+  margin: 0;
+}
+
+.boot-line > .sk {
+  display: block;
+  width: 100%;
+  height: 11px;
+  border-radius: var(--sk-radius);
+}
+
+.boot-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.boot .work-card-thumb {
+  border-color: transparent;
+}
+
+.boot .brand {
+  min-height: 21px;
+}
+
+/* the About text wraps into about twice as many lines on a phone: those extra lines show only there (and the short last line of the wide layout gives way to them) */
+.boot .boot-narrow {
+  display: none;
+}
+
+@media (max-width: 520px) {
+  .boot .boot-narrow {
+    display: flex;
+  }
+
+  .boot .boot-wide-end {
+    width: 100%;
+  }
+}
+
+/* on the real About page the 680px limit sits on the padded box (the padding is 40px, or 24px on small screens) */
+.boot .boot-about {
+  max-width: 600px;
+}
+
+@media (max-width: 960px) {
+  .boot .boot-about {
+    max-width: 632px;
+  }
+}
+
+.boot .brand-name-bar {
+  width: 128px;
+  height: 14px;
+  margin-top: 3px;
+}
+
+.boot .brand-mark {
+  display: block;
+  width: 11px;
+  height: 11px;
+  margin-top: 2px;
+  border-radius: 50%;
+}

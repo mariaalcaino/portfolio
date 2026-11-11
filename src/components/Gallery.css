@@ -5,6 +5,39 @@
   position: relative;
 }
 
+/* While a cell is still a skeleton (see styles/skeleton.css) it has the media's rounded corners and no pause button. */
+.work-gallery-item.sk {
+  border-radius: 4px;
+}
+
+.sk:not([data-ready="true"]) > .gallery-pause {
+  visibility: hidden;
+}
+
+/*
+ * A keyboard-focused cell keeps its focus ring while it is still a skeleton: the button rises above the placeholder, its
+ * media (not there yet) stays hidden so the grey block shows through, and the sweep stops so the ring is not clipped.
+ */
+.sk:not([data-ready="true"]):has(> .gallery-open:focus-visible) {
+  overflow: visible;
+}
+
+.sk:not([data-ready="true"]):has(> .gallery-open:focus-visible)::after {
+  display: none;
+}
+
+.sk:not([data-ready="true"]) > .gallery-open:focus-visible {
+  z-index: 3;
+}
+
+.work-gallery-item.sk:not([data-ready="true"]) > .gallery-open:focus-visible {
+  position: relative;
+}
+
+.sk:not([data-ready="true"]) > .gallery-open:focus-visible > :is(img, video) {
+  visibility: hidden;
+}
+
 .gallery-open {
   display: block;
   padding: 0;

@@ -1,43 +1,60 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
-import { prefersLightMedia, smallOf, smallPosterOf } from "../data/media";
+import { prefersLightMedia, ratioOf, smallOf, smallPosterOf } from "../data/media";
 import { isVideo, posterOf } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
 import Lightbox from "./Lightbox";
+import { isSettled, useImageLoaded, useImageReady, useReadyWhen } from "./mediaReady";
 import "./Gallery.css";
 
-function Media({
+/** `auto` keeps the file's own proportions once it is known; until then the box has the ratio we expect, so nothing jumps. */
+const reserve = (ratio?: number) => (ratio ? { aspectRatio: `auto ${ratio}` } : undefined);
+
+function ImageMedia({ src, ratio, onReady }: { src: string; ratio?: number; onReady: () => void }) {
+  const { attach, onLoad } = useImageReady(src, onReady);
+  return <img src={src} alt="" loading="lazy" style={reserve(ratio)} ref={attach} onLoad={onLoad} onError={onReady} />;
+}
+
+function VideoMedia({
   src,
   light,
   eager,
+  ratio,
   videoRef,
   onPlay,
   onPause,
+  onReady,
 }: {
   src: string;
   light: boolean;
   eager: boolean;
+  ratio?: number;
   videoRef: RefObject<HTMLVideoElement | null>;
   onPlay: () => void;
   onPause: () => void;
+  onReady: () => void;
 }) {
   // If the light copy is missing for some reason, the full one takes over.
   const [lightFailed, setLightFailed] = useState(false);
-  if (!isVideo(src)) return <img src={src} alt="" loading="lazy" />;
   const useLight = light && !lightFailed;
+  const poster = useLight ? smallPosterOf(src) : posterOf(src);
+  // The cell stops showing its skeleton as soon as the poster (the first thing the visitor sees) is in, or the first frame decoded.
+  useReadyWhen(useImageLoaded(poster), onReady);
   // No autoPlay: GalleryItem starts the video once it is on screen (and pauses it again when it leaves).
   // Only the first video fetches its whole file up front; the others fetch just their metadata until the visitor gets close (see GalleryItem).
   return (
     <video
       ref={videoRef}
       src={useLight ? smallOf(src) : src}
-      poster={useLight ? smallPosterOf(src) : posterOf(src)}
+      poster={poster}
+      style={reserve(ratio)}
       muted
       loop
       playsInline
       preload={eager ? "auto" : "metadata"}
       onPlay={onPlay}
       onPause={onPause}
+      onLoadedData={onReady}
       onError={() => setLightFailed(true)}
     />
   );
@@ -48,6 +65,7 @@ function GalleryItem({
   src,
   light,
   eager,
+  ratio,
   className,
   label,
   pauseLabel,
@@ -57,6 +75,8 @@ function GalleryItem({
   src: string;
   light: boolean;
   eager: boolean;
+  /** Reserved proportions while the file loads (stack galleries only). */
+  ratio?: number;
   className: string;
   label: string;
   pauseLabel: string;
@@ -69,6 +89,11 @@ function GalleryItem({
   // the observer paused it, or the browser refused to start it.
   const [paused, setPaused] = useState(true);
   const pausedByUser = useRef(false);
+  // The cell is a skeleton until its media has arrived (see styles/skeleton.css).
+  const [ready, setReady] = useState(false);
+  const markReady = useCallback(() => setReady(true), []);
+  // What the cell shows first (the picture, or a video's poster) was already loaded earlier in this visit: no skeleton at all.
+  const known = isSettled(isVideo(src) ? (light ? smallPosterOf(src) : posterOf(src)) : src);
 
   // A video plays only while at least half of its cell is on screen (this also accounts for the strip's own
   // horizontal scroll). Leaving the screen pauses it; coming back resumes it unless it was paused with the button.
@@ -120,16 +145,22 @@ function GalleryItem({
   };
 
   return (
-    <div ref={cellRef} className={className}>
+    <div ref={cellRef} className={`${className} sk`} data-ready={ready || known}>
       <button type="button" className="gallery-open" aria-label={label} onClick={onOpen}>
-        <Media
-          src={src}
-          light={light}
-          eager={eager}
-          videoRef={videoRef}
-          onPlay={() => setPaused(false)}
-          onPause={() => setPaused(true)}
-        />
+        {isVideo(src) ? (
+          <VideoMedia
+            src={src}
+            light={light}
+            eager={eager}
+            ratio={ratio}
+            videoRef={videoRef}
+            onPlay={() => setPaused(false)}
+            onPause={() => setPaused(true)}
+            onReady={markReady}
+          />
+        ) : (
+          <ImageMedia src={src} ratio={ratio} onReady={markReady} />
+        )}
       </button>
       {isVideo(src) && (
         <button
@@ -254,6 +285,7 @@ export default function Gallery({
               src={src}
               light={light}
               eager={i === 0}
+              ratio={ratioOf(src)}
               className="work-gallery-item"
               label={label(i)}
               pauseLabel={t.pauseVideo}

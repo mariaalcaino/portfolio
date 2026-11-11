@@ -1,0 +1,56 @@
+/*
+ * The tags of a project: small rounded pills, one pastel colour per kind of work (all of about the same lightness, so
+ * none of them shouts over the others), dark text on every one. They sit in the value column of the last row of the
+ * facts list (Role / Year / Areas), so a pill is as tall as one line of the facts (22px, the 12px text + 5px above and
+ * below) and the row keeps the height of the others. The page skeleton in index.html draws the row at that height
+ * before the web font has loaded, so nothing moves afterwards. If someone enlarges the text only, the pill grows with
+ * it instead of letting the text spill out.
+ */
+
+.work-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-tag {
+  display: flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 5px 8px;
+  border-radius: 3px;
+  /* the grey of a kind that has no colour below yet, so a forgotten one still reads as a pill */
+  background: var(--line);
+  /* invisible, but in Windows high-contrast mode (which drops backgrounds) it becomes the pill's outline */
+  outline: 1px solid transparent;
+  outline-offset: -1px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.1px;
+  white-space: nowrap;
+  color: var(--fg);
+}
+
+.work-tag-brand {
+  background: #f8d0ec;
+}
+
+.work-tag-web {
+  background: #a8dbac;
+}
+
+.work-tag-product {
+  background: #a2cbf8;
+}
+
+.work-tag-code {
+  background: #f7da95;
+}
+
+.work-tag-data {
+  background: #d4c4f6;
+}

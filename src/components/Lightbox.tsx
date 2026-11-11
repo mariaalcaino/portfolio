@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { isVideo, posterOf } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
+import { useImageLoaded } from "./mediaReady";
 import "./Lightbox.css";
 
 const MIN_SCALE = 1;
@@ -26,6 +27,12 @@ type Gesture = {
 
 const RESET: View = { scale: 1, x: 0, y: 0 };
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+
+/** A quiet placeholder in the middle of a slide until its picture (or a video's poster) has arrived. */
+function SlideGhost({ src }: { src: string }) {
+  const loaded = useImageLoaded(isVideo(src) ? posterOf(src) : src);
+  return loaded ? null : <span className="lb-ghost sk" aria-hidden="true" />;
+}
 
 export default function Lightbox({
   images,
@@ -359,6 +366,7 @@ export default function Lightbox({
         >
           {images.map((src, i) => (
             <div className="lb-slide" key={src} aria-hidden={i !== index}>
+              {Math.abs(i - index) <= 1 && <SlideGhost src={src} />}
               {Math.abs(i - index) <= 1 &&
                 (isVideo(src) ? (
                   <video

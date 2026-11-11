@@ -1,21 +1,18 @@
-import { useEffect, useRef, type SyntheticEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
+import { useImageLoaded, useImageReady, useReadyWhen } from "../components/mediaReady";
 import Shell from "../components/Shell";
 import { thumbOf } from "../data/media";
-import { getPreviewMedia, pick, posterOf, projects } from "../data/projects";
+import { getPreviewMedia, pick, posterOf, projects, type PreviewMedia } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
 import "./home.css";
 
-// Each cover has a light "-thumb.jpg" next to it; if one is missing, the original takes over.
-const fallBackTo = (src: string) => (event: SyntheticEvent<HTMLImageElement>) => {
-  const image = event.currentTarget;
-  if (!image.src.endsWith(src)) image.src = src;
-};
-
 /** A cover video downloads and plays only once its card is close to the screen. */
-function CoverVideo({ src }: { src: string }) {
+function CoverVideo({ src, onReady }: { src: string; onReady: () => void }) {
   const ref = useRef<HTMLVideoElement>(null);
+  // The card shows its skeleton until the poster (what the visitor sees before the video starts) is in.
+  useReadyWhen(useImageLoaded(posterOf(src)), onReady);
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
@@ -30,6 +27,45 @@ function CoverVideo({ src }: { src: string }) {
     return () => observer.disconnect();
   }, []);
   return <video ref={ref} src={src} poster={posterOf(src)} muted loop playsInline preload="none" />;
+}
+
+/** Each cover has a light "-thumb.jpg" next to it; if one is missing, the original takes over. */
+function CoverImage({ src, index, onReady }: { src: string; index: number; onReady: () => void }) {
+  const { attach, onLoad } = useImageReady(thumbOf(src), onReady);
+  const fallBack = (event: SyntheticEvent<HTMLImageElement>) => {
+    const image = event.currentTarget;
+    if (image.src.endsWith(src)) onReady(); // the original failed too: nothing left to wait for
+    else image.src = src;
+  };
+  return (
+    // the first row is what the visitor sees first, so it is not lazy; the very first image is the priority
+    <img
+      src={thumbOf(src)}
+      alt=""
+      loading={index < 4 ? "eager" : "lazy"}
+      fetchPriority={index === 0 ? "high" : undefined}
+      decoding="async"
+      ref={attach}
+      onLoad={onLoad}
+      onError={fallBack}
+    />
+  );
+}
+
+/** The cover of a card: a skeleton until the picture is in, then it fades away (see styles/skeleton.css). */
+function CoverThumb({ media, index }: { media: PreviewMedia | null; index: number }) {
+  const [ready, setReady] = useState(false);
+  const markReady = useCallback(() => setReady(true), []);
+  return (
+    <div className="work-card-thumb sk" data-ready={ready || !media}>
+      {media &&
+        (media.type === "video" ? (
+          <CoverVideo src={media.src} onReady={markReady} />
+        ) : (
+          <CoverImage src={media.src} index={index} onReady={markReady} />
+        ))}
+    </div>
+  );
 }
 
 export default function Home() {
@@ -57,22 +93,7 @@ export default function Home() {
             <li key={project.slug} className="work-card">
               <Link to={`/${project.slug}`}>
                 <p className="work-card-name">{project.name}</p>
-                <div className="work-card-thumb">
-                  {media &&
-                    (media.type === "video" ? (
-                      <CoverVideo src={media.src} />
-                    ) : (
-                      // the first row is what the visitor sees first, so it is not lazy; the very first image is the priority
-                      <img
-                        src={thumbOf(media.src)}
-                        alt=""
-                        loading={index < 4 ? "eager" : "lazy"}
-                        fetchPriority={index === 0 ? "high" : undefined}
-                        decoding="async"
-                        onError={fallBackTo(media.src)}
-                      />
-                    ))}
-                </div>
+                <CoverThumb media={media} index={index} />
                 {meta && <p className="work-card-meta">{meta}</p>}
               </Link>
             </li>

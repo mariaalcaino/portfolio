@@ -25,6 +25,7 @@ export const strings = {
     },
     work: {
       caseStudySoon: "Case study coming soon.",
+      tags: "Areas",
     },
     about: {
       title: "About",
@@ -94,6 +95,7 @@ export const strings = {
     },
     work: {
       caseStudySoon: "Caso de estudio próximamente.",
+      tags: "Áreas",
     },
     about: {
       title: "Acerca de",

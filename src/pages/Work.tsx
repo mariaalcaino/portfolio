@@ -3,6 +3,7 @@ import { Navigate, useParams } from "react-router-dom";
 import Gallery from "../components/Gallery";
 import ProjectDemo from "../components/ProjectDemo";
 import Shell from "../components/Shell";
+import Tags from "../components/Tags";
 import { pick, projects } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
@@ -40,15 +41,25 @@ export default function Work() {
       </Gallery>
     ) : null;
   const hasCaseStudy = Boolean(paragraphs?.length || sections?.length);
+  const hasTags = Boolean(project.tags && project.tags.length > 0);
+  // Role, year… and, as the last row, the kinds of work as coloured pills.
   const facts =
-    project.facts && project.facts.length > 0 ? (
+    (project.facts && project.facts.length > 0) || hasTags ? (
       <dl className="work-facts">
-        {project.facts.map((fact) => (
+        {project.facts?.map((fact) => (
           <div key={fact.label.en} className="work-fact">
             <dt>{fact.label[lang]}</dt>
             <dd>{fact.value[lang]}</dd>
           </div>
         ))}
+        {project.tags && hasTags && (
+          <div className="work-fact">
+            <dt>{t.work.tags}</dt>
+            <dd>
+              <Tags tags={project.tags} />
+            </dd>
+          </div>
+        )}
       </dl>
     ) : null;
 
