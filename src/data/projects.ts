@@ -180,7 +180,7 @@ const allProjects: Project[] = [
     ],
     tags: ["brand", "product"],
     links: [{ label: { en: "www.zoonloyalty.io ↗", es: "www.zoonloyalty.io ↗" }, href: "https://www.zoonloyalty.io" }],
-    images: ["/works/zoon-6.mp4", "/works/zoon-5.mp4", "/works/zoon-1.png", "/works/zoon-2.png"],
+    images: ["/works/zoon-4.mp4", "/works/zoon-7.mp4", "/works/zoon-1.png", "/works/zoon-2.png"],
     // the Home cover stays the dashboard even though the gallery now opens with the videos
     preview: { type: "image", src: "/works/zoon-1.png" },
   },
