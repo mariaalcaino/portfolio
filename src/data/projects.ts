@@ -180,7 +180,7 @@ const allProjects: Project[] = [
     ],
     tags: ["brand", "product"],
     links: [{ label: { en: "www.zoonloyalty.io ↗", es: "www.zoonloyalty.io ↗" }, href: "https://www.zoonloyalty.io" }],
-    images: ["/works/zoon-1.png", "/works/zoon-3.mp4", "/works/zoon-2.png"],
+    images: ["/works/zoon-1.png", "/works/zoon-4.mp4", "/works/zoon-2.png"],
   },
   {
     slug: "cocacolapassport",
