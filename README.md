@@ -42,7 +42,7 @@ Phones and slow connections get lighter copies of the media, so every new asset 
 - **Gallery video** `name.mp4` (+ poster `name.jpg`) → also `name-sm.mp4` (960 px wide, about 1 Mbps) and `name-sm.jpg`. The gallery picks the `-sm` files on screens up to 767 px, with data saver, or on 2G/3G; if one is missing it falls back to the full file.
 - **Cover on the Home grid** `name.jpg` / `name.png` (or the poster of the first video) → also `name-thumb.jpg` (800 px wide, JPEG ~78). Home falls back to the original if the thumb is missing.
 - Videos must be fast-start (`moov` before `mdat`) so they can play while they download.
-- **Media in a stack gallery** (full-width, its own height: zoon, lifeindots, sunsetpredictor, fingerpaint) → add its width / height to `RATIOS` in `src/data/media.ts`. The skeleton holds exactly that much room until the file arrives, so nothing below it jumps; a missing entry gets a 3:2 box.
+- **Media in a stack gallery** (full-width, its own height: lifeindots, sunsetpredictor, fingerpaint) → add its width / height to `RATIOS` in `src/data/media.ts`. The skeleton holds exactly that much room until the file arrives, so nothing below it jumps; a missing entry gets a 3:2 box.
 
 ## Skeleton loading
 
