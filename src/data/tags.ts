@@ -1,9 +1,10 @@
-import type { Lang } from "../i18n/LanguageContext";
-
 /*
  * The kinds of work a project can be tagged with. They show as coloured pills in the last row of the project's facts,
  * labelled "Areas" (components/Tags.tsx), in the order they are listed in the project's `tags`. The lists are written in
  * the order below, so the colours follow the same sequence on every page.
+ *
+ * The names are English in both languages on purpose: they are the keywords recruiters search for, so the Spanish
+ * version keeps them as they are (the same goes for the role in each project's facts).
  *
  * What each kind means, so the tagging stays consistent:
  * - brand:   I created the identity (not just applied an existing one).
@@ -17,11 +18,11 @@ import type { Lang } from "../i18n/LanguageContext";
  * then list it in a project's `tags`.
  */
 export const TAGS = {
-  brand: { en: "Brand", es: "Marca" },
-  web: { en: "Web", es: "Web" },
-  product: { en: "Product", es: "Producto" },
-  code: { en: "Code", es: "Código" },
-  data: { en: "Data", es: "Datos" },
-} as const satisfies Record<string, Record<Lang, string>>;
+  brand: "Brand",
+  web: "Web",
+  product: "Product",
+  code: "Code",
+  data: "Data",
+} as const satisfies Record<string, string>;
 
 export type Tag = keyof typeof TAGS;

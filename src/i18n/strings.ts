@@ -90,7 +90,8 @@ export const strings = {
       rights: "Todos los derechos reservados.",
     },
     home: {
-      line1: "Diseñadora / Ingeniera.",
+      // the role stays in English on purpose: it is what recruiters search for
+      line1: "Designer / Engineer.",
       line2Prefix: "Actualmente construyendo ",
     },
     work: {

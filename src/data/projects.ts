@@ -30,7 +30,10 @@ export type Project = {
   listYears?: string;
   detailMeta?: Localized<string>;
   paragraphs?: Localized<string[]>;
-  /** Short label/value pairs (role, year…) shown right under the title, before the mockups. */
+  /**
+   * Short label/value pairs (role, year…) shown right under the title, before the mockups. The role stays in English in
+   * the Spanish version too: it is what recruiters search for (see also the areas in data/tags.ts).
+   */
   facts?: Fact[];
   /** Kinds of work (brand, web, product…), shown as coloured pills in an extra "Areas" row at the end of the facts. */
   tags?: Tag[];
@@ -89,7 +92,7 @@ const allProjects: Project[] = [
     facts: [
       {
         label: { en: "Role", es: "Rol" },
-        value: { en: "Product Designer & Developer", es: "Diseñadora de producto y desarrolladora" },
+        value: { en: "Product Designer & Developer", es: "Product Designer & Developer" },
       },
       {
         label: { en: "Year", es: "Año" },
@@ -132,7 +135,7 @@ const allProjects: Project[] = [
     facts: [
       {
         label: { en: "Role", es: "Rol" },
-        value: { en: "Product Designer", es: "Diseñadora de producto" },
+        value: { en: "Product Designer", es: "Product Designer" },
       },
       {
         label: { en: "Year", es: "Año" },
@@ -171,7 +174,7 @@ const allProjects: Project[] = [
     facts: [
       {
         label: { en: "Role", es: "Rol" },
-        value: { en: "Product Designer", es: "Diseñadora de producto" },
+        value: { en: "Product Designer", es: "Product Designer" },
       },
       {
         label: { en: "Year", es: "Año" },
@@ -212,7 +215,7 @@ const allProjects: Project[] = [
     facts: [
       {
         label: { en: "Role", es: "Rol" },
-        value: { en: "Product Designer", es: "Diseñadora de producto" },
+        value: { en: "Product Designer", es: "Product Designer" },
       },
       {
         label: { en: "Year", es: "Año" },
@@ -282,7 +285,7 @@ const allProjects: Project[] = [
     facts: [
       {
         label: { en: "Role", es: "Rol" },
-        value: { en: "Designer & Developer", es: "Diseñadora y desarrolladora" },
+        value: { en: "Designer & Developer", es: "Designer & Developer" },
       },
       {
         label: { en: "Year", es: "Año" },
@@ -323,7 +326,7 @@ const allProjects: Project[] = [
     facts: [
       {
         label: { en: "Role", es: "Rol" },
-        value: { en: "Web & Information Designer", es: "Diseñadora web y de información" },
+        value: { en: "Web & Information Designer", es: "Web & Information Designer" },
       },
       {
         label: { en: "Year", es: "Año" },
@@ -361,7 +364,7 @@ const allProjects: Project[] = [
     facts: [
       {
         label: { en: "Role", es: "Rol" },
-        value: { en: "Designer & Developer", es: "Diseñadora y desarrolladora" },
+        value: { en: "Designer & Developer", es: "Designer & Developer" },
       },
       {
         label: { en: "Year", es: "Año" },
@@ -408,7 +411,7 @@ const allProjects: Project[] = [
     facts: [
       {
         label: { en: "Role", es: "Rol" },
-        value: { en: "Web Designer & Developer", es: "Diseñadora y desarrolladora web" },
+        value: { en: "Web Designer & Developer", es: "Web Designer & Developer" },
       },
       {
         label: { en: "Year", es: "Año" },
