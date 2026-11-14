@@ -74,3 +74,23 @@ button {
   background: var(--fg);
   color: var(--bg);
 }
+
+/*
+ * The artwork (pictures, mockups, videos) can't be picked up with a right click, a drag or a long press: the media takes no
+ * pointer events, so a click lands on the button or link around it, and the drag and the touch callout are off. The
+ * lightbox keeps its own (it hit-tests by geometry and needs the zoom cursor). components/protectMedia.ts cancels the
+ * context menu and the drag where the media does receive them. This only stops casual saving.
+ */
+img,
+video {
+  pointer-events: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.lb-slide img,
+.lb-slide video {
+  pointer-events: auto;
+}

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
 import { useImageLoaded, useImageReady, useReadyWhen } from "../components/mediaReady";
+import { protectedVideoProps } from "../components/protectMedia";
 import Shell from "../components/Shell";
 import { thumbOf } from "../data/media";
 import { getPreviewMedia, pick, posterOf, projects, type PreviewMedia } from "../data/projects";
@@ -26,7 +27,9 @@ function CoverVideo({ src, onReady }: { src: string; onReady: () => void }) {
     observer.observe(video);
     return () => observer.disconnect();
   }, []);
-  return <video ref={ref} src={src} poster={posterOf(src)} muted loop playsInline preload="none" />;
+  return (
+    <video ref={ref} src={src} poster={posterOf(src)} muted loop playsInline preload="none" {...protectedVideoProps} />
+  );
 }
 
 /** Each cover has a light "-thumb.jpg" next to it; if one is missing, the original takes over. */

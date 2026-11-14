@@ -4,6 +4,7 @@ import { isVideo, posterOf } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
 import { useImageLoaded } from "./mediaReady";
+import { protectedVideoProps } from "./protectMedia";
 import "./Lightbox.css";
 
 const MIN_SCALE = 1;
@@ -378,6 +379,7 @@ export default function Lightbox({
                     loop
                     playsInline
                     preload={i === index ? "auto" : "metadata"}
+                    {...protectedVideoProps}
                     ref={i === index ? setCurrentMedia : undefined}
                     className={i === index ? (zoomed ? "is-current is-zoomed" : "is-current") : undefined}
                     style={

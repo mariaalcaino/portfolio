@@ -5,6 +5,7 @@ import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
 import Lightbox from "./Lightbox";
 import { isSettled, useImageLoaded, useImageReady, useReadyWhen } from "./mediaReady";
+import { protectedVideoProps } from "./protectMedia";
 import "./Gallery.css";
 
 /** `auto` keeps the file's own proportions once it is known; until then the box has the ratio we expect, so nothing jumps. */
@@ -52,6 +53,7 @@ function VideoMedia({
       loop
       playsInline
       preload={eager ? "auto" : "metadata"}
+      {...protectedVideoProps}
       onPlay={onPlay}
       onPause={onPause}
       onLoadedData={onReady}
