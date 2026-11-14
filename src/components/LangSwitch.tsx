@@ -13,8 +13,9 @@ export default function LangSwitch() {
         className={lang === "en" ? "active" : ""}
         aria-pressed={lang === "en"}
         onClick={() => setLang("en")}
+        lang="en"
       >
-        EN
+        english
       </button>
       <span className="lang-switch-sep">/</span>
       <button
@@ -22,8 +23,9 @@ export default function LangSwitch() {
         className={lang === "es" ? "active" : ""}
         aria-pressed={lang === "es"}
         onClick={() => setLang("es")}
+        lang="es"
       >
-        ES
+        español
       </button>
     </div>
   );
