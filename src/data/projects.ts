@@ -183,8 +183,10 @@ const allProjects: Project[] = [
     ],
     tags: ["brand", "product"],
     links: [{ label: { en: "www.zoonloyalty.io ↗", es: "www.zoonloyalty.io ↗" }, href: "https://www.zoonloyalty.io" }],
-    images: ["/works/zoon-9.mp4", "/works/zoon-7.mp4", "/works/zoon-1.png", "/works/zoon-2.png"],
-    // the Home cover stays the dashboard even though the gallery now opens with the videos
+    // three phones (QR, registration, Wallet), the gradient cards, the single phone. The dashboard (zoon-1.png) and the
+    // phone screens (zoon-2.png) are hidden for now: add them back at the end of this list to show them again.
+    images: ["/works/zoon-9.mp4", "/works/zoon-4.mp4", "/works/zoon-7.mp4"],
+    // the Home cover stays the dashboard even though the gallery no longer lists it
     preview: { type: "image", src: "/works/zoon-1.png" },
   },
   {
