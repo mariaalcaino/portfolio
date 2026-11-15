@@ -56,11 +56,11 @@ export default function Footer({
     );
   }
 
+  // Desktop: two vertical columns (the copyright and the links) and the flower. The studio line and the city are only in the stacked footer.
   return (
     <footer className={`site-footer footer-spread ${className ?? ""}`}>
       <Copyright t={t} />
       <Links t={t} />
-      <Studio t={t} />
       <Flower className="footer-flower" />
     </footer>
   );

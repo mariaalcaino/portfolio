@@ -33,13 +33,22 @@
   flex-shrink: 0;
 }
 
-/* Spread: used on Home, desktop only (see home.css breakpoint) */
+/* Spread: the desktop footer (hidden below the sidebar breakpoint, see shell.css). Two vertical columns, the copyright and the links, with their
+   first lines on the same row, and the flower at the right edge. */
 .footer-spread {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 24px 40px;
+  align-items: flex-start;
+  gap: 96px;
+  padding: 32px 40px 40px;
+}
+
+.footer-spread p {
+  margin: 0;
+}
+
+.footer-spread .footer-copyright,
+.footer-spread .footer-links {
+  line-height: 1.5;
 }
 
 .footer-spread .footer-links {
@@ -48,9 +57,8 @@
   align-items: flex-start;
 }
 
-.footer-spread .footer-studio {
-  align-items: flex-end;
-  text-align: right;
+.footer-spread .footer-flower {
+  margin-left: auto;
 }
 
 /* Stack: used on About / Work always, and on Home below the sidebar breakpoint */
