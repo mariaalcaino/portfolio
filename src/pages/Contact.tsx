@@ -109,7 +109,6 @@ export default function Contact() {
       <div className="contact-layout">
         <div className="contact-main">
           <h1 className="contact-title">{t.title}</h1>
-          <p className="contact-intro">{t.intro}</p>
 
           {status === "sent" ? (
             <div className="contact-sent" role="status">
@@ -175,11 +174,6 @@ export default function Contact() {
               </button>
             </form>
           )}
-
-          <p className="contact-direct">
-            {t.directBefore}
-            <a href={`mailto:${PUBLIC_EMAIL}`}>{PUBLIC_EMAIL}</a>
-          </p>
         </div>
 
         {showFlower && <PixelFlower className="contact-flower" />}

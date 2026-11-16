@@ -35,7 +35,7 @@
   font-weight: 400;
   line-height: 21.8px;
   color: var(--fg);
-  margin: 0 0 12px;
+  margin: 0;
   padding-bottom: 2px;
 }
 
@@ -171,8 +171,7 @@
   border-color: rgba(27, 27, 27, 0.25);
 }
 
-.contact-action:focus-visible,
-.contact-direct a:focus-visible {
+.contact-action:focus-visible {
   outline: 1px solid var(--fg);
   outline-offset: 2px;
 }
@@ -190,19 +189,11 @@
   margin-bottom: 16px;
 }
 
-.contact-main > .contact-intro {
-  color: var(--fg);
-}
-
-.contact-main > .contact-direct {
-  margin-top: 32px;
-  color: var(--muted);
-}
-
-.contact-direct a {
-  color: var(--fg);
-}
-
-.contact-direct a:hover {
-  text-decoration: underline;
+/* Tablet and phones: the title is only for screen readers, so the form (or the "sent" note) is the first thing on the page and starts at the
+   page's own top padding. It comes after the rules above so that it wins over their margin-top. */
+@media (max-width: 960px) {
+  .contact-form,
+  .contact-sent {
+    margin-top: 0;
+  }
 }
