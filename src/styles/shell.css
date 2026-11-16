@@ -79,6 +79,10 @@
     padding: 24px 24px 0;
   }
 
+}
+
+/* Phones: the stacked footer. Tablet and desktop share the two-column one. */
+@media (max-width: 767px) {
   .footer-wide {
     display: none;
   }

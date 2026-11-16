@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
 import "./Footer.css";
@@ -12,22 +11,12 @@ const Copyright = ({ t }: { t: ReturnType<typeof useStrings> }) => (
 
 const Links = ({ t }: { t: ReturnType<typeof useStrings> }) => (
   <div className="footer-links">
-    <Link to="/contact">{t.footer.contact}</Link>
     <a href="https://linkedin.com" target="_blank" rel="noreferrer">
       {t.footer.linkedin}
     </a>
     <a href="https://github.com" target="_blank" rel="noreferrer">
       {t.footer.github}
     </a>
-  </div>
-);
-
-const Studio = ({ t }: { t: ReturnType<typeof useStrings> }) => (
-  <div className="footer-studio">
-    <p>
-      {t.footer.studioPrefix} <a href="mailto:hello@mariaalcaino.com">{t.footer.bookVisit}</a>
-    </p>
-    <p className="footer-muted">{t.footer.location}</p>
   </div>
 );
 
@@ -49,14 +38,13 @@ export default function Footer({
     return (
       <footer className={`site-footer footer-stack ${className ?? ""}`}>
         <Links t={t} />
-        <Studio t={t} />
         <Copyright t={t} />
         <Flower className="footer-flower" />
       </footer>
     );
   }
 
-  // Desktop: two vertical columns (the copyright and the links) and the flower. The studio line and the city are only in the stacked footer.
+  // Tablet and desktop: two vertical columns (the copyright and the links) and the flower.
   return (
     <footer className={`site-footer footer-spread ${className ?? ""}`}>
       <Copyright t={t} />
