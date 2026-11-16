@@ -78,7 +78,7 @@ export default function Home() {
   return (
     <Shell>
       <div className="hero">
-        <p>{t.home.line1}</p>
+        <h1>{t.home.line1}</h1>
         <p>
           {t.home.line2Prefix}
           <a href="https://www.tandie.app" target="_blank" rel="noreferrer">

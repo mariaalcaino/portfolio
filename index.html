@@ -6,8 +6,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="María Alcaíno — Product Designer / Design Engineer. Design systems, product design and creative strategy." />
-    <title>María Alcaíno — Product Designer</title>
+    <!-- Replaced at build time (vite-plugins/seo.ts) by each page's title, description, canonical, robots, Open Graph and JSON-LD. -->
+    <!--seo:start--><title>María Alcaíno</title><!--seo:end-->
     <!--
       Tells the page skeleton below (src/styles/skeleton.css) which page it is standing in for, and calms it down
       (no more shimmer) if the app has not taken over after 15 seconds, so a script that never arrives is not an endless animation.
@@ -23,7 +23,7 @@
       })();
     </script>
     <!-- Without scripts nothing would ever replace the skeleton. -->
-    <noscript><style>.boot { display: none; }</style></noscript>
+    <noscript><style>.boot { display: none; } .visually-hidden[data-seo-static] { position: static; width: auto; height: auto; clip: auto; overflow: visible; padding: 24px; font-family: system-ui, sans-serif; line-height: 1.5; }</style></noscript>
   </head>
   <body>
     <!--
@@ -31,6 +31,8 @@
       mounts (and replaces everything inside #root) nothing moves. It has no text, so it is the same in both languages.
     -->
     <div id="root">
+      <!-- The page's own text for visitors and bots without JavaScript; the app replaces everything inside #root when it mounts. -->
+      <!--seo-body:start--><!--seo-body:end-->
       <div class="boot" aria-hidden="true">
         <div class="site-shell">
           <aside class="sidebar">

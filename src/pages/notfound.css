@@ -1,0 +1,18 @@
+.notfound-content {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.notfound-content p,
+.notfound-title {
+  margin: 0;
+  font: inherit;
+}
+
+.notfound-title {
+  margin-bottom: 12px;
+}
+
+.notfound-content a:hover {
+  text-decoration: underline;
+}

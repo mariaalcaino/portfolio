@@ -5,7 +5,7 @@ import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
 import "./contact.css";
 
-const ENDPOINT = "https://formsubmit.co/ajax/ignaciaalcaino97@gmail.com";
+const ENDPOINT = "/api/contact"; // Vercel Function (api/contact.ts): same origin, no third-party form service
 const PUBLIC_EMAIL = "hello@mariaalcaino.com";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TIMEOUT_MS = 15000;
@@ -26,6 +26,27 @@ type Status = "idle" | "sending" | "sent" | "error";
 const EMPTY: Values = { name: "", email: "", message: "" };
 const ORDER: FieldName[] = ["name", "email", "message"];
 
+// Sends the message. Resolves to null when it went out, otherwise to a short, non-sensitive failure code
+// ("timeout", "network", "invalid", "not_configured", "upstream_rejected", "http_502"...) so the notice can
+// say what failed without leaking anything. The real cause is in the Vercel function logs.
+async function sendMessage(payload: Values, signal: AbortSignal): Promise<string | null> {
+  try {
+    const response = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+      signal,
+    });
+    const data: unknown = await response.json().catch(() => null);
+    const body = typeof data === "object" && data !== null ? (data as { ok?: unknown; code?: unknown }) : {};
+    if (response.ok && body.ok === true) return null;
+    // only a short word is shown: whatever else a proxy might answer is not
+    return typeof body.code === "string" && /^[a-z0-9_]{1,32}$/.test(body.code) ? body.code : `http_${response.status}`;
+  } catch (error) {
+    return error instanceof DOMException && error.name === "AbortError" ? "timeout" : "network";
+  }
+}
+
 export default function Contact() {
   const { lang } = useLang();
   const t = useStrings(lang).contactPage;
@@ -33,6 +54,7 @@ export default function Contact() {
   const [values, setValues] = useState<Values>(EMPTY);
   const [invalid, setInvalid] = useState<Partial<Record<FieldName, boolean>>>({});
   const [status, setStatus] = useState<Status>("idle");
+  const [failure, setFailure] = useState("");
   const showFlower = useSyncExternalStore(subscribeToTabletUp, isTabletUp, () => true);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -81,26 +103,17 @@ export default function Contact() {
     setStatus("sending");
     const controller = new AbortController();
     const timer = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
-    try {
-      const response = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          ...clean,
-          _subject: `Portfolio — message from ${clean.name}`,
-          _template: "table",
-          _captcha: "false",
-        }),
-        signal: controller.signal,
-      });
-      const data = await response.json();
-      if (!response.ok || (data.success !== true && data.success !== "true")) throw new Error("send failed");
+    const code = await sendMessage(clean, controller.signal);
+    window.clearTimeout(timer);
+
+    if (code === null) {
+      setFailure("");
       setValues(EMPTY);
       setStatus("sent");
-    } catch {
+    } else {
+      console.warn("[contact] send failed:", code);
+      setFailure(code);
       setStatus("error");
-    } finally {
-      window.clearTimeout(timer);
     }
   };
 
@@ -166,6 +179,7 @@ export default function Contact() {
                   {t.failedBefore}
                   <a href={`mailto:${PUBLIC_EMAIL}`}>{PUBLIC_EMAIL}</a>
                   {t.failedAfter}
+                  {failure && <span className="contact-failed-code"> [{failure}]</span>}
                 </p>
               )}
 

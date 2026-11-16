@@ -9,6 +9,12 @@
   margin: 0;
 }
 
+/* the first line is the page's <h1>: it looks exactly like the paragraph below it */
+.hero h1 {
+  margin: 0;
+  font: inherit;
+}
+
 .hero a:hover {
   text-decoration: underline;
 }

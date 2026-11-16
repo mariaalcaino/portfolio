@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Gallery from "../components/Gallery";
 import ProjectDemo from "../components/ProjectDemo";
 import Shell from "../components/Shell";
@@ -7,6 +7,7 @@ import Tags from "../components/Tags";
 import { pick, projects } from "../data/projects";
 import { useLang } from "../i18n/LanguageContext";
 import { useStrings } from "../i18n/strings";
+import NotFound from "./NotFound";
 import "./work.css";
 
 // Paragraphs are plain strings; "[text](https://…)" becomes an inline link.
@@ -29,7 +30,7 @@ export default function Work() {
   const { lang } = useLang();
   const t = useStrings(lang);
 
-  if (!project) return <Navigate to="/" replace />;
+  if (!project) return <NotFound />;
 
   const detailMeta = pick(project.detailMeta, lang);
   const paragraphs = pick(project.paragraphs, lang);

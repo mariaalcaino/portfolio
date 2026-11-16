@@ -6,6 +6,7 @@ import './styles/skeleton.css'
 import App from './App.tsx'
 import { protectMedia } from './components/protectMedia'
 import { LanguageProvider } from './i18n/LanguageContext'
+import SeoHead from './seo/SeoHead'
 
 protectMedia()
 
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <LanguageProvider>
       <BrowserRouter>
+        <SeoHead />
         <App />
       </BrowserRouter>
     </LanguageProvider>
