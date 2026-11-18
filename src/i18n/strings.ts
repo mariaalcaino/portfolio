@@ -32,7 +32,7 @@ export const strings = {
       body: [
         "I’m a Design Engineer focused on building and evolving digital products. I work across product definition, design, and development, connecting user needs with business goals and technical constraints. My experience spans SaaS, B2B marketplaces and loyalty platforms, with a focus on how products can improve, adapt, and scale as businesses grow.",
         "I’m interested in what shapes an experience beyond the interface: human behavior, business rules, and the systems behind it. I draw on behavioral science and systems thinking to bring structure to complex problems, while staying close to the details that define the final experience. I value clarity, restraint, and character and care equally about how a product works and how it looks and feels.",
-        "Outside of work, I practice silversmithing and have a soft spot for artists’ studios. You’ll also find me training, reading or walking through the countryside with my dog Linguini.",
+        "In my free time, you’ll find me practicing silversmithing, training or walking through the countryside with my dog Linguini.",
       ],
       educationTitle: "Education",
       recognitionTitle: "Selected Recognition",
@@ -106,9 +106,9 @@ export const strings = {
     about: {
       title: "Acerca de",
       body: [
-        "Soy Design Engineer y me dedico a construir y hacer evolucionar productos digitales. Trabajo en la definición de producto, el diseño y el desarrollo, conectando las necesidades de los usuarios con los objetivos de negocio y las restricciones técnicas. Mi experiencia abarca SaaS, marketplaces B2B y plataformas de fidelización, con foco en cómo los productos pueden mejorar, adaptarse y escalar a medida que crecen los negocios.",
+        "Soy Ingeniera en Diseño y me dedico a construir y hacer evolucionar productos digitales. Trabajo en la definición de producto, el diseño y el desarrollo, conectando las necesidades de los usuarios con los objetivos de negocio y las restricciones técnicas. Mi experiencia abarca SaaS, marketplaces B2B y plataformas de fidelización, con foco en cómo los productos pueden mejorar, adaptarse y escalar a medida que crecen los negocios.",
         "Me interesa lo que da forma a una experiencia más allá de la interfaz: el comportamiento humano, las reglas de negocio y los sistemas que hay detrás. Me apoyo en las ciencias del comportamiento y el pensamiento sistémico para darle estructura a problemas complejos, sin perder cercanía con los detalles que definen la experiencia final. Valoro la claridad, la contención y el carácter, y me importa por igual cómo funciona un producto y cómo se ve y se siente.",
-        "Fuera del trabajo, practico orfebrería en plata y tengo un cariño especial por los talleres de artistas. También me encontrarás entrenando, leyendo o caminando por el campo con mi perro Linguini.",
+        "En mi tiempo libre, me encontrarás practicando orfebrería en plata, entrenando o caminando por el campo con mi perro Linguini.",
       ],
       educationTitle: "Educación",
       recognitionTitle: "Reconocimientos Destacados",
