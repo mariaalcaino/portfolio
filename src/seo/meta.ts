@@ -1,7 +1,7 @@
 import { getPreviewMedia, pick, posterOf, projects, type Project } from "../data/projects";
 import { thumbOf } from "../data/media";
 import type { Lang } from "../i18n/LanguageContext";
-import { abs, SITE } from "./site";
+import { abs, SEARCH_INDEXING, SITE } from "./site";
 import type { Head, HeadTag } from "./tags";
 
 export type PageKind = "home" | "about" | "contact" | "work" | "notfound";
@@ -160,6 +160,7 @@ export function headFor(pathname: string, lang: Lang): { page: Page; indexable: 
     ({ title, description } = copy[key]);
     indexable = key !== "notfound";
   }
+  if (!SEARCH_INDEXING) indexable = false; // the whole site is closed to search engines (see SEARCH_INDEXING in site.ts): no canonical, no og:url, no JSON-LD either
 
   const tags: HeadTag[] = [
     { kind: "meta", attr: "name", key: "description", content: description },
@@ -168,7 +169,11 @@ export function headFor(pathname: string, lang: Lang): { page: Page; indexable: 
       attr: "name",
       key: "robots",
       // noimageindex / max-image-preview:none / max-video-preview:0: no pictures or video previews of the work in Google (the files also carry X-Robots-Tag: noindex)
-      content: indexable ? "index, follow, noimageindex, max-image-preview:none, max-video-preview:0" : "noindex, follow",
+      content: !SEARCH_INDEXING
+        ? "noindex, nofollow, noarchive, nosnippet, noimageindex"
+        : indexable
+          ? "index, follow, noimageindex, max-image-preview:none, max-video-preview:0"
+          : "noindex, follow",
     },
   ];
   if (indexable) tags.push({ kind: "link", rel: "canonical", href: abs(page.path) });

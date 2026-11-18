@@ -5,7 +5,7 @@
 import { projects } from "../data/projects";
 import { strings } from "../i18n/strings";
 import { headFor, isThin, pageFor } from "./meta";
-import { abs } from "./site";
+import { abs, SEARCH_INDEXING } from "./site";
 import { renderHead } from "./tags";
 
 const esc = (text: string) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -53,9 +53,10 @@ export function bodyHtmlFor(path: string): string {
 export const notFoundPage = () => ({ head: headHtmlFor("/__not-found__"), body: bodyHtmlFor("/__not-found__") });
 
 export function sitemapXml(): string {
+  if (!SEARCH_INDEXING) return ""; // no sitemap while the site is closed to search engines: the plugin then writes no file
   const paths = ["/", "/about", "/contact", ...projects.filter((p) => !isThin(p)).map((p) => `/${p.slug}`)];
   const urls = paths.map((path) => `  <url><loc>${esc(abs(path))}</loc></url>`).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }
 
-export const robotsTxt = () => `User-agent: *\nAllow: /\n\nSitemap: ${abs("/sitemap.xml")}\n`;
+export const robotsTxt = () => (SEARCH_INDEXING ? `User-agent: *\nAllow: /\n\nSitemap: ${abs("/sitemap.xml")}\n` : `User-agent: *\nAllow: /\n`);

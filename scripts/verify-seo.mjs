@@ -8,7 +8,11 @@ const check = (ok, label, extra = "") => { if (!ok) failures++; console.log(`${o
 const bypass = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
 const get = async (path, init = {}) => { const r = await fetch(base + path, { redirect: "manual", ...init, headers: { ...(bypass ? { "x-vercel-protection-bypass": bypass } : {}), ...(init.headers ?? {}) } }); return { r, text: await r.text() }; };
 const tag = (html, re) => [...html.matchAll(re)].map((m) => m[1]);
+// The policy to check: closed to search engines (SEARCH_INDEXING = false in src/seo/site.ts: the default here) or open (INDEXING=on).
+const indexing = process.env.INDEXING === "on";
+const local = base.startsWith("http://localhost");
 
+if (indexing) {
 // robots.txt
 const robots = await get("/robots.txt");
 check(robots.r.status === 200 && /text\/plain/.test(robots.r.headers.get("content-type")), "robots.txt is 200 text/plain");
@@ -44,6 +48,33 @@ const seen = new Map();
 for (const loc of locs) { const t = tag((await get(new URL(loc).pathname)).text, /<title>([^<]*)<\/title>/g)[0]; seen.set(t, (seen.get(t) ?? 0) + 1); }
 check([...seen.values()].every((n) => n === 1), "titles are unique across the sitemap");
 
+} else {
+  // closed: robots.txt still allows crawling (so the noindex can be read) and names no sitemap; there is no sitemap; every page and file says noindex
+  const robots = await get("/robots.txt");
+  check(robots.r.status === 200 && /text\/plain/.test(robots.r.headers.get("content-type")), "robots.txt is 200 text/plain");
+  check(!/^Sitemap:/mi.test(robots.text), "robots.txt names no sitemap (the site is closed to search engines)");
+  check(!/^Disallow:\s*\/\s*$/m.test(robots.text), "robots.txt still ALLOWS crawling (a crawler has to be able to read the noindex)");
+  const sm = await get("/sitemap.xml");
+  check(sm.r.status === 404, "there is no sitemap.xml", `status ${sm.r.status}`);
+  const home = await get("/");
+  const paths = ["/", "/about", "/contact", ...tag(home.text.split("<!--seo-body:start-->")[1] ?? "", /href="(\/[a-z0-9-]+)"/g)].filter((p, i, all) => all.indexOf(p) === i);
+  check(paths.length >= 6, `${paths.length} pages found to check (home, about, contact and the projects linked from the home page)`);
+  const CLOSED = ["noindex", "nofollow", "noarchive", "nosnippet", "noimageindex"];
+  for (const path of paths) {
+    const { r, text } = await get(path);
+    const robotsMeta = tag(text, /<meta name="robots" content="([^"]+)"/g);
+    check(r.status === 200 && robotsMeta.length === 1 && CLOSED.every((d) => robotsMeta[0].split(/,\s*/).includes(d)), `${path} says "${robotsMeta[0]}"`);
+    check(!/<link rel="canonical"/.test(text) && !/application\/ld\+json/.test(text) && !/property="og:url"/.test(text), `${path} has no canonical, og:url or JSON-LD`);
+    if (!local) check(/noindex/.test(r.headers.get("x-robots-tag") ?? ""), `${path} has X-Robots-Tag: noindex`, r.headers.get("x-robots-tag") ?? "(none)");
+  }
+  if (!local) {
+    const script = tag(home.text, /src="(\/assets\/[^"]+\.js)"/g)[0];
+    for (const path of [script, "/robots.txt", "/works/zoon-10-thumb.jpg", "/works/zoon-10.mp4", "/this-does-not-exist"].filter(Boolean)) {
+      const { r } = await get(path, { headers: { Range: "bytes=0-1" } });
+      check(/noindex/.test(r.headers.get("x-robots-tag") ?? ""), `${path} has X-Robots-Tag: noindex`, r.headers.get("x-robots-tag") ?? "(none)");
+    }
+  }
+}
 // real 404s
 for (const path of ["/this-does-not-exist", `/${hidden}`, "/a/b", "/works/missing-file.jpg"]) {
   const { r, text } = await get(path);
@@ -54,7 +85,7 @@ for (const path of ["/this-does-not-exist", `/${hidden}`, "/a/b", "/works/missin
 const slash = await get("/about/");
 check([301, 308].includes(slash.r.status) && slash.r.headers.get("location") === "/about", "/about/ redirects to /about", `status ${slash.r.status}`);
 // media is kept out of Google (only meaningful against the Vercel deployment: the header comes from vercel.json)
-if (!base.startsWith("http://localhost")) {
+if (!local && indexing) {
   for (const path of ["/works/zoon-10-thumb.jpg", "/works/zoon-10.mp4"]) {
     const { r } = await get(path, { headers: { Range: "bytes=0-1" } });
     check(/noindex/.test(r.headers.get("x-robots-tag") ?? ""), `${path} has X-Robots-Tag: noindex`, r.headers.get("x-robots-tag") ?? "(none)");

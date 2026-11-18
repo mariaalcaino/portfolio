@@ -6,6 +6,16 @@
  */
 export const SITE_URL: string = (import.meta.env.VITE_SITE_URL || "https://portfolio-five-eosin-56.vercel.app").replace(/\/+$/, "");
 
+/**
+ * Search engines. FALSE = nothing of this site may show up in a search engine: every page says `noindex` (meta tag here and the
+ * X-Robots-Tag header in vercel.json), and there is no sitemap, no canonical link and no structured data.
+ * robots.txt must keep ALLOWING crawling: a crawler that cannot fetch a page never sees its noindex (and pages that are already
+ * listed would stay listed).
+ * To open the site to Google again: set this to true, take the site-wide X-Robots-Tag rule out of vercel.json (keep the /works one)
+ * and redeploy (README, "SEO and search engines").
+ */
+export const SEARCH_INDEXING = false;
+
 export const SITE = {
   name: "María Alcaíno",
   fullName: "María Ignacia Alcaíno",

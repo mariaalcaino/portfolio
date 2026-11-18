@@ -55,7 +55,8 @@ export default function seo(): Plugin {
         }
         const missing = build.notFoundPage();
         write("404.html", page(missing.head, missing.body));
-        write("sitemap.xml", build.sitemapXml());
+        const sitemap = build.sitemapXml();
+        if (sitemap) write("sitemap.xml", sitemap);
         write("robots.txt", build.robotsTxt());
       } finally {
         await server.close();
