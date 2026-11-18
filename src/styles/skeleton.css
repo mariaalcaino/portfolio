@@ -211,7 +211,13 @@
 @media(min-width:556px){.boot .about-body{--a:6;--b:6;--c:3}}
 @media(min-width:601px){.boot .about-body{--a:5;--b:6;--c:3}}
 @media(min-width:667px){.boot .about-body{--a:5;--b:5;--c:3}}
+@media(min-width:740px){.boot .about-body{--a:5;--b:5;--c:2}}
+@media(min-width:741px){.boot .about-body{--a:4;--b:5;--c:2}}
+@media(min-width:795px){.boot .about-body{--a:4;--b:4;--c:2}}
 @media(min-width:961px){.boot .about-body{--a:5;--b:6;--c:3}}
+@media(min-width:999px){.boot .about-body{--a:5;--b:5;--c:3}}
+@media(min-width:1072px){.boot .about-body{--a:5;--b:5;--c:2}}
+@media(min-width:1073px){.boot .about-body{--a:4;--b:5;--c:2}}
 /* Spanish (its text runs a few lines longer) */
 :root[data-lang="es"] .boot .about-body{--a:14;--b:14;--c:7}
 @media(min-width:326px){:root[data-lang="es"] .boot .about-body{--a:14;--b:14;--c:6}}
@@ -232,17 +238,21 @@
 @media(min-width:594px){:root[data-lang="es"] .boot .about-body{--a:7;--b:7;--c:3}}
 @media(min-width:622px){:root[data-lang="es"] .boot .about-body{--a:6;--b:7;--c:3}}
 @media(min-width:643px){:root[data-lang="es"] .boot .about-body{--a:6;--b:6;--c:3}}
+@media(min-width:735px){:root[data-lang="es"] .boot .about-body{--a:5;--b:6;--c:3}}
+@media(min-width:781px){:root[data-lang="es"] .boot .about-body{--a:5;--b:5;--c:3}}
 @media(min-width:961px){:root[data-lang="es"] .boot .about-body{--a:6;--b:7;--c:3}}
 @media(min-width:975px){:root[data-lang="es"] .boot .about-body{--a:6;--b:6;--c:3}}
+@media(min-width:1067px){:root[data-lang="es"] .boot .about-body{--a:5;--b:6;--c:3}}
+@media(min-width:1113px){:root[data-lang="es"] .boot .about-body{--a:5;--b:5;--c:3}}
 
-/* on the real About page the 680px limit sits on the padded box (the padding is 40px, or 24px on small screens) */
+/* on the real About page the 820px limit sits on the padded box (the padding is 40px, or 24px on small screens) */
 .boot .boot-about {
-  max-width: 600px;
+  max-width: 740px;
 }
 
 @media (max-width: 960px) {
   .boot .boot-about {
-    max-width: 632px;
+    max-width: 772px;
   }
 }
 
