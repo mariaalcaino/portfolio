@@ -46,7 +46,8 @@ export function bodyHtmlFor(path: string): string {
   } else {
     inner = `<h1>${esc(strings.en.notFound.title)}</h1><p><a href="/">${esc(strings.en.notFound.back)}</a></p>`;
   }
-  return `<div class="visually-hidden" data-seo-static>${inner}</div>`;
+  // always English (the build has one language), whatever <html lang> says once the inline script in index.html has run
+  return `<div class="visually-hidden" lang="en" data-seo-static>${inner}</div>`;
 }
 
 export const notFoundPage = () => ({ head: headHtmlFor("/__not-found__"), body: bodyHtmlFor("/__not-found__") });

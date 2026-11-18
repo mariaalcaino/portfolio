@@ -15,6 +15,19 @@
     <script>
       (function () {
         var root = document.documentElement;
+        // the language the app will open in (the same rule as LanguageContext: the saved choice, else the first of the browser's preferred languages that the site has, else English),
+        // so <html lang> is right from the first moment and not only once the app has mounted
+        var lang = null;
+        try { lang = localStorage.getItem("lang"); } catch (e) {}
+        if (lang !== "en" && lang !== "es") {
+          lang = "en";
+          var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
+          for (var i = 0; i < prefs.length; i++) {
+            var primary = String(prefs[i] || "").toLowerCase().split(/[-_]/)[0];
+            if (primary === "es" || primary === "en") { lang = primary; break; }
+          }
+        }
+        root.setAttribute("lang", lang);
         var p = location.pathname.toLowerCase().replace(/\/+$/, "") || "/";
         root.setAttribute("data-route", p === "/" ? "home" : p === "/about" ? "about" : p === "/contact" ? "contact" : "work");
         setTimeout(function () {
