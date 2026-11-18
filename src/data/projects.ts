@@ -103,6 +103,7 @@ const allProjects: Project[] = [
     links: [{ label: { en: "www.tandie.app ↗", es: "www.tandie.app ↗" }, href: "https://www.tandie.app" }],
     images: [
       "/works/tandie-5.mp4",
+      "/works/tandie-6.mp4",
       "/works/tandie-1.mp4",
       "/works/tandie-2.mp4",
       "/works/tandie-3.mp4",
