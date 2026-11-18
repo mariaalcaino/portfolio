@@ -17,7 +17,7 @@ const COPY = {
     about: {
       title: `About — ${SITE.name}, Product Designer & Design Engineer`,
       description:
-        "María Alcaíno is a design engineer who defines, designs and builds digital products across SaaS, B2B marketplaces and engagement platforms.",
+        "María Alcaíno is a Design Engineer building and evolving digital products across SaaS, B2B marketplaces and loyalty platforms, from product definition to development.",
     },
     contact: {
       title: `Contact — ${SITE.name}`,
@@ -36,7 +36,7 @@ const COPY = {
     about: {
       title: `Acerca de — ${SITE.name}, Product Designer`,
       description:
-        "María Alcaíno es ingeniera en diseño: define, diseña y construye productos digitales en SaaS, marketplaces B2B y plataformas de fidelización.",
+        "María Alcaíno es Design Engineer: construye y hace evolucionar productos digitales en SaaS, marketplaces B2B y plataformas de fidelización.",
     },
     contact: {
       title: `Contacto — ${SITE.name}`,

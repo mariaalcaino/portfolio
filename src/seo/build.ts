@@ -34,7 +34,7 @@ export function bodyHtmlFor(path: string): string {
       `<ul>${projects.map((p) => `<li><a href="/${p.slug}">${esc(p.title ?? p.name)}</a></li>`).join("")}</ul>` +
       `<p><a href="/about">${esc(strings.en.nav.about)}</a> · <a href="/contact">${esc(strings.en.nav.contact)}</a></p>`;
   } else if (page.kind === "about") {
-    inner = `<h1>${esc(strings.en.about.title)}</h1><p>${esc(strings.en.about.body)}</p>`;
+    inner = `<h1>${esc(strings.en.about.title)}</h1>${strings.en.about.body.map((paragraph) => `<p>${esc(paragraph)}</p>`).join("")}`;
   } else if (page.kind === "contact") {
     inner = `<h1>${esc(strings.en.contactPage.title)}</h1><p><a href="mailto:hello@mariaalcaino.com">hello@mariaalcaino.com</a></p>`;
   } else if (page.kind === "work" && page.project) {

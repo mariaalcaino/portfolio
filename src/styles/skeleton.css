@@ -99,7 +99,7 @@
  * The page skeleton that sits inside #root while the scripts download (see index.html). It reuses the real layout's
  * classes (sidebar, shell, grid, cards, facts…), so the frame around the content (sidebar, title, first row) stays where it is
  * when React takes over. Below that it is a generic stand-in: one project skeleton serves every project page.
- * The inline script in index.html sets <html data-route="home|work|about|contact">; the matching block shows.
+ * The inline script in index.html sets <html data-route="home|work|about|contact"> (and data-lang="es" when the app will open in Spanish: the saved choice, else the browser's language); the matching block shows.
  */
 
 /*
@@ -162,20 +162,78 @@
   min-height: 21px;
 }
 
-/* the About text wraps into about twice as many lines on a phone: those extra lines show only there (and the short last line of the wide layout gives way to them) */
-.boot .boot-narrow {
-  display: none;
+/*
+ * The About text: three paragraphs of grey lines, as many lines as the real text wraps into at each width (the first block is English, the
+ * second Spanish, picked by the data-lang the inline script in index.html sets). --a, --b and --c are the line counts of the three
+ * paragraphs; the lines beyond them are cut off, and the cover over the right part of the last line makes it short. The margin under the
+ * last paragraph is the height the little dog adds to its last line.
+ * The counts were measured on the real page, one width at a time (at every pixel from 320 to 1700, in both languages: the first width
+ * where a paragraph's line count changes starts a band). THEY GO STALE whenever the About text (either language), its font, the paragraph
+ * gap or the column width changes: measure again, or the education block will jump when the app takes over.
+ */
+.boot .bp {
+  position: relative;
+  flex: none;
+  overflow: hidden;
 }
 
-@media (max-width: 520px) {
-  .boot .boot-narrow {
-    display: flex;
-  }
-
-  .boot .boot-wide-end {
-    width: 100%;
-  }
+.boot .bp::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: var(--last);
+  right: 0;
+  top: calc((var(--n) - 1) * 22.4px);
+  height: 22.4px;
+  background: var(--bg);
 }
+
+.boot .bp1 { --n: var(--a); --last: 62%; height: calc(var(--a) * 22.4px); }
+.boot .bp2 { --n: var(--b); --last: 41%; height: calc(var(--b) * 22.4px); }
+.boot .bp3 { --n: var(--c); --last: 86%; height: calc(var(--c) * 22.4px); margin-bottom: 4.4px; }
+
+/* English */
+.boot .about-body{--a:12;--b:12;--c:6}
+@media(min-width:323px){.boot .about-body{--a:11;--b:12;--c:6}}
+@media(min-width:335px){.boot .about-body{--a:10;--b:12;--c:6}}
+@media(min-width:342px){.boot .about-body{--a:10;--b:11;--c:6}}
+@media(min-width:355px){.boot .about-body{--a:10;--b:11;--c:5}}
+@media(min-width:364px){.boot .about-body{--a:10;--b:10;--c:5}}
+@media(min-width:366px){.boot .about-body{--a:9;--b:10;--c:5}}
+@media(min-width:394px){.boot .about-body{--a:9;--b:10;--c:4}}
+@media(min-width:400px){.boot .about-body{--a:8;--b:10;--c:4}}
+@media(min-width:411px){.boot .about-body{--a:8;--b:9;--c:4}}
+@media(min-width:441px){.boot .about-body{--a:8;--b:8;--c:4}}
+@media(min-width:450px){.boot .about-body{--a:7;--b:8;--c:4}}
+@media(min-width:497px){.boot .about-body{--a:7;--b:7;--c:4}}
+@media(min-width:509px){.boot .about-body{--a:6;--b:7;--c:4}}
+@media(min-width:515px){.boot .about-body{--a:6;--b:7;--c:3}}
+@media(min-width:556px){.boot .about-body{--a:6;--b:6;--c:3}}
+@media(min-width:601px){.boot .about-body{--a:5;--b:6;--c:3}}
+@media(min-width:667px){.boot .about-body{--a:5;--b:5;--c:3}}
+@media(min-width:961px){.boot .about-body{--a:5;--b:6;--c:3}}
+/* Spanish (its text runs a few lines longer) */
+:root[data-lang="es"] .boot .about-body{--a:14;--b:14;--c:7}
+@media(min-width:326px){:root[data-lang="es"] .boot .about-body{--a:14;--b:14;--c:6}}
+@media(min-width:334px){:root[data-lang="es"] .boot .about-body{--a:13;--b:13;--c:6}}
+@media(min-width:349px){:root[data-lang="es"] .boot .about-body{--a:12;--b:13;--c:6}}
+@media(min-width:370px){:root[data-lang="es"] .boot .about-body{--a:12;--b:12;--c:6}}
+@media(min-width:384px){:root[data-lang="es"] .boot .about-body{--a:12;--b:12;--c:5}}
+@media(min-width:388px){:root[data-lang="es"] .boot .about-body{--a:11;--b:12;--c:5}}
+@media(min-width:398px){:root[data-lang="es"] .boot .about-body{--a:10;--b:11;--c:5}}
+@media(min-width:423px){:root[data-lang="es"] .boot .about-body{--a:10;--b:10;--c:5}}
+@media(min-width:442px){:root[data-lang="es"] .boot .about-body{--a:9;--b:10;--c:5}}
+@media(min-width:456px){:root[data-lang="es"] .boot .about-body{--a:9;--b:10;--c:4}}
+@media(min-width:464px){:root[data-lang="es"] .boot .about-body{--a:9;--b:9;--c:4}}
+@media(min-width:484px){:root[data-lang="es"] .boot .about-body{--a:8;--b:9;--c:4}}
+@media(min-width:505px){:root[data-lang="es"] .boot .about-body{--a:8;--b:8;--c:4}}
+@media(min-width:548px){:root[data-lang="es"] .boot .about-body{--a:7;--b:8;--c:4}}
+@media(min-width:572px){:root[data-lang="es"] .boot .about-body{--a:7;--b:7;--c:4}}
+@media(min-width:594px){:root[data-lang="es"] .boot .about-body{--a:7;--b:7;--c:3}}
+@media(min-width:622px){:root[data-lang="es"] .boot .about-body{--a:6;--b:7;--c:3}}
+@media(min-width:643px){:root[data-lang="es"] .boot .about-body{--a:6;--b:6;--c:3}}
+@media(min-width:961px){:root[data-lang="es"] .boot .about-body{--a:6;--b:7;--c:3}}
+@media(min-width:975px){:root[data-lang="es"] .boot .about-body{--a:6;--b:6;--c:3}}
 
 /* on the real About page the 680px limit sits on the padded box (the padding is 40px, or 24px on small screens) */
 .boot .boot-about {

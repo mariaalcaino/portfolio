@@ -10,6 +10,13 @@
   margin: 0;
 }
 
+/* paragraphs: the same 18px between them as in the text of a project page */
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
 .about-title {
   font-size: 17px;
   font-weight: 400;
@@ -97,9 +104,16 @@
   color: var(--muted);
 }
 
+/* the address goes on its own line under the invitation (on a phone, if it takes two lines it splits in the middle, not leaving one word alone) */
+.about-studio-address {
+  display: block;
+  text-wrap: balance;
+}
+
 .about-studio-line a {
   color: var(--fg);
   text-decoration: none;
+  white-space: nowrap; /* "[ Agendar visita ]" moves to the next line as a whole */
 }
 
 .about-studio-line a:hover {

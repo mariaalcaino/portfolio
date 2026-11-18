@@ -35,10 +35,14 @@ export default function About() {
     <Shell mainClassName="about-content">
       <h1 className="about-title">{t.about.title}</h1>
 
-      <p>
-        {t.about.body}
-        <img src="/works/dog.png" alt="" className="about-dog" width={46} height={31} />
-      </p>
+      <div className="about-body">
+        {t.about.body.map((paragraph, i, all) => (
+          <p key={i}>
+            {paragraph}
+            {i === all.length - 1 && <img src="/works/dog.png" alt="" className="about-dog" width={46} height={31} />}
+          </p>
+        ))}
+      </div>
 
       <div className="about-groups">
         <section className="about-group">
@@ -71,6 +75,7 @@ export default function About() {
 
       <p className="about-studio-line">
         {t.about.studioLine} <a href="mailto:hello@mariaalcaino.com">{t.about.bookVisit}</a>
+        <span className="about-studio-address">{t.about.studioAddress}</span>
       </p>
     </Shell>
   );

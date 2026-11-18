@@ -16,7 +16,7 @@
       (function () {
         var root = document.documentElement;
         // the language the app will open in (the same rule as LanguageContext: the saved choice, else the first of the browser's preferred languages that the site has, else English),
-        // so <html lang> is right from the first moment and not only once the app has mounted
+        // so <html lang> is right from the first moment and not only once the app has mounted, and the skeleton can follow it (data-lang: the line counts of its About text are not the same in Spanish)
         var lang = null;
         try { lang = localStorage.getItem("lang"); } catch (e) {}
         if (lang !== "en" && lang !== "es") {
@@ -27,6 +27,7 @@
             if (primary === "es" || primary === "en") { lang = primary; break; }
           }
         }
+        if (lang === "es") root.setAttribute("data-lang", "es");
         root.setAttribute("lang", lang);
         var p = location.pathname.toLowerCase().replace(/\/+$/, "") || "/";
         root.setAttribute("data-route", p === "/" ? "home" : p === "/about" ? "about" : p === "/contact" ? "contact" : "work");
@@ -41,7 +42,7 @@
   <body>
     <!--
       The skeleton: what the visitor sees while the scripts download. It uses the real layout's classes, so when the app
-      mounts (and replaces everything inside #root) nothing moves. It has no text, so it is the same in both languages.
+      mounts (and replaces everything inside #root) nothing moves. It has no text, so it is the same in both languages (only the line counts of its About text follow the language the app will open in, see data-lang above).
     -->
     <div id="root">
       <!-- The page's own text for visitors and bots without JavaScript; the app replaces everything inside #root when it mounts. -->
@@ -148,7 +149,11 @@
 
               <div class="boot-view boot-about about-content">
                 <h1 class="about-title"><span class="sk sk-bar" style="width:70px"></span></h1>
-                <div><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:96%"><span class="sk"></span></div><div class="boot-line" style="--w:99%"><span class="sk"></span></div><div class="boot-line" style="--w:92%"><span class="sk"></span></div><div class="boot-line" style="--w:97%"><span class="sk"></span></div><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:94%"><span class="sk"></span></div><div class="boot-line" style="--w:98%"><span class="sk"></span></div><div class="boot-line" style="--w:90%"><span class="sk"></span></div><div class="boot-line" style="--w:96%"><span class="sk"></span></div><div class="boot-line" style="--w:99%"><span class="sk"></span></div><div class="boot-line" style="--w:93%"><span class="sk"></span></div><div class="boot-line boot-wide-end" style="--w:48%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:97%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:99%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:93%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:100%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:95%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:98%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:91%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:96%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:94%"><span class="sk"></span></div><div class="boot-line boot-narrow" style="--w:52%"><span class="sk"></span></div></div>
+                <div class="about-body">
+                  <div class="bp bp1"><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:96%"><span class="sk"></span></div><div class="boot-line" style="--w:99%"><span class="sk"></span></div><div class="boot-line" style="--w:93%"><span class="sk"></span></div><div class="boot-line" style="--w:97%"><span class="sk"></span></div><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:94%"><span class="sk"></span></div><div class="boot-line" style="--w:98%"><span class="sk"></span></div><div class="boot-line" style="--w:92%"><span class="sk"></span></div><div class="boot-line" style="--w:96%"><span class="sk"></span></div><div class="boot-line" style="--w:99%"><span class="sk"></span></div><div class="boot-line" style="--w:95%"><span class="sk"></span></div><div class="boot-line" style="--w:97%"><span class="sk"></span></div><div class="boot-line" style="--w:93%"><span class="sk"></span></div></div>
+                  <div class="bp bp2"><div class="boot-line" style="--w:98%"><span class="sk"></span></div><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:94%"><span class="sk"></span></div><div class="boot-line" style="--w:97%"><span class="sk"></span></div><div class="boot-line" style="--w:92%"><span class="sk"></span></div><div class="boot-line" style="--w:99%"><span class="sk"></span></div><div class="boot-line" style="--w:96%"><span class="sk"></span></div><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:93%"><span class="sk"></span></div><div class="boot-line" style="--w:98%"><span class="sk"></span></div><div class="boot-line" style="--w:95%"><span class="sk"></span></div><div class="boot-line" style="--w:97%"><span class="sk"></span></div><div class="boot-line" style="--w:99%"><span class="sk"></span></div><div class="boot-line" style="--w:94%"><span class="sk"></span></div></div>
+                  <div class="bp bp3"><div class="boot-line" style="--w:99%"><span class="sk"></span></div><div class="boot-line" style="--w:95%"><span class="sk"></span></div><div class="boot-line" style="--w:100%"><span class="sk"></span></div><div class="boot-line" style="--w:93%"><span class="sk"></span></div><div class="boot-line" style="--w:97%"><span class="sk"></span></div><div class="boot-line" style="--w:94%"><span class="sk"></span></div><div class="boot-line" style="--w:96%"><span class="sk"></span></div></div>
+                </div>
                 <div class="about-groups">
                   <section class="about-group">
                     <h2 class="about-group-title"><span class="sk sk-bar" style="width:84px"></span></h2>
