@@ -243,10 +243,10 @@ const allProjects: Project[] = [
   },
   {
     slug: "lifeindots",
-    name: "Life in dots",
-    listCategory: { en: "App", es: "App" },
+    name: "Life in Dots",
+    listCategory: { en: "Visual habit tracker", es: "Rastreador visual de hábitos" },
     listYears: "2026",
-    detailMeta: { en: "App / 2026", es: "App / 2026" },
+    detailMeta: { en: "Visual habit tracker", es: "Rastreador visual de hábitos" },
     paragraphs: {
       en: [
         "Your Life in Dots is a minimal web app for tracking daily goals and seeing your entire year at a glance. Each dot represents one day. Over time, those small daily choices become a quiet visual record of consistency, rhythm and change.",
@@ -259,6 +259,16 @@ const allProjects: Project[] = [
         "El producto está diseñado en torno a una interacción clara: define tus metas, marca lo que completaste y observa cómo tu año va tomando forma poco a poco.",
       ],
     },
+    facts: [
+      {
+        label: { en: "Role", es: "Rol" },
+        value: { en: "Product Designer & Developer", es: "Product Designer & Developer" },
+      },
+      {
+        label: { en: "Year", es: "Año" },
+        value: { en: "2026", es: "2026" },
+      },
+    ],
     tags: ["web", "product", "code"],
     links: [{
       label: { en: "www.yourlifeindots.com ↗", es: "www.yourlifeindots.com ↗" },

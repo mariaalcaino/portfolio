@@ -15,8 +15,6 @@ export const thumbOf = (src: string) => src.replace(/\.[a-z0-9]+$/i, "-thumb.jpg
  * don't need it (their cells are always 4:3).
  */
 const RATIOS: Record<string, number> = {
-  "/works/lifeindots-1.png": 1600 / 910,
-  "/works/lifeindots-2.png": 1600 / 910,
   "/works/sunset-4.png": 1800 / 1334,
   "/works/fingerpaint-1.mp4": 1800 / 1130,
 };
