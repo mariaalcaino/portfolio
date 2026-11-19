@@ -264,7 +264,8 @@ const allProjects: Project[] = [
       label: { en: "www.yourlifeindots.com ↗", es: "www.yourlifeindots.com ↗" },
       href: "https://www.yourlifeindots.com",
     }],
-    images: ["/works/lifeindots-1.png", "/works/lifeindots-2.png"],
+    images: ["/works/lifeindots-3.png", "/works/lifeindots-4.mp4", "/works/lifeindots-5.png"],
+    galleryLayout: "strip",
   },
   {
     slug: "sunsetpredictor",
